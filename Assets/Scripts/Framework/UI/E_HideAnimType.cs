@@ -30,4 +30,8 @@ public enum E_HideAnimType
     /// 从右侧滑动出
     /// </summary>
     SlideOutToRight,
+    /// <summary>
+    /// 弹跳出
+    /// </summary>
+    BounceOut,
 }

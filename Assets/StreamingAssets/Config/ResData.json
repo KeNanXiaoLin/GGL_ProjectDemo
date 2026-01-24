@@ -50,6 +50,16 @@
         "assetExtension": "prefab"
     },
     {
+        "id": 6,
+        "resName": "PopupPanel",
+        "resDes": "弹出面板",
+        "resType": 0,
+        "resPath": "UI/Panel/PopupPanel",
+        "resEditorPath": "ArtRes/UI/Panel/PopupPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
         "id": 10001,
         "resName": "1",
         "resDes": "卡牌1",

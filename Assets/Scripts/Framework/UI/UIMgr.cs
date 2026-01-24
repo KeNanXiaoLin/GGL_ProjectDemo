@@ -158,7 +158,7 @@ namespace KNXL
                     switch (showAnimType)
                     {
                         case E_ShowAnimType.None:
-                            panelInfo.panel.ShowMe(() =>
+                            panelInfo.panel.ShowByDefault(() =>
                             {
                                 //如果存在回调 直接返回出去即可
                                 callBack?.Invoke(panelInfo.panel);
@@ -201,6 +201,13 @@ namespace KNXL
                             break;
                         case E_ShowAnimType.SlideInFromRight:
                             panelInfo.panel.ShowFromRight(callback: () =>
+                            {
+                                //如果存在回调 直接返回出去即可
+                                callBack?.Invoke(panelInfo.panel);
+                            });
+                            break;
+                        case E_ShowAnimType.BounceIn:
+                            panelInfo.panel.ShowWithBounce(callback: () =>
                             {
                                 //如果存在回调 直接返回出去即可
                                 callBack?.Invoke(panelInfo.panel);
@@ -289,6 +296,13 @@ namespace KNXL
                             callBack?.Invoke(panel);
                         });
                         break;
+                    case E_ShowAnimType.BounceIn:
+                        panel.ShowWithBounce(callback: () =>
+                        {
+                            //如果存在回调 直接返回出去即可
+                            callBack?.Invoke(panel);
+                        });
+                        break;
                 }
                 //回调执行完 将其清空 避免内存泄漏
                 panelInfo.callBack = null;
@@ -323,7 +337,7 @@ namespace KNXL
                     switch (hideAnimType)
                     {
                         case E_HideAnimType.None:
-                            panelInfo.panel.HideMe(() =>
+                            panelInfo.panel.HideByDefault(() =>
                             {
                                 HideWrapperEvent(panelInfo, panelName, isDestory, callBack);
                             });
@@ -360,6 +374,12 @@ namespace KNXL
                             break;
                         case E_HideAnimType.SlideOutToRight:
                             panelInfo.panel.HideToRight(callback: () =>
+                            {
+                                HideWrapperEvent(panelInfo, panelName, isDestory, callBack);
+                            });
+                            break;
+                        case E_HideAnimType.BounceOut:
+                            panelInfo.panel.HideWithBounce(callback: () =>
                             {
                                 HideWrapperEvent(panelInfo, panelName, isDestory, callBack);
                             });

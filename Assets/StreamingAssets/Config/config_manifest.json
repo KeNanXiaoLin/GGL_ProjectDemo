@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-01-24 12:55:12",
+    "generate_time": "2026-01-24 14:15:06",
     "table_count": 1,
     "tables": [
         {
@@ -8,7 +8,7 @@
             "class_name": "CfgResData",
             "json_path": "ResData.json",
             "primary_key": "id",
-            "row_count": 21,
+            "row_count": 22,
             "fields": [
                 {
                     "name": "id",

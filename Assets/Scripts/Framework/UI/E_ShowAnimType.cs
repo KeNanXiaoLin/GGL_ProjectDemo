@@ -30,4 +30,8 @@ public enum E_ShowAnimType
     /// 从右侧滑动入
     /// </summary>
     SlideInFromRight,
+    /// <summary>
+    /// 弹跳入
+    /// </summary>
+    BounceIn,
 }
