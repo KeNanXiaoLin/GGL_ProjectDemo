@@ -40,6 +40,16 @@
         "assetExtension": "prefab"
     },
     {
+        "id": 5,
+        "resName": "TestPanel",
+        "resDes": "测试面板",
+        "resType": 0,
+        "resPath": "UI/Panel/TestPanel",
+        "resEditorPath": "ArtRes/UI/Panel/TestPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
         "id": 10001,
         "resName": "1",
         "resDes": "卡牌1",
