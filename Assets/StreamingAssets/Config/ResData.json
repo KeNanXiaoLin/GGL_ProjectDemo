@@ -1,0 +1,202 @@
+[
+    {
+        "id": 1,
+        "resName": "GameStartPanel",
+        "resDes": "开始面板",
+        "resType": 0,
+        "resPath": "UI/Panel/GameStartPanel",
+        "resEditorPath": "ArtRes/UI/Panel/GameStartPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 2,
+        "resName": "GameEndPanel",
+        "resDes": "结束面板",
+        "resType": 0,
+        "resPath": "UI/Panel/GameEndPanel",
+        "resEditorPath": "ArtRes/UI/Panel/GameEndPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 3,
+        "resName": "GameUIPanel",
+        "resDes": "游戏面板",
+        "resType": 0,
+        "resPath": "UI/Panel/GameUIPanel",
+        "resEditorPath": "ArtRes/UI/Panel/GameUIPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 4,
+        "resName": "LevelPassPanel",
+        "resDes": "通关面板",
+        "resType": 0,
+        "resPath": "UI/Panel/LevelPassPanel",
+        "resEditorPath": "ArtRes/UI/Panel/LevelPassPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 10001,
+        "resName": "1",
+        "resDes": "卡牌1",
+        "resType": 4,
+        "resPath": "Materials/1",
+        "resEditorPath": "ArtRes/Materials/1",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10002,
+        "resName": "2",
+        "resDes": "卡牌2",
+        "resType": 4,
+        "resPath": "Materials/2",
+        "resEditorPath": "ArtRes/Materials/2",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10003,
+        "resName": "3",
+        "resDes": "卡牌3",
+        "resType": 4,
+        "resPath": "Materials/3",
+        "resEditorPath": "ArtRes/Materials/3",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10004,
+        "resName": "4",
+        "resDes": "卡牌4",
+        "resType": 4,
+        "resPath": "Materials/4",
+        "resEditorPath": "ArtRes/Materials/4",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10005,
+        "resName": "5",
+        "resDes": "卡牌5",
+        "resType": 4,
+        "resPath": "Materials/5",
+        "resEditorPath": "ArtRes/Materials/5",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10006,
+        "resName": "6",
+        "resDes": "卡牌6",
+        "resType": 4,
+        "resPath": "Materials/6",
+        "resEditorPath": "ArtRes/Materials/6",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10007,
+        "resName": "7",
+        "resDes": "卡牌7",
+        "resType": 4,
+        "resPath": "Materials/7",
+        "resEditorPath": "ArtRes/Materials/7",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10008,
+        "resName": "8",
+        "resDes": "卡牌8",
+        "resType": 4,
+        "resPath": "Materials/8",
+        "resEditorPath": "ArtRes/Materials/8",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10009,
+        "resName": "9",
+        "resDes": "卡牌9",
+        "resType": 4,
+        "resPath": "Materials/9",
+        "resEditorPath": "ArtRes/Materials/9",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10010,
+        "resName": "10",
+        "resDes": "卡牌10",
+        "resType": 4,
+        "resPath": "Materials/10",
+        "resEditorPath": "ArtRes/Materials/10",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10011,
+        "resName": "11",
+        "resDes": "卡牌11",
+        "resType": 4,
+        "resPath": "Materials/11",
+        "resEditorPath": "ArtRes/Materials/11",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10012,
+        "resName": "12",
+        "resDes": "卡牌12",
+        "resType": 4,
+        "resPath": "Materials/12",
+        "resEditorPath": "ArtRes/Materials/12",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 10013,
+        "resName": "BG",
+        "resDes": "卡牌12",
+        "resType": 4,
+        "resPath": "Materials/BG",
+        "resEditorPath": "ArtRes/Materials/BG",
+        "resABPath": "materials",
+        "assetExtension": "mat"
+    },
+    {
+        "id": 20001,
+        "resName": "Card",
+        "resDes": "卡牌预制体",
+        "resType": 0,
+        "resPath": "Prefabs/Card",
+        "resEditorPath": "ArtRes/Prefabs/Card",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 30001,
+        "resName": "Success",
+        "resDes": "成功特效",
+        "resType": 10,
+        "resPath": "VFX/Success",
+        "resEditorPath": "ArtRes/VFX/Success",
+        "resABPath": "vfx",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 40001,
+        "resName": "BGM",
+        "resDes": "背景音乐",
+        "resType": 1,
+        "resPath": "Music/BGM",
+        "resEditorPath": "ArtRes/Music/BGM",
+        "resABPath": "music",
+        "assetExtension": "wav"
+    }
+]

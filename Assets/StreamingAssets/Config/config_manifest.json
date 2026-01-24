@@ -1,0 +1,64 @@
+{
+    "version": "1.0.0",
+    "generate_time": "2026-01-24 12:33:35",
+    "table_count": 1,
+    "tables": [
+        {
+            "table_name": "ResData",
+            "class_name": "CfgResData",
+            "json_path": "ResData.json",
+            "primary_key": "id",
+            "row_count": 20,
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "int",
+                    "desc": "表的主键",
+                    "is_enum": false
+                },
+                {
+                    "name": "resName",
+                    "type": "string",
+                    "desc": "资源名字",
+                    "is_enum": false
+                },
+                {
+                    "name": "resDes",
+                    "type": "string",
+                    "desc": "资源描述",
+                    "is_enum": false
+                },
+                {
+                    "name": "resType",
+                    "type": "enum",
+                    "desc": "资源类型",
+                    "is_enum": true
+                },
+                {
+                    "name": "resPath",
+                    "type": "string",
+                    "desc": "资源的resources方式加载路径的path，相对于Resource/",
+                    "is_enum": false
+                },
+                {
+                    "name": "resEditorPath",
+                    "type": "string",
+                    "desc": "资源的Editor方式加载路径的path，相对于Assets",
+                    "is_enum": false
+                },
+                {
+                    "name": "resABPath",
+                    "type": "string",
+                    "desc": "资源的AB方式的包名",
+                    "is_enum": false
+                },
+                {
+                    "name": "assetExtension",
+                    "type": "string",
+                    "desc": "资源的后缀",
+                    "is_enum": false
+                }
+            ]
+        }
+    ]
+}
