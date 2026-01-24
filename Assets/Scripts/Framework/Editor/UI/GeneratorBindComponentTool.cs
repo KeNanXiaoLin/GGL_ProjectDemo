@@ -9,7 +9,9 @@ using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 
-public class GeneratorBindComponentTool : UnityEditor.Editor
+namespace KNXL
+{
+    public class GeneratorBindComponentTool : UnityEditor.Editor
 {
     public static List<EditorObjectData> objDataList;
     public static Dictionary<string, string> controlNameMap = new()
@@ -801,4 +803,5 @@ public class GeneratorBindComponentTool : UnityEditor.Editor
         Debug.Log(backupTip);
         EditorUtility.DisplayDialog("生成完成", backupTip, "确定");
     }
+}
 }

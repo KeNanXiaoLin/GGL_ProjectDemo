@@ -10,8 +10,10 @@ using UnityEngine.Events;
 //委托
 //lambda表达式
 //单例模式基类——>观看Unity小框架视频 进行学习
-public class ABMgr : SingletonAutoMono<ABMgr>
+namespace KNXL
 {
+    public class ABMgr : SingletonAutoMono<ABMgr>
+    {
     //主包
     private AssetBundle mainAB = null;
     //主包依赖获取配置文件
@@ -489,5 +491,6 @@ public class ABMgr : SingletonAutoMono<ABMgr>
         abDic.Clear();
         //卸载主包
         mainAB = null;
+    }
     }
 }
