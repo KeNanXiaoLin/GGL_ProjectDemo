@@ -21,10 +21,10 @@ public class CameraController
         switch (world)
         {
             case E_World.In_World:
-                mainCamera.cullingMask = 1 << LayerMask.NameToLayer(LayerSetting.In_World);
+                mainCamera.backgroundColor = Color.gray;
                 break;
             case E_World.Out_World:
-                mainCamera.cullingMask = 1 << LayerMask.NameToLayer(LayerSetting.Out_World);
+                mainCamera.backgroundColor = Color.black;
                 break;
         }
     }
