@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IAbility
 {
-    public int AbilityID { get; set; }
     /// <summary>
     /// 初始化能力
     /// </summary>
@@ -14,4 +13,9 @@ public interface IAbility
     /// </summary>
     /// <returns></returns>
     public IAbility GetAbility();
+    /// <summary>
+    /// 得到能力ID
+    /// </summary>
+    /// <returns></returns>
+    public int GetAbilityID();
 }

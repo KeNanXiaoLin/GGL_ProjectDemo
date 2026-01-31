@@ -9,16 +9,37 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     [SerializeField] private E_InputAction inputAction = E_InputAction.WASD;
+    private CfgMaskData currentMaskData;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentMaskData = AbilityManager.Instance.GetAbilityData(10001);
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeWorld();
+        }
         ChooseInputActionToInteract();
         
+    }
+
+    private void ChangeWorld()
+    {
+        switch (currentMaskData.worldType)
+            {
+                case E_World.In_World:
+                    // 两种附身的方式
+                    // 1.直接到物品的位置进行附身
+                    // 2.通过鼠标，绘制连线，根据连线的提示判断是否可以附身
+                    break;
+                case E_World.Out_World:
+                    // 可以进行万向移动
+                    break;
+            }
     }
 
     private void ChooseInputActionToInteract()
