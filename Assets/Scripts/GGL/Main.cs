@@ -6,7 +6,7 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameManager.Instance.Init();
         CfgMaskData maskData = AbilityManager.Instance.GetAbilityData(10001);

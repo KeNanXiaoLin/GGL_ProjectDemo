@@ -64,17 +64,20 @@ public class MapCell : MonoBehaviour
         return new Vector2(startPos.x + cell.x, startPos.y + cell.y);
     }
 
+    public Vector2 CellToWorldCenter(Cell cell)
+    {
+        return new Vector2(startPos.x + cell.x+0.5f, startPos.y + cell.y+0.5f);
+    }
+
     public int CalGridDisByWorldPos(Vector2 worldPos1, Vector2 worldPos2)
     {
         Cell cell1 = WorldToCell(worldPos1);
         Cell cell2 = WorldToCell(worldPos2);
-        Debug.Log($"cell1.x:{cell1.x},cell1.y:{cell1.y},cell2.x:{cell2.x},cell2.y:{cell2.y}");
         
         if (cell1 != null && cell2 != null)
         {
             int x = Mathf.Abs(cell1.x - cell2.x);
             int y = Mathf.Abs(cell1.y - cell2.y);
-            Debug.Log($"Distance:{x + y}");
             return x + y;
         }
         else

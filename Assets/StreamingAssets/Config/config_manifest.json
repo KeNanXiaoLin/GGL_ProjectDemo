@@ -1,8 +1,47 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-01-31 11:13:30",
-    "table_count": 2,
+    "generate_time": "2026-01-31 16:17:49",
+    "table_count": 3,
     "tables": [
+        {
+            "table_name": "MapData",
+            "class_name": "CfgMapData",
+            "json_path": "MapData.json",
+            "primary_key": "id",
+            "row_count": 2,
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "int",
+                    "desc": "表的主键(1开头表示表世界，2开头表示里世界)",
+                    "is_enum": false
+                },
+                {
+                    "name": "des",
+                    "type": "string",
+                    "desc": "这个面具对应的描述",
+                    "is_enum": false
+                },
+                {
+                    "name": "sizeType",
+                    "type": "enum",
+                    "desc": "这个面具对应的体积大小",
+                    "is_enum": true
+                },
+                {
+                    "name": "x",
+                    "type": "int",
+                    "desc": "生成位置对应的x坐标",
+                    "is_enum": false
+                },
+                {
+                    "name": "y",
+                    "type": "int",
+                    "desc": "生成位置对应的y坐标",
+                    "is_enum": false
+                }
+            ]
+        },
         {
             "table_name": "MaskData",
             "class_name": "CfgMaskData",
@@ -21,12 +60,6 @@
                     "type": "string",
                     "desc": "这个面具对应的描述",
                     "is_enum": false
-                },
-                {
-                    "name": "worldType",
-                    "type": "enum",
-                    "desc": "面具对应的世界类型",
-                    "is_enum": true
                 },
                 {
                     "name": "maskType",
@@ -50,12 +83,6 @@
                     "name": "inputAction",
                     "type": "enum",
                     "desc": "面具对应的输入方式",
-                    "is_enum": true
-                },
-                {
-                    "name": "spType",
-                    "type": "enum",
-                    "desc": "面具对应的特殊能力",
                     "is_enum": true
                 },
                 {
@@ -98,6 +125,12 @@
                     "name": "crossType",
                     "type": "enum",
                     "desc": "必须要是阻挡物品的前提下，可以通过的类型",
+                    "is_enum": true
+                },
+                {
+                    "name": "worldType",
+                    "type": "enum",
+                    "desc": "这个字段没用了，只是为了枚举的生成",
                     "is_enum": true
                 }
             ]

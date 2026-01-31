@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int crazyValue = 10;
+    [SerializeField] private int reasonValue = 10;
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     private LineRenderer lineRenderer;
@@ -13,14 +15,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float startWidth = 0.05f;
     [SerializeField] private float endWidth = 0.1f;
     private CfgMaskData currentMaskData;
-    private E_World currentWorldType;
+    private E_World currentWorldType => GameManager.Instance.CurrentWorldType;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         lineRenderer = GetComponent<LineRenderer>();
+        
+    }
+
+    private void Start()
+    {
         currentMaskData = AbilityManager.Instance.GetAbilityData(10001);
-        currentWorldType = GameManager.Instance.CurrentWorldType;
     }
 
     private void Update()
@@ -30,8 +36,6 @@ public class Player : MonoBehaviour
             ChangeWorld();
         }
         DoInteract();
-        ChooseInputActionToInteract();
-
     }
 
     private void DoInteract()
@@ -40,61 +44,98 @@ public class Player : MonoBehaviour
         {
             case E_World.In_World:
                 // 2.通过鼠标，绘制连线，根据连线的提示判断是否可以附身
-                if (Input.GetMouseButton(1))
-                {
-                    // 1.直接到物品的位置进行附身
-                    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    lineRenderer.SetPosition(0, transform.position);
-                    lineRenderer.SetPosition(1, mousePos);
-                    lineRenderer.startWidth = startWidth;
-                    lineRenderer.endWidth = endWidth;
-                    if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) <= 3)
-                    {
-                        lineRenderer.startColor = Color.green;
-                        lineRenderer.endColor = Color.green;
-                    }
-                    else
-                    {
-                        lineRenderer.startColor = Color.red;
-                        lineRenderer.endColor = Color.red;
-                    }
-                }
-                else if(Input.GetMouseButtonUp(1))
-                {
-                    lineRenderer.startWidth = 0f;
-                    lineRenderer.endWidth = 0f;
-                }
+                DrawInfoLine();
+                // 做附身后的事物独特的内容
+                DoSpecialInteractInWorld();
                 break;
             case E_World.Out_World:
+                DoSpecialInteractOutWorld();
                 // 可以进行万向移动
+                Debug.Log("目前处于Out_World，无法附身");
                 break;
+        }
+    }
+
+    /// <summary>
+    /// 不同面具在Out_World的特殊交互
+    /// </summary>
+    private void DoSpecialInteractOutWorld()
+    {
+        switch (currentMaskData.maskType)
+        {
+            case E_MaskType.Mouse:
+                break;
+            case E_MaskType.Cassette:
+                
+                break;
+            default:
+                break;
+        }
+    }
+    /// <summary>
+    /// 不同面具在In_World的特殊交互
+    /// </summary>
+    private void DoSpecialInteractInWorld()
+    {
+        switch (currentMaskData.maskType)
+        {
+            case E_MaskType.Mouse:
+                break;
+            case E_MaskType.Cassette:
+                
+                break;
+            default:
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 根据鼠标右键的点击绘制线，计算消耗
+    /// </summary>
+    private void DrawInfoLine()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            // 1.直接到物品的位置进行附身
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, mousePos);
+            lineRenderer.startWidth = startWidth;
+            lineRenderer.endWidth = endWidth;
+            if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) <= 3)
+            {
+                lineRenderer.startColor = Color.green;
+                lineRenderer.endColor = Color.green;
+                Cell targetCell = GameManager.Instance.mapCell.WorldToCell(mousePos);
+                if(targetCell.HasAbility())
+                {
+                    lineRenderer.endColor = Color.yellow;
+                }
+            }
+            else
+            {
+                lineRenderer.startColor = Color.red;
+                lineRenderer.endColor = Color.red;
+            }
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            lineRenderer.startWidth = 0f;
+            lineRenderer.endWidth = 0f;
         }
     }
 
     private void ChangeWorld()
     {
-        switch (currentMaskData.worldType)
+        switch (currentWorldType)
         {
             case E_World.In_World:
-                // 2.通过鼠标，绘制连线，根据连线的提示判断是否可以附身
-                if (Input.GetMouseButtonDown(1))
-                {
-                    // 1.直接到物品的位置进行附身
-                    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    lineRenderer.SetPosition(0, transform.position);
-                    lineRenderer.SetPosition(1, mousePos);
-                    if (Vector2.Distance(transform.position, mousePos) < 3f)
-                    {
-                        Debug.Log("可以附身");
-                    }
-                    else
-                    {
-                        Debug.Log("不能附身");
-                    }
-                }
+                GameManager.Instance.GoToOutWorld();
+                Debug.Log("Change to Out_World");
                 break;
             case E_World.Out_World:
-                // 可以进行万向移动
+                GameManager.Instance.GoToInWorld();
+                Debug.Log("Change to In_World");
                 break;
         }
     }
