@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float rightX = 10f;
     [SerializeField] private float bottomY = -5f;
     [SerializeField] private float topY = 5f;
-    [SerializeField] private Sprite cursorInIcon;
-    [SerializeField] private Sprite curveInIcon;
+    [SerializeField] private Texture2D cursor0;
+    [SerializeField] private Texture2D cursor1;
+    [SerializeField] private Texture2D cursor2;
 
     private CfgMaskData currentMaskData;
     private E_World currentWorldType => GameManager.Instance.CurrentWorldType;
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour
         switch (currentWorldType)
         {
             case E_World.In_World:
+                
                 // 2.通过鼠标，绘制连线，根据连线的提示判断是否可以附身
                 DrawInfoLine();
                 // 做附身后的事物独特的内容
@@ -145,6 +147,11 @@ public class Player : MonoBehaviour
         lineRenderer.SetPosition(1, mousePos);
         lineRenderer.startWidth = startWidth;
         lineRenderer.endWidth = endWidth;
+        // 指向了自己
+        if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) == 0)
+        {
+            Cursor.SetCursor(cursor0, Vector2.zero, CursorMode.Auto);
+        }
         if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) <= 10 - nowCrazyValue)
         {
             lineRenderer.startColor = Color.green;
@@ -153,6 +160,11 @@ public class Player : MonoBehaviour
             if (targetCell.HasAbility())
             {
                 lineRenderer.endColor = Color.yellow;
+                Cursor.SetCursor(cursor2, Vector2.zero, CursorMode.Auto);
+            }
+            else
+            {
+                Cursor.SetCursor(cursor1, Vector2.zero, CursorMode.Auto);
             }
         }
         else
