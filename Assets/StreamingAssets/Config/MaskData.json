@@ -14,7 +14,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 20001,
@@ -31,7 +32,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 10002,
@@ -48,7 +50,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 10003,
@@ -65,7 +68,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 10004,
@@ -82,7 +86,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 10005,
@@ -99,7 +104,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 20002,
@@ -116,7 +122,8 @@
         "checkDis": 5,
         "loveType": 1,
         "hateType": 2,
-        "crossType": 3
+        "crossType": 3,
+        "startCrazy": 0
     },
     {
         "id": 20003,
@@ -133,7 +140,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 3
+        "crossType": 3,
+        "startCrazy": 0
     },
     {
         "id": 20004,
@@ -150,7 +158,8 @@
         "checkDis": 3,
         "loveType": 3,
         "hateType": 1,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 20005,
@@ -167,7 +176,8 @@
         "checkDis": 0,
         "loveType": 2,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 20006,
@@ -184,7 +194,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 9
+        "crossType": 9,
+        "startCrazy": 0
     },
     {
         "id": 20007,
@@ -201,7 +212,8 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
     },
     {
         "id": 10006,
@@ -218,6 +230,25 @@
         "checkDis": 0,
         "loveType": 0,
         "hateType": 0,
-        "crossType": 0
+        "crossType": 0,
+        "startCrazy": 0
+    },
+    {
+        "id": 10007,
+        "des": "面具",
+        "worldType": 0,
+        "maskType": 13,
+        "spritePath": "Sprites/Mask",
+        "startLizi": 0,
+        "inputAction": 0,
+        "spType": 0,
+        "volume": "1*1",
+        "canStopItem": true,
+        "canPickItem": false,
+        "checkDis": 0,
+        "loveType": 0,
+        "hateType": 0,
+        "crossType": 0,
+        "startCrazy": 5
     }
 ]

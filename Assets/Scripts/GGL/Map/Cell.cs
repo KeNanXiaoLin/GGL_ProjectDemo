@@ -6,7 +6,7 @@ public class Cell
 {
     public int x;
     public int y;
-    public IAbility ability = null;
+    private IAbility ability = null;
 
     public Cell(int x, int y)
     {
@@ -26,5 +26,18 @@ public class Cell
     public void SetAbility(IAbility ability)
     {
         this.ability = ability;
+    }
+
+    public IAbility GetAbility()
+    {
+        return ability;
+    }
+
+    /// <summary>
+    /// 清除单元格的能力
+    /// </summary>
+    public void ClearAbility()
+    {
+        ability = null;
     }
 }

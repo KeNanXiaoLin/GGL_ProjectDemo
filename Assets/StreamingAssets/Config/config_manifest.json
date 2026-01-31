@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-01-31 23:08:50",
+    "generate_time": "2026-02-01 00:38:33",
     "table_count": 3,
     "tables": [
         {
@@ -53,7 +53,7 @@
             "class_name": "CfgMaskData",
             "json_path": "MaskData.json",
             "primary_key": "id",
-            "row_count": 13,
+            "row_count": 14,
             "fields": [
                 {
                     "name": "id",
@@ -144,6 +144,12 @@
                     "type": "enum",
                     "desc": "必须要是阻挡物品的前提下，可以通过的类型",
                     "is_enum": true
+                },
+                {
+                    "name": "startCrazy",
+                    "type": "int",
+                    "desc": "初始的疯狂值",
+                    "is_enum": false
                 }
             ]
         },
