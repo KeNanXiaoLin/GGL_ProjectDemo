@@ -8,6 +8,7 @@ public class GameManager : BaseManager<GameManager>
 {
     private E_World currentWorldType = E_World.Out_World;
     public MapCell mapCell;
+    public MapGenerate mapGenerate;
     private CameraController cameraController;
     public E_World CurrentWorldType
     {
@@ -29,6 +30,7 @@ public class GameManager : BaseManager<GameManager>
     {
         cameraController = new CameraController();
         mapCell = GameObject.Find("Map").GetComponent<MapCell>();
+        mapGenerate = GameObject.Find("MapGenerate").GetComponent<MapGenerate>();
     }
 
     public void GoToInWorld()

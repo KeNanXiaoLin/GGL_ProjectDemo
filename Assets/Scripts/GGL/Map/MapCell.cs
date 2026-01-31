@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MapCell : MonoBehaviour
+public class MapCell : MonoBehaviour,IMapGenerator
 {
     public Vector2Int startPos; // (0,0)
     public Vector2Int endPos; // (2,2)
@@ -155,5 +155,25 @@ public class MapCell : MonoBehaviour
         Gizmos.DrawLine(mapBottomRight, mapTopRight);
         Gizmos.DrawLine(mapTopRight, mapTopLeft);
         Gizmos.DrawLine(mapTopLeft, mapBottomLeft);
+    }
+
+    public Node[,] GenerateNodes()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public Node GetNodeFromWorldPos(Vector3 worldPos)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public Vector3 GetWorldPosFromNode(Node node)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public List<Node> GetNeighbors(Node node)
+    {
+        throw new System.NotImplementedException();
     }
 }
