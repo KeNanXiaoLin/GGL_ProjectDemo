@@ -7,6 +7,6 @@ public class Fanhui : MonoBehaviour
 {
     public void Fanhui1()
     {
-        SceneManager.LoadScene("Start Scene");
+        SceneManager.LoadScene("Start Scenes");
     }
 }
