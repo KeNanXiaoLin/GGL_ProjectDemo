@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : BaseManager<GameManager>
 {
-    private E_World currentWorldType = E_World.In_World;
+    private E_World currentWorldType = E_World.Out_World;
     public MapCell mapCell;
     private CameraController cameraController;
     public E_World CurrentWorldType

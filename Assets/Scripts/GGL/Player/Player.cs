@@ -8,8 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int crazyValue = 10;
     [SerializeField] private int reasonValue = 10;
-    [SerializeField] private float moveSpeed = 5f;
-    private Rigidbody2D rb;
+    [SerializeField] private float moveSpeed = 1.5f;
     private LineRenderer lineRenderer;
     [SerializeField] private E_InputAction inputAction = E_InputAction.WASD;
     [SerializeField] private float startWidth = 0.05f;
@@ -19,7 +18,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         lineRenderer = GetComponent<LineRenderer>();
         
     }
@@ -139,33 +137,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ChooseInputActionToInteract()
+    private IEnumerator MoveToTarget(List<Vector2> targetPosList)
     {
-        switch (inputAction)
+        foreach (var targetPos in targetPosList)
         {
-            case E_InputAction.WASD:
-                // Handle WASD input
-                HandleWASDInput();
-                break;
-            case E_InputAction.Mouse:
-                // Handle Mouse input
-                HandleMouseInput();
-                break;
-            default:
-                break;
+            Vector2 moveDir = (targetPos - new Vector2(transform.position.x, transform.position.y)).normalized;
+            while (Vector2.Distance(transform.position, targetPos) > 0.01f)
+            {
+                transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+                yield return null;
+            }
         }
-    }
-
-    private void HandleMouseInput()
-    {
-        Debug.Log("Mouse input handling not implemented yet.");
-    }
-
-    private void HandleWASDInput()
-    {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Vector2 moveDir = new Vector2(h, v).normalized;
-        this.transform.Translate(moveDir * moveSpeed * Time.deltaTime);
     }
 }
