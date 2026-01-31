@@ -33,6 +33,16 @@ public class Player : MonoBehaviour
     private Vector2 lastMousePos = Vector2.zero;
     // 记录目标单元格
     private Cell targetCell;
+    // 记录上一个面具数据
+    private CfgMaskData lastMaskData;
+    /// <summary>
+    /// 老鼠的面具
+    /// </summary>
+    private List<Mask> mouseMasks;
+    /// <summary>
+    /// 狼的面具
+    /// </summary>
+    private List<Mask> wolfMasks;
 
 
     private void Awake()
@@ -44,6 +54,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         currentMaskData = AbilityManager.Instance.GetAbilityData(10007);
+        spriteRenderer.sprite = Resources.Load<Sprite>(currentMaskData.spritePath);
         nowCrazyValue = currentMaskData.startCrazy;
         nowReasonValue = currentMaskData.startLizi;
         lastMovePos = transform.position;
@@ -120,13 +131,29 @@ public class Player : MonoBehaviour
             case E_MaskType.Wolf:
             case E_MaskType.Crocodile:
                 DoMove();
-                CheckMoveMax(); ;
+                CheckMoveMax();
                 break;
             case E_MaskType.Cassette:
                 //保存游戏
                 break;
             case E_MaskType.Crow:
                 // 乌鸦的行为
+                DoMove();
+                break;
+                //大象
+            case E_MaskType.Elephant:
+                DoMove();
+                break;
+                //球
+            case E_MaskType.Ball:
+                DoMove();
+                break;
+                //巧克力
+            case E_MaskType.Chocolate:
+                CheckChocolateSp();
+                break;
+                //岩石
+            case E_MaskType.Rock:
                 DoMove();
                 break;
         }
@@ -229,20 +256,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    private IEnumerator MoveToTarget(List<Vector2> targetPosList)
-    {
-        foreach (var targetPos in targetPosList)
-        {
-            Vector2 moveDir = (targetPos - new Vector2(transform.position.x, transform.position.y)).normalized;
-            while (Vector2.Distance(transform.position, targetPos) > 0.01f)
-            {
-                transform.Translate(moveDir * moveSpeed * Time.deltaTime);
-                yield return null;
-            }
-        }
-    }
-
     private void DoMove()
     {
         if (startMovePos == Vector2.zero)
@@ -251,6 +264,14 @@ public class Player : MonoBehaviour
         }
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
+        if(xInput > 0 && this.transform.localScale == Vector3.one)
+        {
+            this.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if(xInput < 0 && this.transform.localScale == new Vector3(-1, 1, 1))
+        {
+            this.transform.localScale = Vector3.one;
+        }
         Vector2 moveDir = new Vector2(xInput, yInput).normalized;
         lastMovePos = transform.position;
         if (moveDir.magnitude > 0)
@@ -265,10 +286,15 @@ public class Player : MonoBehaviour
         {
             transform.position = lastMovePos;
         }
+        if(GameManager.Instance.mapCell.WorldToCell(transform.position).HasAbility())
+        {
+            transform.position = lastMovePos;
+        }
     }
 
     private void GetAbility(IAbility ability)
     {
+        lastMaskData = currentMaskData;
         currentMaskData = ConfigManager.Instance.GetData<CfgMaskData>(ability.GetAbilityID());
         Destroy((ability as Mask).gameObject);
     }
@@ -305,10 +331,43 @@ public class Player : MonoBehaviour
     /// <exception cref="NotImplementedException"></exception>
     private void AttachToOther(Cell targetCell)
     {
+        //在原来的位置生成一个新的面具
+        if(lastMaskData != null)
+            GameManager.Instance.mapGenerate.SpawnItem(lastMaskData,transform.position);
         //更新位置
         transform.position = GameManager.Instance.mapCell.CellToWorldCenter(targetCell);
         //更新Sprite
         spriteRenderer.sprite = Resources.Load<Sprite>(currentMaskData.spritePath + "1");
+        ResetStatus();
         Debug.Log($"path:{currentMaskData.spritePath + "1"}");
+    }
+
+    /// <summary>
+    /// 重置参数
+    /// </summary>
+    public void ResetStatus()
+    {
+        startMovePos = Vector2.zero;
+        lastMovePos = Vector2.zero;
+        lastMousePos = Vector2.zero;
+        targetCell = null;
+        lastMaskData = null;
+    }
+
+    /// <summary>
+    /// 检查一些巧克力的特殊行为
+    /// </summary>
+    public void CheckChocolateSp()
+    {
+        if(mouseMasks == null || mouseMasks.Count == 0)
+        {
+            //进行范围检测
+            //获取所有的老鼠面具
+            mouseMasks = new List<Mask>();
+            if(Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis).Length > 0)
+            {
+                Debug.Log($"检测到老鼠面具:{Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis).Length}");
+            }
+        }
     }
 }
