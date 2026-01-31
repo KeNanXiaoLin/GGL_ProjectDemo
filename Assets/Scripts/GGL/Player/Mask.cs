@@ -7,6 +7,7 @@ public class Mask : MonoBehaviour, IAbility
 {
     public int abilityID = 10001;
     public CfgMaskData abilityData;
+    public SpriteRenderer spriteRenderer;
 
 
     void Update()
