@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MapCell:MonoBehaviour
+public class MapCell : MonoBehaviour
 {
-    public Vector2Int startPos;//(0,0)
-    public Vector2Int endPos;//(2,2)
-    public List<Cell> cells = new List<Cell>();
+    public Vector2Int startPos; // (0,0)
+    public Vector2Int endPos; // (2,2)
+    public Cell[,] cells; // 改为二维数组
     public bool showDebug = false;
 
     void Awake()
@@ -19,11 +19,15 @@ public class MapCell:MonoBehaviour
     {
         int cellWidth = (int)(endPos.x - startPos.x);
         int cellHeight = (int)(endPos.y - startPos.y);
+        
+        // 初始化二维数组
+        cells = new Cell[cellWidth, cellHeight];
+        
         for (int i = 0; i < cellWidth; i++)
         {
             for (int j = 0; j < cellHeight; j++)
             {
-                cells.Add(new Cell(i, j));
+                cells[i, j] = new Cell(i, j); // 直接在二维数组中创建Cell
             }
         }
     }
@@ -39,15 +43,17 @@ public class MapCell:MonoBehaviour
         int cellHeight = (int)(endPos.y - startPos.y);
         int x = (int)(worldPos.x - startPos.x);
         int y = (int)(worldPos.y - startPos.y);
+        
         if (x >= 0 && x < cellWidth && y >= 0 && y < cellHeight)
         {
-            return cells[x + y * cellWidth];
+            return cells[x, y]; // 直接通过二维数组索引访问
         }
         else
         {
             return null;
         }
     }
+
     /// <summary>
     /// 通过单元格获取世界坐标
     /// </summary>
@@ -63,11 +69,12 @@ public class MapCell:MonoBehaviour
         Cell cell1 = WorldToCell(worldPos1);
         Cell cell2 = WorldToCell(worldPos2);
         Debug.Log($"cell1.x:{cell1.x},cell1.y:{cell1.y},cell2.x:{cell2.x},cell2.y:{cell2.y}");
+        
         if (cell1 != null && cell2 != null)
         {
             int x = Mathf.Abs(cell1.x - cell2.x);
             int y = Mathf.Abs(cell1.y - cell2.y);
-            Debug.Log($"Distance:{x+y}");
+            Debug.Log($"Distance:{x + y}");
             return x + y;
         }
         else
@@ -86,8 +93,9 @@ public class MapCell:MonoBehaviour
         {
             return;
         }
-        // 如果格子列表为空，尝试初始化（仅在编辑器模式下）
-        if (cells.Count == 0)
+        
+        // 如果格子数组未初始化，尝试初始化（仅在编辑器模式下）
+        if (cells == null)
         {
             InitCell();
         }
@@ -95,32 +103,42 @@ public class MapCell:MonoBehaviour
         // 设置绘制颜色
         Gizmos.color = Color.green;
 
+        // 获取数组尺寸
+        int cellWidth = cells.GetLength(0);
+        int cellHeight = cells.GetLength(1);
+
         // 绘制每个格子
-        foreach (Cell cell in cells)
+        for (int i = 0; i < cellWidth; i++)
         {
-            // 获取格子的世界坐标
-            Vector2 cellWorldPos = CellToWorld(cell);
-            
-            // 计算格子的四个角
-            Vector3 bottomLeft = new Vector3(cellWorldPos.x, cellWorldPos.y, 0);
-            Vector3 bottomRight = new Vector3(cellWorldPos.x + 1, cellWorldPos.y, 0);
-            Vector3 topLeft = new Vector3(cellWorldPos.x, cellWorldPos.y + 1, 0);
-            Vector3 topRight = new Vector3(cellWorldPos.x + 1, cellWorldPos.y + 1, 0);
+            for (int j = 0; j < cellHeight; j++)
+            {
+                Cell cell = cells[i, j];
+                if (cell == null) continue;
 
-            // 绘制格子边框
-            Gizmos.DrawLine(bottomLeft, bottomRight);
-            Gizmos.DrawLine(bottomRight, topRight);
-            Gizmos.DrawLine(topRight, topLeft);
-            Gizmos.DrawLine(topLeft, bottomLeft);
+                // 获取格子的世界坐标
+                Vector2 cellWorldPos = CellToWorld(cell);
+                
+                // 计算格子的四个角
+                Vector3 bottomLeft = new Vector3(cellWorldPos.x, cellWorldPos.y, 0);
+                Vector3 bottomRight = new Vector3(cellWorldPos.x + 1, cellWorldPos.y, 0);
+                Vector3 topLeft = new Vector3(cellWorldPos.x, cellWorldPos.y + 1, 0);
+                Vector3 topRight = new Vector3(cellWorldPos.x + 1, cellWorldPos.y + 1, 0);
 
-            // 在格子中心显示坐标
-            GUIStyle style = new GUIStyle();
-            style.normal.textColor = Color.white;
-            style.fontSize = 12;
-            style.alignment = TextAnchor.MiddleCenter;
-            
-            Vector3 labelPos = new Vector3(cellWorldPos.x + 0.5f, cellWorldPos.y + 0.5f, -1);
-            Handles.Label(labelPos, $"({cell.x},{cell.y})", style);
+                // 绘制格子边框
+                Gizmos.DrawLine(bottomLeft, bottomRight);
+                Gizmos.DrawLine(bottomRight, topRight);
+                Gizmos.DrawLine(topRight, topLeft);
+                Gizmos.DrawLine(topLeft, bottomLeft);
+
+                // 在格子中心显示坐标
+                GUIStyle style = new GUIStyle();
+                style.normal.textColor = Color.white;
+                style.fontSize = 12;
+                style.alignment = TextAnchor.MiddleCenter;
+                
+                Vector3 labelPos = new Vector3(cellWorldPos.x + 0.5f, cellWorldPos.y + 0.5f, -1);
+                Handles.Label(labelPos, $"({cell.x},{cell.y})", style);
+            }
         }
 
         // 绘制整个地图的边界
@@ -135,6 +153,4 @@ public class MapCell:MonoBehaviour
         Gizmos.DrawLine(mapTopRight, mapTopLeft);
         Gizmos.DrawLine(mapTopLeft, mapBottomLeft);
     }
-
-    
 }
