@@ -20,7 +20,6 @@ public class MapGenerate : MonoBehaviour
     private void SpawnItem(CfgMapData item)
     {
         Vector2 worldPos = GameManager.Instance.mapCell.CellToWorldCenter(new Cell(item.x, item.y));
-        Debug.Log($"WorldPos: {worldPos}");
         GameObject obj = null;
         CfgMaskData maskData = ConfigManager.Instance.GetTable<CfgMaskData>().GetData(item.maskID);
         obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
@@ -37,12 +36,14 @@ public class MapGenerate : MonoBehaviour
         //         break;
         // }
         Mask maskObj = obj.GetComponent<Mask>();
+        maskObj.abilityData = maskData;
+        maskObj.abilityID = maskData.id;
         
         if (maskObj != null)
         {
             Sprite sp = Resources.Load<Sprite>(maskData.spritePath);
             maskObj.spriteRenderer.sprite = sp;
-            Cell targetCell = new Cell(item.x, item.y);
+            Cell targetCell = GameManager.Instance.mapCell.WorldToCell(worldPos);
             targetCell.SetAbility(maskObj);
         }
     }

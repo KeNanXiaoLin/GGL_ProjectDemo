@@ -6,25 +6,46 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int crazyValue = 10;
-    [SerializeField] private int reasonValue = 10;
+    [SerializeField] private int nowCrazyValue = 5;
+    [SerializeField] private int nowReasonValue = 0;
     [SerializeField] private float moveSpeed = 1.5f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private LineRenderer lineRenderer;
     [SerializeField] private E_InputAction inputAction = E_InputAction.WASD;
     [SerializeField] private float startWidth = 0.05f;
     [SerializeField] private float endWidth = 0.1f;
+    [SerializeField] private float leftX = -10f;
+    [SerializeField] private float rightX = 10f;
+    [SerializeField] private float bottomY = -5f;
+    [SerializeField] private float topY = 5f;
+    [SerializeField] private Sprite cursorInIcon;
+    [SerializeField] private Sprite curveInIcon;
+
     private CfgMaskData currentMaskData;
     private E_World currentWorldType => GameManager.Instance.CurrentWorldType;
+    private float xInput, yInput;
+    // 记录一个移动的开始位置，方便重置移动
+    private Vector2 startMovePos = Vector2.zero;
+    // 记录上次移动的位置
+    private Vector2 lastMovePos;
+    // 记录里世界上次鼠标的位置
+    private Vector2 lastMousePos = Vector2.zero;
+    // 记录目标单元格
+    private Cell targetCell;
+
 
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        
+
     }
 
     private void Start()
     {
-        currentMaskData = AbilityManager.Instance.GetAbilityData(10001);
+        currentMaskData = AbilityManager.Instance.GetAbilityData(10007);
+        nowCrazyValue = currentMaskData.startCrazy;
+        nowReasonValue = currentMaskData.startLizi;
+        lastMovePos = transform.position;
     }
 
     private void Update()
@@ -34,6 +55,7 @@ public class Player : MonoBehaviour
             ChangeWorld();
         }
         DoInteract();
+
     }
 
     private void DoInteract()
@@ -47,10 +69,18 @@ public class Player : MonoBehaviour
                 DoSpecialInteractInWorld();
                 break;
             case E_World.Out_World:
+                ClearInfoLine();
                 DoSpecialInteractOutWorld();
                 // 可以进行万向移动
+
                 break;
         }
+    }
+
+    private void ClearInfoLine()
+    {
+        lineRenderer.startWidth = 0f;
+        lineRenderer.endWidth = 0f;
     }
 
     /// <summary>
@@ -60,11 +90,16 @@ public class Player : MonoBehaviour
     {
         switch (currentMaskData.maskType)
         {
+            // 这三者都是行走
             case E_MaskType.Mouse:
+            case E_MaskType.Wolf:
+            case E_MaskType.Crocodile:
                 break;
             case E_MaskType.Cassette:
-                
+                //保存游戏
                 break;
+            case E_MaskType.Crow:
+            // 乌鸦的行为
             default:
                 break;
         }
@@ -76,12 +111,21 @@ public class Player : MonoBehaviour
     {
         switch (currentMaskData.maskType)
         {
+            case E_MaskType.Mask:
+                break;
+            // 这三者都是行走
             case E_MaskType.Mouse:
+            case E_MaskType.Wolf:
+            case E_MaskType.Crocodile:
+                DoMove();
+                CheckMoveMax(); ;
                 break;
             case E_MaskType.Cassette:
-                
+                //保存游戏
                 break;
-            default:
+            case E_MaskType.Crow:
+                // 乌鸦的行为
+                DoMove();
                 break;
         }
     }
@@ -91,35 +135,58 @@ public class Player : MonoBehaviour
     /// </summary>
     private void DrawInfoLine()
     {
-        if (Input.GetMouseButton(1))
+        // if (Input.GetMosuseButton(1))
+        // {
+        // 1.直接到物品的位置进行附身
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = HandleMousePos(mousePos);
+        lastMousePos = mousePos;
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, mousePos);
+        lineRenderer.startWidth = startWidth;
+        lineRenderer.endWidth = endWidth;
+        if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) <= 10 - nowCrazyValue)
         {
-            // 1.直接到物品的位置进行附身
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, mousePos);
-            lineRenderer.startWidth = startWidth;
-            lineRenderer.endWidth = endWidth;
-            if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) <= 3)
+            lineRenderer.startColor = Color.green;
+            lineRenderer.endColor = Color.green;
+            Cell targetCell = GameManager.Instance.mapCell.WorldToCell(mousePos);
+            if (targetCell.HasAbility())
             {
-                lineRenderer.startColor = Color.green;
-                lineRenderer.endColor = Color.green;
-                Cell targetCell = GameManager.Instance.mapCell.WorldToCell(mousePos);
-                if(targetCell.HasAbility())
-                {
-                    lineRenderer.endColor = Color.yellow;
-                }
-            }
-            else
-            {
-                lineRenderer.startColor = Color.red;
-                lineRenderer.endColor = Color.red;
+                lineRenderer.endColor = Color.yellow;
             }
         }
-        else if (Input.GetMouseButtonUp(1))
+        else
         {
-            lineRenderer.startWidth = 0f;
-            lineRenderer.endWidth = 0f;
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
         }
+        // }
+        // else if (Input.GetMouseButtonUp(1))
+        // {
+        //     lineRenderer.startWidth = 0f;
+        //     lineRenderer.endWidth = 0f;
+        // }
+    }
+
+    private Vector2 HandleMousePos(Vector2 mousePos)
+    {
+        if (mousePos.x < leftX)
+        {
+            mousePos.x = leftX;
+        }
+        else if (mousePos.x > rightX)
+        {
+            mousePos.x = rightX;
+        }
+        if (mousePos.y < bottomY)
+        {
+            mousePos.y = bottomY;
+        }
+        else if (mousePos.y > topY)
+        {
+            mousePos.y = topY;
+        }
+        return mousePos;
     }
 
     private void ChangeWorld()
@@ -128,14 +195,28 @@ public class Player : MonoBehaviour
         {
             case E_World.In_World:
                 GameManager.Instance.GoToOutWorld();
-                Debug.Log("Change to Out_World");
+                targetCell = GameManager.Instance.mapCell.WorldToCell(lastMousePos);
+                if (targetCell.HasAbility())
+                {
+                    this.GetAbility(targetCell.GetAbility().GetAbility());
+                    //进行结算
+                    CalculateEffectValue();
+                    targetCell.ClearAbility();
+                    //附身
+                    this.AttachToOther(targetCell);
+                }
+                else
+                {
+                    targetCell = null;
+                }
+
                 break;
             case E_World.Out_World:
                 GameManager.Instance.GoToInWorld();
-                Debug.Log("Change to In_World");
                 break;
         }
     }
+
 
     private IEnumerator MoveToTarget(List<Vector2> targetPosList)
     {
@@ -148,5 +229,74 @@ public class Player : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    private void DoMove()
+    {
+        if (startMovePos == Vector2.zero)
+        {
+            startMovePos = transform.position;
+        }
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
+        Vector2 moveDir = new Vector2(xInput, yInput).normalized;
+        lastMovePos = transform.position;
+        if (moveDir.magnitude > 0)
+        {
+            transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void CheckMoveMax()
+    {
+        if (GameManager.Instance.mapCell.CalGridDisByWorldPos(startMovePos, transform.position) > nowReasonValue)
+        {
+            transform.position = lastMovePos;
+        }
+    }
+
+    private void GetAbility(IAbility ability)
+    {
+        currentMaskData = ConfigManager.Instance.GetData<CfgMaskData>(ability.GetAbilityID());
+        Destroy((ability as Mask).gameObject);
+    }
+
+    /// <summary>
+    /// 计算这次附身的疯狂值和理智值结算
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
+    private void CalculateEffectValue()
+    {
+        MapCell mapCell = GameManager.Instance.mapCell;
+        Vector2 endPos = mapCell.CellToWorld(targetCell);
+        int AddCrazyValue = mapCell.CalGridDisByWorldPos(startMovePos, endPos);
+        Debug.Log($"AddCrazyValue:{AddCrazyValue}");
+        int minusCrazyValue = (int)Vector2.Distance(startMovePos, endPos);
+        Debug.Log($"minusCrazyValue:{minusCrazyValue}");
+        nowCrazyValue += AddCrazyValue - minusCrazyValue;
+        nowReasonValue = currentMaskData.startLizi;
+        CheckGameEnd();
+    }
+
+    private void CheckGameEnd()
+    {
+        if (nowCrazyValue >= 10 || nowCrazyValue <= 0)
+        {
+            // GameManager.Instance.GameEnd();
+        }
+    }
+
+    /// <summary>
+    /// 附身到其他面具
+    /// </summary>
+    /// <param name="targetCell"></param>
+    /// <exception cref="NotImplementedException"></exception>
+    private void AttachToOther(Cell targetCell)
+    {
+        //更新位置
+        transform.position = GameManager.Instance.mapCell.CellToWorldCenter(targetCell);
+        //更新Sprite
+        spriteRenderer.sprite = Resources.Load<Sprite>(currentMaskData.spritePath + "1");
+        Debug.Log($"path:{currentMaskData.spritePath + "1"}");
     }
 }

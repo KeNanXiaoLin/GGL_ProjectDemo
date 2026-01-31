@@ -78,12 +78,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d04097f90cf60343b7271a3191038f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crazyValue: 10
-  reasonValue: 10
+  nowCrazyValue: 5
+  nowReasonValue: 0
   moveSpeed: 5
+  spriteRenderer: {fileID: 2931294950960628698}
   inputAction: 0
   startWidth: 0.05
   endWidth: 0.1
+  leftX: -10
+  rightX: 10
+  bottomY: -5
+  topY: 5
 --- !u!120 &451187701116834792
 LineRenderer:
   serializedVersion: 2
