@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-01-31 16:17:49",
+    "generate_time": "2026-01-31 20:10:28",
     "table_count": 3,
     "tables": [
         {
@@ -8,7 +8,7 @@
             "class_name": "CfgMapData",
             "json_path": "MapData.json",
             "primary_key": "id",
-            "row_count": 2,
+            "row_count": 8,
             "fields": [
                 {
                     "name": "id",
@@ -38,6 +38,12 @@
                     "name": "y",
                     "type": "int",
                     "desc": "生成位置对应的y坐标",
+                    "is_enum": false
+                },
+                {
+                    "name": "maskID",
+                    "type": "int",
+                    "desc": "对应MaskData中面具的ID",
                     "is_enum": false
                 }
             ]
