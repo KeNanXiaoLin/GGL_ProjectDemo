@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class MapGenerate : MonoBehaviour
 {
-    public GameObject prefab1x1;
-    public GameObject prefab2x2;
-    public GameObject prefab2x1;
+    public GameObject prefab;
 
     void Start()
     {
@@ -24,22 +22,26 @@ public class MapGenerate : MonoBehaviour
         Vector2 worldPos = GameManager.Instance.mapCell.CellToWorldCenter(new Cell(item.x, item.y));
         Debug.Log($"WorldPos: {worldPos}");
         GameObject obj = null;
-        switch (item.sizeType)
-        {
-            case E_Volume.Size1x1:
-                obj = Instantiate(prefab1x1, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-
-                break;
-            case E_Volume.Size2x2:
-                obj = Instantiate(prefab2x2, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-                break;
-            case E_Volume.Size2x1:
-                obj = Instantiate(prefab2x1, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-                break;
-        }
+        CfgMaskData maskData = ConfigManager.Instance.GetTable<CfgMaskData>().GetData(item.maskID);
+        obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
+        // switch (item.sizeType)
+        // {
+        //     case E_Volume.Size1x1:
+        //         obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
+        //         break;
+        //     case E_Volume.Size2x2:
+        //         obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
+        //         break;
+        //     case E_Volume.Size2x1:
+        //         obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
+        //         break;
+        // }
         Mask maskObj = obj.GetComponent<Mask>();
+        
         if (maskObj != null)
         {
+            Sprite sp = Resources.Load<Sprite>(maskData.spritePath);
+            maskObj.spriteRenderer.sprite = sp;
             Cell targetCell = new Cell(item.x, item.y);
             targetCell.SetAbility(maskObj);
         }
