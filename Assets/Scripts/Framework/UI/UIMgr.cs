@@ -67,6 +67,8 @@ namespace KNXL
         private Transform topLayer;
         private Transform systemLayer;
 
+        public Camera UiCamera => uiCamera;
+
         /// <summary>
         /// 用于存储所有的面板对象
         /// </summary>
