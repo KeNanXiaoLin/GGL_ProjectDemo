@@ -34,10 +34,12 @@ public class GameManager : BaseManager<GameManager>
     public void GoToInWorld()
     {
         CurrentWorldType = E_World.In_World;
+        cameraController.ChangeCamProp(E_World.In_World);
     }
 
     public void GoToOutWorld()
     {
         CurrentWorldType = E_World.Out_World;
+        cameraController.ChangeCamProp(E_World.Out_World);
     }
 }

@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
             case E_World.Out_World:
                 DoSpecialInteractOutWorld();
                 // 可以进行万向移动
-                Debug.Log("目前处于Out_World，无法附身");
                 break;
         }
     }

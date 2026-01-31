@@ -22,9 +22,11 @@ public class CameraController
         {
             case E_World.In_World:
                 mainCamera.backgroundColor = Color.gray;
+                Debug.Log($"ChangeCamProp: 背景变成灰色");
                 break;
             case E_World.Out_World:
                 mainCamera.backgroundColor = Color.black;
+                Debug.Log($"ChangeCamProp: 背景变成黑色");
                 break;
         }
     }
