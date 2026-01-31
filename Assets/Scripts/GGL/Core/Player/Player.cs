@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
+    [SerializeField] private E_InputAction inputAction = E_InputAction.WASD;
 
     private void Awake()
     {
@@ -13,6 +15,34 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
+    {
+        ChooseInputActionToInteract();
+        
+    }
+
+    private void ChooseInputActionToInteract()
+    {
+        switch (inputAction)
+        {
+            case E_InputAction.WASD:
+                // Handle WASD input
+                HandleWASDInput();
+                break;
+            case E_InputAction.Mouse:
+                // Handle Mouse input
+                HandleMouseInput();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void HandleMouseInput()
+    {
+        Debug.Log("Mouse input handling not implemented yet.");
+    }
+
+    private void HandleWASDInput()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
