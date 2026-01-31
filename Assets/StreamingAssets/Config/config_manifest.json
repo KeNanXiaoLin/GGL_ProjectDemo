@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-01-31 22:32:35",
+    "generate_time": "2026-01-31 23:08:50",
     "table_count": 3,
     "tables": [
         {
@@ -8,7 +8,7 @@
             "class_name": "CfgMapData",
             "json_path": "MapData.json",
             "primary_key": "id",
-            "row_count": 8,
+            "row_count": 87,
             "fields": [
                 {
                     "name": "id",
