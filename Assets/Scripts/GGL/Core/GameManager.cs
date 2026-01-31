@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class GameManager : BaseManager<GameManager>
 {
-    private E_World currentWorldType = E_World.Out_World;
+    private E_World currentWorldType = E_World.In_World;
+    public MapCell mapCell;
     public E_World CurrentWorldType
     {
         get { return currentWorldType; }
@@ -25,6 +26,6 @@ public class GameManager : BaseManager<GameManager>
 
     public void Init()
     {
-        
+        mapCell = GameObject.Find("Map").GetComponent<MapCell>();
     }
 }
