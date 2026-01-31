@@ -1,0 +1,36 @@
+[
+    {
+        "id": 10001,
+        "des": "老鼠",
+        "worldType": 1,
+        "maskType": 0,
+        "spritePath": "Sprites/Mouse",
+        "startLizi": 5,
+        "inputAction": 0,
+        "spType": 0,
+        "volume": "1*1",
+        "canStopItem": false,
+        "canPickItem": false,
+        "checkDis": 0,
+        "loveType": 0,
+        "hateType": 0,
+        "crossType": 0
+    },
+    {
+        "id": 20001,
+        "des": "磁带",
+        "worldType": 0,
+        "maskType": 1,
+        "spritePath": "Sprites/Cassette",
+        "startLizi": 0,
+        "inputAction": 0,
+        "spType": 1,
+        "volume": "1*1",
+        "canStopItem": false,
+        "canPickItem": false,
+        "checkDis": 0,
+        "loveType": 0,
+        "hateType": 0,
+        "crossType": 0
+    }
+]

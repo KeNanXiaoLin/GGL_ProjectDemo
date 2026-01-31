@@ -21,9 +21,11 @@
     "enum_defs": [
       {"key_index": 4, "value_index": 5, "desc_index": 6},  
       {"key_index": 7, "value_index": 8, "desc_index": 9},  
-      {"key_index": 10, "value_index": 11, "desc_index": 12} 
+      {"key_index": 10, "value_index": 11, "desc_index": 12},
+      {"key_index": 13, "value_index": 14, "desc_index": 15},
+      {"key_index": 16, "value_index": 17, "desc_index": 18}  
     ],
-    "data_start_index": 13,           
+    "data_start_index": 19,           
     "header_skip_empty": true,
     "sheet_name": "Sheet1",
     "support_types": {
