@@ -19,9 +19,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float rightX = 10f;
     [SerializeField] private float bottomY = -5f;
     [SerializeField] private float topY = 5f;
-    [SerializeField] private Texture2D cursor0;
-    [SerializeField] private Texture2D cursor1;
-    [SerializeField] private Texture2D cursor2;
 
     private CfgMaskData currentMaskData;
     private E_World currentWorldType => GameManager.Instance.CurrentWorldType;
@@ -189,10 +186,6 @@ public class Player : MonoBehaviour
         lineRenderer.startWidth = startWidth;
         lineRenderer.endWidth = endWidth;
         // 指向了自己
-        if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) == 0)
-        {
-            Cursor.SetCursor(cursor0, Vector2.zero, CursorMode.Auto);
-        }
         if (GameManager.Instance.mapCell.CalGridDisByWorldPos(transform.position, mousePos) <= 10 - nowCrazyValue)
         {
             lineRenderer.startColor = Color.green;
@@ -201,11 +194,11 @@ public class Player : MonoBehaviour
             if (targetCell.HasAbility())
             {
                 lineRenderer.endColor = Color.yellow;
-                Cursor.SetCursor(cursor2, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(Resources.Load<Texture2D>("Sprites/Cursor"), Vector2.zero, CursorMode.Auto);
             }
             else
             {
-                Cursor.SetCursor(cursor1, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
         }
         else
@@ -248,6 +241,8 @@ public class Player : MonoBehaviour
         switch (currentWorldType)
         {
             case E_World.In_World:
+                Debug.Log("切换到表世界，正常状态");
+                soulSR.sprite = null;
                 GameManager.Instance.GoToOutWorld();
                 grayPanel.Hide();
                 targetCell = GameManager.Instance.mapCell.WorldToCell(lastMousePos);
@@ -263,7 +258,6 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    grayPanel.gameObject.SetActive(true);
                     targetCell = null;
                     // 玩家在里世界移动，理智值结算
                     CalculateMoveValue();
@@ -272,6 +266,8 @@ public class Player : MonoBehaviour
                 break;
             case E_World.Out_World:
                 grayPanel.Show();
+                Debug.Log("切换到里世界，显示灵魂状态");
+                soulSR.sprite = Resources.Load<Sprite>("Sprites/Soul0");
                 GameManager.Instance.GoToInWorld();
                 break;
         }

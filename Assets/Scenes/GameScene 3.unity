@@ -4492,8 +4492,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6708336041539181390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4537,7 +4537,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 200
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7443,9 +7443,6 @@ MonoBehaviour:
   rightX: 100
   bottomY: -4.5
   topY: 4.5
-  cursor0: {fileID: 2800000, guid: 1018c992805759c4d84842ddb6d50928, type: 3}
-  cursor1: {fileID: 2800000, guid: 6cdb76f1b4ff9bb41a63aaf3334a121f, type: 3}
-  cursor2: {fileID: 2800000, guid: 18b7aa5a94b73bd44926899606a19c4e, type: 3}
   grayPanel: {fileID: 784813853}
   verticalHealthBar: {fileID: 176347651607564466}
 --- !u!61 &2330470933768501810
