@@ -9,4 +9,10 @@ public class Kaishi : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene 3");
     }
+
+    public void RestartGame()
+    {
+        GameManager.Instance.LoadGame();
+        SceneManager.LoadScene("GameScene 3");
+    }
 }

@@ -55,7 +55,7 @@ public class VerticalHealthBar : MonoBehaviour
         }
         
         // 初始化UI
-        SetHealthValue(initialValue);
+        // SetHealthValue(initialValue);
     }
     
     /// <summary>
@@ -76,7 +76,7 @@ public class VerticalHealthBar : MonoBehaviour
         if (newIntValue != currentIntValue)
         {
             // 检查是否到达死亡条件
-            CheckDeathCondition(newIntValue);
+            // CheckDeathCondition(newIntValue);
             
             currentIntValue = newIntValue;
             

@@ -46,9 +46,9 @@ public class GameManager : BaseManager<GameManager>
         cameraController.ChangeCamProp(E_World.Out_World);
     }
 
-    public void SaveGame()
+    public void SaveGame(object data)
     {
-        JsonMgr.Instance.SaveData(playerPos,"playerPos");
+        JsonMgr.Instance.SaveData(data,"playerPos");
     }
 
     public void LoadGame()
