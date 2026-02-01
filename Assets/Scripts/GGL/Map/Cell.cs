@@ -65,6 +65,19 @@ public class Cell
     }
 
     /// <summary>
+    /// 重写GetHashCode方法，返回对象的哈希码
+    /// </summary>
+    /// <returns>基于x和y坐标计算的哈希码</returns>
+    public override int GetHashCode()
+    {
+        // 使用x和y坐标计算哈希码
+        int hash = 17;
+        hash = hash * 23 + x.GetHashCode();
+        hash = hash * 23 + y.GetHashCode();
+        return hash;
+    }
+
+    /// <summary>
     /// 单元格是否有能力
     /// </summary>
     /// <returns></returns>
