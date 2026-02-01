@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-02-01 00:38:33",
+    "generate_time": "2026-02-01 10:39:44",
     "table_count": 3,
     "tables": [
         {
@@ -149,6 +149,12 @@
                     "name": "startCrazy",
                     "type": "int",
                     "desc": "初始的疯狂值",
+                    "is_enum": false
+                },
+                {
+                    "name": "moveSpeed",
+                    "type": "float",
+                    "desc": "面具接近和逃离的速度",
                     "is_enum": false
                 }
             ]

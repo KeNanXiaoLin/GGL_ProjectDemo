@@ -8,6 +8,7 @@ public class Mask : MonoBehaviour, IAbility
     public int abilityID = 10001;
     public CfgMaskData abilityData;
     public SpriteRenderer spriteRenderer;
+    public Cell nowCell;
 
 
     void Update()
@@ -28,6 +29,48 @@ public class Mask : MonoBehaviour, IAbility
     public int GetAbilityID()
     {
         return abilityID;
+    }
+
+    public IEnumerator MoveToTargetPos(Vector2 targetPos)
+    {
+        Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
+        while(Vector2.Distance(transform.position, targetPos) > 1f)
+        {
+            transform.Translate(direction * abilityData.moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        // transform.position = targetPos;
+        Cell curCell = GameManager.Instance.mapCell.WorldToCell(transform.position);
+        if(curCell != nowCell)
+        {
+            nowCell.ClearAbility();
+            curCell.SetAbility(this);
+            nowCell = curCell;
+        }
+    }
+
+    /// <summary>
+    /// 远离目标
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <param name="moveDistance"></param>
+    /// <returns></returns>
+    public IEnumerator AwayToTarget(Vector2 targetPos,float moveDistance)
+    {
+        Vector2 direction = ((Vector2)transform.position - targetPos).normalized;
+        while(Vector2.Distance(transform.position, targetPos) > moveDistance)
+        {
+            transform.Translate(direction * abilityData.moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        // transform.position = targetPos;
+        Cell curCell = GameManager.Instance.mapCell.WorldToCell(transform.position);
+        if(curCell != nowCell)
+        {
+            nowCell.ClearAbility();
+            curCell.SetAbility(this);
+            nowCell = curCell;
+        }
     }
 
 }

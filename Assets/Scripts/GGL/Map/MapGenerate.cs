@@ -32,6 +32,7 @@ public class MapGenerate : MonoBehaviour
             Sprite sp = Resources.Load<Sprite>(maskData.spritePath);
             maskObj.spriteRenderer.sprite = sp;
             Cell targetCell = GameManager.Instance.mapCell.WorldToCell(worldPos);
+            maskObj.nowCell = targetCell;
             targetCell.SetAbility(maskObj);
         }
     }
@@ -49,6 +50,7 @@ public class MapGenerate : MonoBehaviour
             Sprite sp = Resources.Load<Sprite>(maskData.spritePath);
             maskObj.spriteRenderer.sprite = sp;
             Cell targetCell = GameManager.Instance.mapCell.WorldToCell(worldPos);
+            maskObj.nowCell = targetCell;
             targetCell.SetAbility(maskObj);
         }
     }
