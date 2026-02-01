@@ -4,41 +4,35 @@ using UnityEngine;
 
 public class PlayText : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public VerticalHealthBar healthBar; // 血条引用
-    
-    private float currentValue = 5f; // 当前数值
+    public VerticalHealthBar healthBar;
+    private float currentValue = 5f;
     
     void Update()
     {
-        // 左右移动
-        float moveX = 0f;
-        
-        if (Input.GetKey(KeyCode.A))
+        // 按一下，走一步
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            moveX = -1f;
-            ChangeValue(1); // 左走加1
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            moveX = 1f;
-            ChangeValue(-1); // 右走减1
+            transform.position += Vector3.left * 1f;
+            ChangeValue(1);
         }
         
-        // 应用移动
-        transform.Translate(moveX * moveSpeed * Time.deltaTime, 0, 0);
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.position += Vector3.right * 1f;
+            ChangeValue(-1);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentValue = 5f;
+            healthBar?.SetHealthValue(currentValue);
+        }
     }
     
     void ChangeValue(float change)
     {
-        currentValue += change;
-        currentValue = Mathf.Clamp(currentValue, 0f, 10f);
-        
-        if (healthBar != null)
-        {
-            healthBar.SetHealthValue(currentValue);
-        }
-        
-        Debug.Log($"当前数值: {currentValue}");
+        currentValue = Mathf.Clamp(currentValue + change, 0, 10);
+        healthBar?.SetHealthValue(currentValue);
+        Debug.Log($"数值: {currentValue}");
     }
 }

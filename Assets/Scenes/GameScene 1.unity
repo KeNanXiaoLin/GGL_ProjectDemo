@@ -921,8 +921,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259163071}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76, y: 62, z: -47.983006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 80, y: 90, z: -47.983006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1171,8 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ef9fbe34d3be74b81ad462d5c8c8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1715290716}
 --- !u!1 &347939290
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,7 +3239,7 @@ GameObject:
   - component: {fileID: 963793916}
   - component: {fileID: 963793915}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image (red)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5560,7 +5559,7 @@ GameObject:
   - component: {fileID: 1523465067}
   - component: {fileID: 1523465066}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Image (blue)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6060,7 +6059,7 @@ GameObject:
   - component: {fileID: 1715290715}
   - component: {fileID: 1715290716}
   m_Layer: 5
-  m_Name: tiao
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6108,27 +6107,27 @@ MonoBehaviour:
   initialValue: 5
   maskPositions:
   - value: 0
-    position: {x: 76, y: 800}
+    position: {x: -880, y: 260}
   - value: 1
-    position: {x: 76, y: 728}
+    position: {x: -880, y: 189}
   - value: 2
-    position: {x: 76, y: 654}
+    position: {x: -880, y: 118}
   - value: 3
-    position: {x: 76, y: 580}
+    position: {x: -880, y: 47}
   - value: 4
-    position: {x: 76, y: 506}
+    position: {x: -880, y: -24}
   - value: 5
-    position: {x: 76, y: 432}
+    position: {x: -880, y: -95}
   - value: 6
-    position: {x: 76, y: 358}
+    position: {x: -880, y: -166}
   - value: 7
-    position: {x: 76, y: 284}
+    position: {x: -880, y: -237}
   - value: 8
-    position: {x: 76, y: 210}
+    position: {x: -880, y: -308}
   - value: 9
-    position: {x: 76, y: 136}
+    position: {x: -880, y: -379}
   - value: 10
-    position: {x: 76, y: 62}
+    position: {x: -880, y: -450}
 --- !u!1 &1739504812
 GameObject:
   m_ObjectHideFlags: 0
@@ -7114,5 +7113,5 @@ SceneRoots:
   - {fileID: 1147852005}
   - {fileID: 1965374998}
   - {fileID: 892720152}
-  - {fileID: 68467531}
   - {fileID: 259163072}
+  - {fileID: 68467531}
