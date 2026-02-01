@@ -7,6 +7,6 @@ public class Kaishi : MonoBehaviour
 {
      public void StartGame()
     {
-        SceneManager.LoadScene("GameScene 1");
+        SceneManager.LoadScene("GameScene 3");
     }
 }

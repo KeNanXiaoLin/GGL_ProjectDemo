@@ -368,6 +368,9 @@ MonoBehaviour:
   cursor0: {fileID: 0}
   cursor1: {fileID: 0}
   cursor2: {fileID: 0}
+  grayPanel: {fileID: 0}
+  verticalHealthBar: {fileID: 0}
+  pauseManager: {fileID: 0}
 --- !u!212 &147533524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3641,7 +3644,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
