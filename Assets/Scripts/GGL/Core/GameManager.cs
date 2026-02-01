@@ -10,6 +10,7 @@ public class GameManager : BaseManager<GameManager>
     public MapCell mapCell;
     public MapGenerate mapGenerate;
     private CameraController cameraController;
+    public MyVector3 playerPos = new MyVector3(-5,-1,0);
     public E_World CurrentWorldType
     {
         get { return currentWorldType; }
@@ -43,5 +44,15 @@ public class GameManager : BaseManager<GameManager>
     {
         CurrentWorldType = E_World.Out_World;
         cameraController.ChangeCamProp(E_World.Out_World);
+    }
+
+    public void SaveGame()
+    {
+        JsonMgr.Instance.SaveData(playerPos,"playerPos");
+    }
+
+    public void LoadGame()
+    {
+        playerPos = JsonMgr.Instance.LoadData<MyVector3>("playerPos");
     }
 }

@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     // 记录上一个面具数据
     private CfgMaskData lastMaskData;
     private bool hasTargetMaskInRange = false;
+    private bool isSave = false;
 
 
     private void Awake()
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
         nowCrazyValue = currentMaskData.startCrazy;
         nowReasonValue = currentMaskData.startLizi;
         lastMovePos = transform.position;
+        transform.position = GameManager.Instance.playerPos;
     }
 
     private void Update()
@@ -128,6 +130,12 @@ public class Player : MonoBehaviour
                 break;
             case E_MaskType.Cassette:
                 //保存游戏
+                if (!isSave)
+                {
+                    GameManager.Instance.SaveGame();
+                    isSave = true;
+                }
+                
                 break;
             case E_MaskType.Crow:
                 // 乌鸦的行为
@@ -148,6 +156,9 @@ public class Player : MonoBehaviour
             //岩石
             case E_MaskType.Rock:
                 DoMove();
+                break;
+            case E_MaskType.Streetlight:
+                CheckStreetlightSp();
                 break;
         }
     }
@@ -223,11 +234,13 @@ public class Player : MonoBehaviour
 
     private void ChangeWorld()
     {
+        // ResetStatus();
         switch (currentWorldType)
         {
             case E_World.In_World:
                 GameManager.Instance.GoToOutWorld();
                 targetCell = GameManager.Instance.mapCell.WorldToCell(lastMousePos);
+                // 玩家在里世界指向面具 进行附身结算
                 if (targetCell.HasAbility())
                 {
                     this.GetAbility(targetCell.GetAbility().GetAbility());
@@ -240,8 +253,10 @@ public class Player : MonoBehaviour
                 else
                 {
                     targetCell = null;
+                    // 玩家在里世界移动，理智值结算
+                    CalculateMoveValue();
                 }
-
+                
                 break;
             case E_World.Out_World:
                 GameManager.Instance.GoToInWorld();
@@ -302,7 +317,7 @@ public class Player : MonoBehaviour
         Vector2 endPos = mapCell.CellToWorld(targetCell);
         int AddCrazyValue = mapCell.CalGridDisByWorldPos(startMovePos, endPos);
         Debug.Log($"AddCrazyValue:{AddCrazyValue}");
-        int minusCrazyValue = (int)Vector2.Distance(startMovePos, endPos);
+        int minusCrazyValue = Mathf.CeilToInt(Vector2.Distance(startMovePos, endPos));
         Debug.Log($"minusCrazyValue:{minusCrazyValue}");
         nowCrazyValue += AddCrazyValue - minusCrazyValue;
         nowReasonValue = currentMaskData.startLizi;
@@ -346,6 +361,7 @@ public class Player : MonoBehaviour
         targetCell = null;
         lastMaskData = null;
         hasTargetMaskInRange = false;
+        isSave = false;
     }
 
     /// <summary>
@@ -374,6 +390,7 @@ public class Player : MonoBehaviour
                             mask.StartCoroutine(mask.MoveToTargetPos(transform.position));
                             break;
                         case E_MaskType.Wolf:
+                            Debug.Log("驱逐狼");
                             mask.StartCoroutine(mask.AwayToTarget(transform.position, currentMaskData.checkDis));
                             break;
 
@@ -382,5 +399,44 @@ public class Player : MonoBehaviour
             }
         }
         // }
+    }
+
+    /// <summary>
+    /// 检查一些街道灯的特殊行为
+    /// </summary>
+    public void CheckStreetlightSp()
+    {
+        if(hasTargetMaskInRange) return;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis, 1 << LayerMask.NameToLayer("Mask"));
+        if (colliders.Length > 0)
+        {
+            foreach (var collider in colliders)
+            {
+                Mask mask = collider.GetComponent<Mask>();
+                if (mask != null)
+                {
+                    hasTargetMaskInRange = true;
+                    switch (mask.abilityData.maskType)
+                    {
+                        case E_MaskType.Crow:
+                            mask.StartCoroutine(mask.MoveToTargetPos(transform.position));
+                            break;
+                        case E_MaskType.Mouse:
+                            mask.StartCoroutine(mask.AwayToTarget(transform.position, currentMaskData.checkDis));
+                            break;
+
+                    }
+                }
+            }
+        }
+        // }
+    }
+
+    public void CalculateMoveValue()
+    {
+        // 玩家在里世界移动，机型理智值计算
+        int minusReasonValue = Mathf.FloorToInt(Vector2.Distance(startMovePos, transform.position));
+        nowReasonValue -= minusReasonValue;
+        startMovePos = transform.position;
     }
 }
