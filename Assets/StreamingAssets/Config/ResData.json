@@ -11,11 +11,11 @@
     },
     {
         "id": 2,
-        "resName": "GameEndPanel",
+        "resName": "EndPanel",
         "resDes": "结束面板",
         "resType": 0,
-        "resPath": "UI/Panel/GameEndPanel",
-        "resEditorPath": "ArtRes/UI/Panel/GameEndPanel",
+        "resPath": "UI/Panel/EndPanel",
+        "resEditorPath": "ArtRes/UI/Panel/EndPanel",
         "resABPath": "ui",
         "assetExtension": "prefab"
     },
@@ -31,11 +31,11 @@
     },
     {
         "id": 4,
-        "resName": "LevelPassPanel",
-        "resDes": "通关面板",
+        "resName": "PausePanel",
+        "resDes": "暂停面板",
         "resType": 0,
-        "resPath": "UI/Panel/LevelPassPanel",
-        "resEditorPath": "ArtRes/UI/Panel/LevelPassPanel",
+        "resPath": "UI/Panel/PausePanel",
+        "resEditorPath": "ArtRes/UI/Panel/PausePanel",
         "resABPath": "ui",
         "assetExtension": "prefab"
     },
@@ -51,11 +51,31 @@
     },
     {
         "id": 6,
-        "resName": "PopupPanel",
-        "resDes": "弹出面板",
+        "resName": "GameOverPanel",
+        "resDes": "游戏失败面板",
         "resType": 0,
-        "resPath": "UI/Panel/PopupPanel",
-        "resEditorPath": "ArtRes/UI/Panel/PopupPanel",
+        "resPath": "UI/Panel/GameOverPanel",
+        "resEditorPath": "ArtRes/UI/Panel/GameOverPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 7,
+        "resName": "FaderPanel",
+        "resDes": "淡入面板",
+        "resType": 0,
+        "resPath": "UI/Panel/FaderPanel",
+        "resEditorPath": "ArtRes/UI/Panel/FaderPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 8,
+        "resName": "SettingPanel",
+        "resDes": "设置面板",
+        "resType": 0,
+        "resPath": "UI/Panel/SettingPanel",
+        "resEditorPath": "ArtRes/UI/Panel/SettingPanel",
         "resABPath": "ui",
         "assetExtension": "prefab"
     },

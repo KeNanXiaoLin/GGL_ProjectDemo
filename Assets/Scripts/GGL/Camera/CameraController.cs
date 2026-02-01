@@ -7,11 +7,10 @@ using UnityEngine.Rendering.Universal;
 
 public class CameraController
 {
-    private Camera mainCamera;
 
     public CameraController()
     {
-        mainCamera = Camera.main;
+        
     }
 
     /// <summary>
@@ -23,8 +22,7 @@ public class CameraController
         switch (world)
         {
             case E_World.In_World:
-                
-                // AddOverlayCam(UIMgr.Instance.UiCamera);
+                AddOverlayCam(UIMgr.Instance.UiCamera);
                 break;
             case E_World.Out_World:
                 
@@ -34,7 +32,7 @@ public class CameraController
 
     public void AddOverlayCam(Camera ui)
     {
-        var data = mainCamera.GetUniversalAdditionalCameraData();
+        var data = Camera.main.GetUniversalAdditionalCameraData();
         if(data.cameraStack.Contains(ui))
         {
             return;

@@ -25,14 +25,14 @@ public class PauseManager : MonoBehaviour
     // 返回主菜单
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Start Scenes");
+        SceneManager.LoadScene(Setting.START_SCENE_NAME);
     }
 
     // 重新开始当前关卡
     public void ReStart()
     {
         GameManager.Instance.LoadGame();
-        SceneManager.LoadScene("GameScene 3");
+        SceneManager.LoadScene(Setting.GAME_SCENE_NAME);
     }
 }
 

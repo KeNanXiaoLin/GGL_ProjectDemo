@@ -24,12 +24,8 @@ namespace KNXL
         /// </summary>
         E_Input_Vertical,
         /// <summary>
-        /// 当前关卡时间更新
+        /// 更新游戏UI
         /// </summary>
-        E_TimeUpdate,
-        /// <summary>
-        /// 当前关卡步数更新
-        /// </summary>
-        E_StepUpdate,
+        UpdateGameUI,
     }
 }

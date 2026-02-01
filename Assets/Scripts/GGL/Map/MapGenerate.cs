@@ -8,18 +8,19 @@ public class MapGenerate : MonoBehaviour
 {
     public GameObject prefab;
 
-    void Start()
+    IEnumerator Start()
     {
         ConfigTable<CfgMapData> mapData = ConfigManager.Instance.GetTable<CfgMapData>();
         foreach (var item in mapData.AllData)
         {
             SpawnItem(item);
+            yield return null;
         }
     }
 
     public void SpawnItem(CfgMapData item)
     {
-        Vector2 worldPos = GameManager.Instance.mapCell.CellToWorldCenter(new Cell(item.x, item.y));
+        Vector2 worldPos = GameManager.Instance.MapCell.CellToWorldCenter(new Cell(item.x, item.y));
         GameObject obj = null;
         CfgMaskData maskData = ConfigManager.Instance.GetTable<CfgMaskData>().GetData(item.maskID);
         obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
@@ -31,7 +32,7 @@ public class MapGenerate : MonoBehaviour
         {
             Sprite sp = Resources.Load<Sprite>(maskData.spritePath);
             maskObj.spriteRenderer.sprite = sp;
-            Cell targetCell = GameManager.Instance.mapCell.WorldToCell(worldPos);
+            Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
             maskObj.nowCell = targetCell;
             targetCell.SetAbility(maskObj);
         }
@@ -49,7 +50,7 @@ public class MapGenerate : MonoBehaviour
         {
             Sprite sp = Resources.Load<Sprite>(maskData.spritePath);
             maskObj.spriteRenderer.sprite = sp;
-            Cell targetCell = GameManager.Instance.mapCell.WorldToCell(worldPos);
+            Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
             maskObj.nowCell = targetCell;
             targetCell.SetAbility(maskObj);
         }

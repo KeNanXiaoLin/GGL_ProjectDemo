@@ -40,7 +40,7 @@ public class Mask : MonoBehaviour, IAbility
             yield return null;
         }
         // transform.position = targetPos;
-        Cell curCell = GameManager.Instance.mapCell.WorldToCell(transform.position);
+        Cell curCell = GameManager.Instance.MapCell.WorldToCell(transform.position);
         if(curCell != nowCell)
         {
             nowCell.ClearAbility();
@@ -64,7 +64,7 @@ public class Mask : MonoBehaviour, IAbility
             yield return null;
         }
         // transform.position = targetPos;
-        Cell curCell = GameManager.Instance.mapCell.WorldToCell(transform.position);
+        Cell curCell = GameManager.Instance.MapCell.WorldToCell(transform.position);
         if(curCell != nowCell)
         {
             nowCell.ClearAbility();
