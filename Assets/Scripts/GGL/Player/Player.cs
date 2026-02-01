@@ -35,14 +35,7 @@ public class Player : MonoBehaviour
     private Cell targetCell;
     // 记录上一个面具数据
     private CfgMaskData lastMaskData;
-    /// <summary>
-    /// 老鼠的面具
-    /// </summary>
-    private List<Mask> mouseMasks;
-    /// <summary>
-    /// 狼的面具
-    /// </summary>
-    private List<Mask> wolfMasks;
+    private bool hasTargetMaskInRange = false;
 
 
     private void Awake()
@@ -75,7 +68,7 @@ public class Player : MonoBehaviour
         switch (currentWorldType)
         {
             case E_World.In_World:
-                
+
                 // 2.通过鼠标，绘制连线，根据连线的提示判断是否可以附身
                 DrawInfoLine();
                 // 做附身后的事物独特的内容
@@ -140,19 +133,19 @@ public class Player : MonoBehaviour
                 // 乌鸦的行为
                 DoMove();
                 break;
-                //大象
+            //大象
             case E_MaskType.Elephant:
                 DoMove();
                 break;
-                //球
+            //球
             case E_MaskType.Ball:
                 DoMove();
                 break;
-                //巧克力
+            //巧克力
             case E_MaskType.Chocolate:
                 CheckChocolateSp();
                 break;
-                //岩石
+            //岩石
             case E_MaskType.Rock:
                 DoMove();
                 break;
@@ -264,11 +257,11 @@ public class Player : MonoBehaviour
         }
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
-        if(xInput > 0 && this.transform.localScale == Vector3.one)
+        if (xInput > 0 && this.transform.localScale == Vector3.one)
         {
             this.transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if(xInput < 0 && this.transform.localScale == new Vector3(-1, 1, 1))
+        else if (xInput < 0 && this.transform.localScale == new Vector3(-1, 1, 1))
         {
             this.transform.localScale = Vector3.one;
         }
@@ -286,7 +279,7 @@ public class Player : MonoBehaviour
         {
             transform.position = lastMovePos;
         }
-        if(GameManager.Instance.mapCell.WorldToCell(transform.position).HasAbility())
+        if (GameManager.Instance.mapCell.WorldToCell(transform.position).HasAbility())
         {
             transform.position = lastMovePos;
         }
@@ -332,8 +325,8 @@ public class Player : MonoBehaviour
     private void AttachToOther(Cell targetCell)
     {
         //在原来的位置生成一个新的面具
-        if(lastMaskData != null)
-            GameManager.Instance.mapGenerate.SpawnItem(lastMaskData,transform.position);
+        if (lastMaskData != null)
+            GameManager.Instance.mapGenerate.SpawnItem(lastMaskData, transform.position);
         //更新位置
         transform.position = GameManager.Instance.mapCell.CellToWorldCenter(targetCell);
         //更新Sprite
@@ -352,6 +345,7 @@ public class Player : MonoBehaviour
         lastMousePos = Vector2.zero;
         targetCell = null;
         lastMaskData = null;
+        hasTargetMaskInRange = false;
     }
 
     /// <summary>
@@ -359,15 +353,34 @@ public class Player : MonoBehaviour
     /// </summary>
     public void CheckChocolateSp()
     {
-        if(mouseMasks == null || mouseMasks.Count == 0)
+        // if(mouseMasks == null || mouseMasks.Count == 0)
+        // {
+        //     //进行范围检测
+        //     //获取所有的老鼠面具
+        //     mouseMasks = new List<Mask>();
+        if(hasTargetMaskInRange) return;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis, 1 << LayerMask.NameToLayer("Mask"));
+        if (colliders.Length > 0)
         {
-            //进行范围检测
-            //获取所有的老鼠面具
-            mouseMasks = new List<Mask>();
-            if(Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis).Length > 0)
+            foreach (var collider in colliders)
             {
-                Debug.Log($"检测到老鼠面具:{Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis).Length}");
+                Mask mask = collider.GetComponent<Mask>();
+                if (mask != null)
+                {
+                    hasTargetMaskInRange = true;
+                    switch (mask.abilityData.maskType)
+                    {
+                        case E_MaskType.Mouse:
+                            mask.StartCoroutine(mask.MoveToTargetPos(transform.position));
+                            break;
+                        case E_MaskType.Wolf:
+                            mask.StartCoroutine(mask.AwayToTarget(transform.position, currentMaskData.checkDis));
+                            break;
+
+                    }
+                }
             }
         }
+        // }
     }
 }

@@ -15,6 +15,56 @@ public class Cell
     }
 
     /// <summary>
+    /// 重载==运算符，用于比较两个Cell对象是否相等
+    /// </summary>
+    /// <param name="a">第一个Cell对象</param>
+    /// <param name="b">第二个Cell对象</param>
+    /// <returns>如果两个Cell对象的x和y坐标都相等，则返回true；否则返回false</returns>
+    public static bool operator==(Cell a, Cell b)
+    {
+        // 处理null值的情况
+        if (ReferenceEquals(a, b))
+        {
+            return true;
+        }
+
+        if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+        {
+            return false;
+        }
+
+        // 比较x和y坐标
+        return a.x == b.x && a.y == b.y;
+    }
+
+    /// <summary>
+    /// 重载!=运算符，用于比较两个Cell对象是否不相等
+    /// </summary>
+    /// <param name="a">第一个Cell对象</param>
+    /// <param name="b">第二个Cell对象</param>
+    /// <returns>如果两个Cell对象的x或y坐标不相等，则返回true；否则返回false</returns>
+    public static bool operator!=(Cell a, Cell b)
+    {
+        return !(a == b);
+    }
+
+    /// <summary>
+    /// 重写Equals方法，用于比较两个对象是否相等
+    /// </summary>
+    /// <param name="obj">要比较的对象</param>
+    /// <returns>如果对象是Cell类型且x和y坐标都相等，则返回true；否则返回false</returns>
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        Cell other = (Cell)obj;
+        return x == other.x && y == other.y;
+    }
+
+    /// <summary>
     /// 单元格是否有能力
     /// </summary>
     /// <returns></returns>

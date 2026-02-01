@@ -15,7 +15,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20001,
@@ -33,7 +34,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 10002,
@@ -51,7 +53,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 10003,
@@ -69,7 +72,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 10004,
@@ -87,7 +91,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 10005,
@@ -105,7 +110,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20002,
@@ -123,7 +129,8 @@
         "loveType": 1,
         "hateType": 2,
         "crossType": 3,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20003,
@@ -141,7 +148,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 3,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20004,
@@ -159,7 +167,8 @@
         "loveType": 3,
         "hateType": 1,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20005,
@@ -177,7 +186,8 @@
         "loveType": 2,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20006,
@@ -195,7 +205,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 9,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 20007,
@@ -213,7 +224,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 10006,
@@ -231,7 +243,8 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 0
+        "startCrazy": 0,
+        "moveSpeed": 3.0
     },
     {
         "id": 10007,
@@ -249,6 +262,7 @@
         "loveType": 0,
         "hateType": 0,
         "crossType": 0,
-        "startCrazy": 5
+        "startCrazy": 5,
+        "moveSpeed": 3.0
     }
 ]
