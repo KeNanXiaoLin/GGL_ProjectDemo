@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int nowReasonValue = 0;
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer soulSR;
     private LineRenderer lineRenderer;
     [SerializeField] private E_InputAction inputAction = E_InputAction.WASD;
     [SerializeField] private float startWidth = 0.05f;
@@ -37,6 +38,12 @@ public class Player : MonoBehaviour
     private CfgMaskData lastMaskData;
     private bool hasTargetMaskInRange = false;
     private bool isSave = false;
+    private bool isPause = false;
+
+    #region UI部分内容
+    public GrayPanel grayPanel;
+    public VerticalHealthBar verticalHealthBar;
+    #endregion
 
 
     private void Awake()
@@ -57,6 +64,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (isPause)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ChangeWorld();
@@ -133,6 +144,7 @@ public class Player : MonoBehaviour
                 if (!isSave)
                 {
                     GameManager.Instance.SaveGame();
+                    nowCrazyValue = 5;
                     isSave = true;
                 }
                 
@@ -147,7 +159,6 @@ public class Player : MonoBehaviour
                 break;
             //球
             case E_MaskType.Ball:
-                DoMove();
                 break;
             //巧克力
             case E_MaskType.Chocolate:
@@ -155,7 +166,6 @@ public class Player : MonoBehaviour
                 break;
             //岩石
             case E_MaskType.Rock:
-                DoMove();
                 break;
             case E_MaskType.Streetlight:
                 CheckStreetlightSp();
@@ -239,9 +249,10 @@ public class Player : MonoBehaviour
         {
             case E_World.In_World:
                 GameManager.Instance.GoToOutWorld();
+                grayPanel.Hide();
                 targetCell = GameManager.Instance.mapCell.WorldToCell(lastMousePos);
                 // 玩家在里世界指向面具 进行附身结算
-                if (targetCell.HasAbility())
+                if (targetCell.HasAbility() && (targetCell.GetAbility() as Mask).abilityData.maskType != E_MaskType.Fence)
                 {
                     this.GetAbility(targetCell.GetAbility().GetAbility());
                     //进行结算
@@ -252,6 +263,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    grayPanel.gameObject.SetActive(true);
                     targetCell = null;
                     // 玩家在里世界移动，理智值结算
                     CalculateMoveValue();
@@ -259,6 +271,7 @@ public class Player : MonoBehaviour
                 
                 break;
             case E_World.Out_World:
+                grayPanel.Show();
                 GameManager.Instance.GoToInWorld();
                 break;
         }
@@ -340,7 +353,7 @@ public class Player : MonoBehaviour
     private void AttachToOther(Cell targetCell)
     {
         //在原来的位置生成一个新的面具
-        if (lastMaskData != null)
+        if (lastMaskData != null && lastMaskData.maskType != E_MaskType.Mask)
             GameManager.Instance.mapGenerate.SpawnItem(lastMaskData, transform.position);
         //更新位置
         transform.position = GameManager.Instance.mapCell.CellToWorldCenter(targetCell);
@@ -438,5 +451,15 @@ public class Player : MonoBehaviour
         int minusReasonValue = Mathf.FloorToInt(Vector2.Distance(startMovePos, transform.position));
         nowReasonValue -= minusReasonValue;
         startMovePos = transform.position;
+    }
+
+    public void PauseGame()
+    {
+        isPause = true;
+    }
+
+    public void RestoreGame()
+    {
+        isPause = false;
     }
 }

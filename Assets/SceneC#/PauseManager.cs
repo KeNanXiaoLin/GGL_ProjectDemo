@@ -10,12 +10,16 @@ public class PauseManager : MonoBehaviour
     public void Restore()
     {
         pauseMenu.SetActive(false);
+        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player.RestoreGame();
     }
 
     // 暂停游戏
     public void Pause()
     {
         pauseMenu.SetActive(true);
+        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player.PauseGame();
     }
 
     // 返回主菜单
@@ -27,7 +31,8 @@ public class PauseManager : MonoBehaviour
     // 重新开始当前关卡
     public void ReStart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.LoadGame();
+        SceneManager.LoadScene("GameScene 3");
     }
 }
 

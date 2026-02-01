@@ -10,7 +10,7 @@ public class GameManager : BaseManager<GameManager>
     public MapCell mapCell;
     public MapGenerate mapGenerate;
     private CameraController cameraController;
-    public MyVector3 playerPos = new MyVector3(-5,-1,0);
+    public MyVector3 playerPos = new MyVector3(-7,-1,0);
     public E_World CurrentWorldType
     {
         get { return currentWorldType; }

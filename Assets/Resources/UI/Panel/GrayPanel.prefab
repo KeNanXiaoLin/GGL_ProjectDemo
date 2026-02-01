@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5064131570617146721}
   - component: {fileID: 3295098936468769080}
   - component: {fileID: 4215862737978228790}
+  - component: {fileID: 8473155578264091492}
   m_Layer: 5
   m_Name: GrayPanel
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5396226, g: 0.5396226, b: 0.5396226, a: 0.22745098}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -88,3 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc23391d4a10f8f40a29b2e27d9e92f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &8473155578264091492
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2979159501726695323}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
