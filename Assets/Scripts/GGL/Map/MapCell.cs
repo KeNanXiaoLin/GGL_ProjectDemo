@@ -87,6 +87,7 @@ public class MapCell : MonoBehaviour,IMapGenerator
         }
     }
 
+#if UNITY_EDITOR
     /// <summary>
     /// 在编辑器中绘制格子的可视化效果
     /// </summary>
@@ -156,6 +157,7 @@ public class MapCell : MonoBehaviour,IMapGenerator
         Gizmos.DrawLine(mapTopRight, mapTopLeft);
         Gizmos.DrawLine(mapTopLeft, mapBottomLeft);
     }
+    #endif
 
     public Node[,] GenerateNodes()
     {
