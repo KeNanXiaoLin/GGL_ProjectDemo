@@ -18,7 +18,7 @@ namespace KNXL
         /// <typeparam name="T">资源类型</typeparam>
         /// <param name="resName">资源名称</param>
         /// <returns>加载到的资源</returns>
-        public void LoadRes<T>(string resRootPath,string resName, UnityAction<T> callBack, bool isSync = true) where T : Object
+        private void LoadRes<T>(string resRootPath,string resName, UnityAction<T> callBack, bool isSync = false) where T : Object
         {
             T res = null;
             string resPath = "";
@@ -33,7 +33,8 @@ namespace KNXL
                         break;
                     // 因为AB包不支持同步加载，所以这里使用Resource的方式进行加载
                     case E_ResLoadType.AB:
-                        ABMgr.Instance.LoadResAsync<T>(resRootPath, resName, callBack,true);
+                        Debug.LogError($"同步加载资源{resName}失败，因为AB包不支持同步加载");
+                        callBack?.Invoke(null);
                         break;
                     case E_ResLoadType.Resources:
                         resPath = resRootPath + "/" + resName;
@@ -48,10 +49,12 @@ namespace KNXL
             {
                 switch (Settings.resLoadType)
                 {
+                    // 因为编辑器不支持异步加载，所以这里使用同步加载的方式进行加载
                     case E_ResLoadType.Editor:
-                        Debug.LogError($"异步加载资源{resName}失败，因为编辑器模式下不支持异步加载");
+                        resPath = resRootPath + "/" + resName;
+                        res = EditorResMgr.Instance.LoadEditorResWithoutSuffix<T>(resPath);
+                        callBack?.Invoke(res);
                         break;
-                    // 因为AB包不支持同步加载，所以这里使用Resource的方式进行加载
                     case E_ResLoadType.AB:
                         ABMgr.Instance.LoadResAsync<T>(resRootPath, resName, callBack,false);
                         break;
@@ -77,9 +80,10 @@ namespace KNXL
                         callBack?.Invoke(res);
                         break;
                     // 因为AB包不支持同步加载，所以这里使用Resource的方式进行加载
-                    // case E_ResLoadType.AB:
-                    //     ABMgr.Instance.LoadResAsync<T>(resRootPath, resName, callBack,true);
-                    //     break;
+                    case E_ResLoadType.AB:
+                        Debug.LogError($"同步加载资源{resPath}失败，因为AB包不支持同步加载");
+                        callBack?.Invoke(null);
+                        break;
                     case E_ResLoadType.Resources:
                         res = ResMgr.Instance.Load<T>(resPath);
                         callBack?.Invoke(res);
@@ -92,13 +96,16 @@ namespace KNXL
             {
                 switch (Settings.resLoadType)
                 {
-                    // case E_ResLoadType.Editor:
-                    //     Debug.LogError($"异步加载资源{resName}失败，因为编辑器模式下不支持异步加载");
-                    //     break;
+                    case E_ResLoadType.Editor:
+                        res = EditorResMgr.Instance.LoadEditorResWithoutSuffix<T>(resPath);
+                        callBack?.Invoke(res);
+                        break;
                     // 因为AB包不支持同步加载，所以这里使用Resource的方式进行加载
-                    // case E_ResLoadType.AB:
-                    //     ABMgr.Instance.LoadResAsync<T>(resRootPath, resName, callBack,false);
-                    //     break;
+                    case E_ResLoadType.AB:
+                        // ABMgr.Instance.LoadResAsync<T>(resPath, callBack,false);
+                        Debug.LogError($"暂时没有实现异步加载AB包资源的功能");
+                        callBack?.Invoke(null);
+                        break;
                     case E_ResLoadType.Resources:
                         ResMgr.Instance.LoadAsync<T>(resPath, callBack);
                         break;
@@ -112,10 +119,10 @@ namespace KNXL
         /// 根据配置表的主键进行资源加载
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="primaryKey"></param>
-        /// <param name="callBack"></param>
-        /// <param name="isSync"></param>
-        public void LoadRes<T>(int primaryKey,UnityAction<T> callBack, bool isSync = true) where T : Object
+        /// <param name="primaryKey">配置表的主键</param>
+        /// <param name="callBack">加载完成后的回调</param>
+        /// <param name="isSync">是否同步加载</param>
+        public void LoadRes<T>(int primaryKey,UnityAction<T> callBack, bool isSync = false) where T : Object
         {
             string resPath = ResConfigManager.Instance.GetResLoadPath(primaryKey);
             if (string.IsNullOrEmpty(resPath))
@@ -127,13 +134,13 @@ namespace KNXL
         }
 
         /// <summary>
-        /// 根据配置表的资源名称进行资源加载
+        /// 根据配置表的资源名称进行资源加载,这里基本只会用来记载UI资源
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resName"></param>
         /// <param name="callBack"></param>
         /// <param name="isSync"></param>
-        public void LoadRes<T>(string resName,UnityAction<T> callBack, bool isSync = true) where T : Object
+        public void LoadRes<T>(string resName,UnityAction<T> callBack, bool isSync = false) where T : Object
         {
             string resPath = ResConfigManager.Instance.GetResLoadPath(resName);
             if (string.IsNullOrEmpty(resPath))

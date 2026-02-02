@@ -16,7 +16,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10014,
+        "resIdWithMask": 10015
     },
     {
         "id": 20001,
@@ -35,7 +37,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10003,
+        "resIdWithMask": 10004
     },
     {
         "id": 10002,
@@ -54,7 +58,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10020,
+        "resIdWithMask": 10021
     },
     {
         "id": 10003,
@@ -73,7 +79,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10009,
+        "resIdWithMask": 10010
     },
     {
         "id": 10004,
@@ -92,7 +100,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10007,
+        "resIdWithMask": 10008
     },
     {
         "id": 10005,
@@ -111,7 +121,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10011,
+        "resIdWithMask": 10012
     },
     {
         "id": 20002,
@@ -130,7 +142,9 @@
         "hateType": 2,
         "crossType": 3,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10005,
+        "resIdWithMask": 10006
     },
     {
         "id": 20003,
@@ -149,7 +163,9 @@
         "hateType": 0,
         "crossType": 3,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10016,
+        "resIdWithMask": 10017
     },
     {
         "id": 20004,
@@ -168,7 +184,9 @@
         "hateType": 1,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10018,
+        "resIdWithMask": 10019
     },
     {
         "id": 20005,
@@ -187,7 +205,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10001,
+        "resIdWithMask": 10002
     },
     {
         "id": 20006,
@@ -206,7 +226,9 @@
         "hateType": 0,
         "crossType": 9,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10024,
+        "resIdWithMask": 10024
     },
     {
         "id": 20007,
@@ -225,7 +247,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10023,
+        "resIdWithMask": 10023
     },
     {
         "id": 10006,
@@ -244,7 +268,9 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 0,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10022,
+        "resIdWithMask": 10022
     },
     {
         "id": 10007,
@@ -263,6 +289,8 @@
         "hateType": 0,
         "crossType": 0,
         "startCrazy": 5,
-        "moveSpeed": 3.0
+        "moveSpeed": 3.0,
+        "resIdNoMask": 10013,
+        "resIdWithMask": 10013
     }
 ]

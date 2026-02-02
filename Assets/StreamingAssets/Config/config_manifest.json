@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-02-01 23:24:25",
+    "generate_time": "2026-02-03 00:32:39",
     "table_count": 3,
     "tables": [
         {
@@ -156,6 +156,18 @@
                     "type": "float",
                     "desc": "面具接近和逃离的速度",
                     "is_enum": false
+                },
+                {
+                    "name": "resIdNoMask",
+                    "type": "int",
+                    "desc": "不戴面具的资源对应的资源表的id",
+                    "is_enum": false
+                },
+                {
+                    "name": "resIdWithMask",
+                    "type": "int",
+                    "desc": "戴面具的资源对应的资源表的id",
+                    "is_enum": false
                 }
             ]
         },
@@ -164,7 +176,7 @@
             "class_name": "CfgResData",
             "json_path": "ResData.json",
             "primary_key": "id",
-            "row_count": 24,
+            "row_count": 35,
             "fields": [
                 {
                     "name": "id",
