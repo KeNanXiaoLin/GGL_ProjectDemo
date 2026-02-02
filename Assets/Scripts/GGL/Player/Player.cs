@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        Debug.Log("Player Awake");  
     }
 
     private void Start()
