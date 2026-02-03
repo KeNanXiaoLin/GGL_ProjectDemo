@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
     private bool isSave = false;
     private bool isPause = false;
 
-    private GameObject inAudioSource;
-    private GameObject outAudioSource;
 
 
     private void Awake()
@@ -58,17 +56,6 @@ public class Player : MonoBehaviour
         nowReasonValue = currentMaskData.startLizi;
         lastMovePos = transform.position;
         transform.position = GameManager.Instance.playerPos;
-        if (inAudioSource == null)
-        {
-            inAudioSource = new GameObject("InAudioSource");
-            inAudioSource.AddComponent<AudioSource>();
-        }
-        if (outAudioSource == null)
-        {
-            outAudioSource = new GameObject("OutAudioSource");
-            outAudioSource.AddComponent<AudioSource>();
-        }
-        PlayOutAudio();
     }
 
     private void Update()
@@ -268,7 +255,6 @@ public class Player : MonoBehaviour
         {
             case E_World.In_World:
                 Debug.Log("切换到表世界，正常状态");
-                PlayOutAudio();
                 soulSR.sprite = null;
                 GameManager.Instance.GoToOutWorld();
                 UIMgr.Instance.HidePanel<GrayPanel>();
@@ -302,7 +288,6 @@ public class Player : MonoBehaviour
 
                 break;
             case E_World.Out_World:
-                PlayInAudio();
                 UIMgr.Instance.ShowPanel<GrayPanel>();
                 Debug.Log("切换到里世界，显示灵魂状态");
                 soulSR.sprite = Resources.Load<Sprite>("Sprites/Soul0");
@@ -520,21 +505,5 @@ public class Player : MonoBehaviour
     public void RestoreGame()
     {
         isPause = false;
-    }
-
-    public void PlayInAudio()
-    {
-        AudioClip clip = Resources.Load<AudioClip>("Music/里世界白噪声");
-        inAudioSource.GetComponent<AudioSource>().clip = clip;
-        inAudioSource.GetComponent<AudioSource>().Play();
-        outAudioSource.GetComponent<AudioSource>().Stop();
-    }
-
-    public void PlayOutAudio()
-    {
-        AudioClip clip = Resources.Load<AudioClip>("Music/表世界白噪声");
-        outAudioSource.GetComponent<AudioSource>().clip = clip;
-        outAudioSource.GetComponent<AudioSource>().Play();
-        inAudioSource.GetComponent<AudioSource>().Stop();
     }
 }
