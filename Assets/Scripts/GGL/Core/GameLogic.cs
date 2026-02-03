@@ -12,11 +12,10 @@ public class GameLogic : MonoBehaviour
     /// </summary>
     private E_World currentWorld;
 
-    public E_World CurrentWorld { get => currentWorld; }
-
     void Start()
     {
         currentWorld = E_World.Out_World;
+        GameManager.Instance.CurrentWorldType = currentWorld;
         EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
     }
 
@@ -35,10 +34,12 @@ public class GameLogic : MonoBehaviour
         {
             case E_World.In_World:
                 currentWorld = E_World.Out_World;
+                GameManager.Instance.CurrentWorldType = currentWorld;
                 EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
                 break;
             case E_World.Out_World:
                 currentWorld = E_World.Out_World;
+                GameManager.Instance.CurrentWorldType = currentWorld;
                 EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
                 break;
 

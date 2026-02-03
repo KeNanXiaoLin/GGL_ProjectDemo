@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : BaseManager<GameManager>
 {
-    private E_World currentWorldType = E_World.Out_World;
+    private E_World currentWorldType;
     private MapCell mapCell;
 
     private MapGenerate mapGenerate;
@@ -76,7 +76,7 @@ public class GameManager : BaseManager<GameManager>
 
     public void Init()
     {
-        
+
     }
 
     public void ClearGameSceneData()
