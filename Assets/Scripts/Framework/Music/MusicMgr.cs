@@ -14,12 +14,12 @@ namespace KNXL
         private AudioSource bkMusic = null;
 
         //背景音乐大小
-        private float bkMusicValue = 0.1f;
+        private float bkMusicValue = 1f;
 
         //管理正在播放的音效
         private List<AudioSource> soundList = new List<AudioSource>();
         //音效音量大小
-        private float soundValue = 0.1f;
+        private float soundValue = 1f;
         //音效是否在播放
         private bool soundIsPlay = true;
         //封装音乐大小属性，外部只能读取 不能修改
@@ -41,6 +41,7 @@ namespace KNXL
 
             //不停的遍历容器 检测有没有音效播放完毕 播放完了 就移除销毁它
             //为了避免边遍历边移除出问题 我们采用逆向遍历
+            Debug.Log($"当前正在播放的音效数量为{soundList.Count}");
             for (int i = soundList.Count - 1; i >= 0; --i)
             {
                 if (!soundList[i].isPlaying)
@@ -138,6 +139,37 @@ namespace KNXL
         {
             //加载音效资源 进行播放
             ResLoadMgr.Instance.LoadRes<AudioClip>(name, (clip) =>
+            {
+                //从缓存池中取出音效对象得到对应组件
+                AudioSource source = PoolMgr.Instance.GetObj("Sound/soundObj").GetComponent<AudioSource>();
+                //如果取出来的音效是之前正在使用的 我们先停止它
+                source.Stop();
+
+                source.clip = clip;
+                source.loop = isLoop;
+                source.volume = soundValue;
+                source.Play();
+                //存储容器 用于记录 方便之后判断是否停止
+                //由于从缓存池中取出对象 有可能取出一个之前正在使用的（超上限时）
+                //所以我们需要判断 容器中没有记录再去记录 不要重复去添加即可
+                if (!soundList.Contains(source))
+                    soundList.Add(source);
+                //传递给外部使用
+                callBack?.Invoke(source);
+            }, isSync);
+        }
+
+        /// <summary>
+        /// 播放音效
+        /// </summary>
+        /// <param name="name">音效名字</param>
+        /// <param name="isLoop">是否循环</param>
+        /// <param name="isSync">是否同步加载</param>
+        /// <param name="callBack">加载结束后的回调</param>
+        public void PlaySound(int id, bool isLoop = false, bool isSync = false, UnityAction<AudioSource> callBack = null)
+        {
+            //加载音效资源 进行播放
+            ResLoadMgr.Instance.LoadRes<AudioClip>(id, (clip) =>
             {
                 //从缓存池中取出音效对象得到对应组件
                 AudioSource source = PoolMgr.Instance.GetObj("Sound/soundObj").GetComponent<AudioSource>();

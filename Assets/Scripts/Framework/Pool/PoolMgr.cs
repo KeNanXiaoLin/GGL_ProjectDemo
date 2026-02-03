@@ -39,7 +39,7 @@ namespace KNXL
         public PoolData(GameObject root, string name, GameObject usedObj)
         {
             //开启功能时 才会动态创建 建立父子关系
-            if(PoolMgr.isOpenLayout)
+            if (PoolMgr.isOpenLayout)
             {
                 //创建抽屉父对象
                 rootObj = new GameObject(name);
@@ -134,7 +134,7 @@ namespace KNXL
     /// 用于存储 数据结构类 和 逻辑类 （不继承mono的）容器类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PoolObject<T> : PoolObjectBase where T:class
+    public class PoolObject<T> : PoolObjectBase where T : class
     {
         public Queue<T> poolObjs = new Queue<T>();
     }
@@ -170,12 +170,16 @@ namespace KNXL
         //是否开启布局功能
         public static bool isOpenLayout = true;
 
-        private PoolMgr() {
+        private PoolMgr()
+        {
 
             //如果根物体为空 就创建
             if (poolObj == null && isOpenLayout)
+            {
                 poolObj = new GameObject("Pool");
-
+                // 这里需要考虑切换场景的情况 避免切换场景后 缓存池被销毁
+                GameObject.DontDestroyOnLoad(poolObj);
+            }
         }
 
         /// <summary>
@@ -192,18 +196,21 @@ namespace KNXL
             GameObject obj;
 
             #region 加入了数量上限后的逻辑判断
-            if(!poolDic.ContainsKey(name) ||
+            if (!poolDic.ContainsKey(name) ||
                 (poolDic[name].Count == 0 && poolDic[name].NeedCreate))
             {
                 //动态创建对象
                 //没有的时候 通过资源加载 去实例化出一个GameObject
-                obj = GameObject.Instantiate(Resources.Load<GameObject>(name));
+                //这里需要考虑场景切换的情况，比如我点击开始游戏 切换按钮，但是我需要播放一个音效
+                //但是由于场景切换，拿出来的这个物体会直接被销毁
+                //所以我们把这个物体 作为抽屉的根物体 进行管理
+                obj = GameObject.Instantiate(Resources.Load<GameObject>(name), poolObj.transform);
                 //避免实例化出来的对象 默认会在名字后面加一个(Clone)
                 //我们重命名过后 方便往里面放
                 obj.name = name;
 
                 //创建抽屉
-                if(!poolDic.ContainsKey(name))
+                if (!poolDic.ContainsKey(name))
                     poolDic.Add(name, new PoolData(poolObj, name, obj));
                 else//实例化出来的对象 需要记录到使用中的对象容器中
                     poolDic[name].PushUsedList(obj);
@@ -242,16 +249,16 @@ namespace KNXL
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <returns></returns>
-        public T GetObj<T>(string nameSpace = "") where T:class,IPoolObject,new()
+        public T GetObj<T>(string nameSpace = "") where T : class, IPoolObject, new()
         {
             //池子的名字 是根据类的类型来决定的 就是它的类名
             string poolName = nameSpace + "_" + typeof(T).Name;
             //有池子
-            if(poolObjectDic.ContainsKey(poolName))
+            if (poolObjectDic.ContainsKey(poolName))
             {
                 PoolObject<T> pool = poolObjectDic[poolName] as PoolObject<T>;
                 //池子当中是否有可以复用的内容
-                if(pool.poolObjs.Count > 0)
+                if (pool.poolObjs.Count > 0)
                 {
                     //从队列中取出对象 进行复用
                     T obj = pool.poolObjs.Dequeue() as T;
@@ -270,7 +277,7 @@ namespace KNXL
                 T obj = new T();
                 return obj;
             }
-            
+
         }
 
         /// <summary>
@@ -317,7 +324,7 @@ namespace KNXL
         /// 将自定义数据结构类和逻辑类 放入池子中
         /// </summary>
         /// <typeparam name="T">对应类型</typeparam>
-        public void PushObj<T>(T obj, string nameSpace = "") where T:class,IPoolObject
+        public void PushObj<T>(T obj, string nameSpace = "") where T : class, IPoolObject
         {
             //如果想要压入null对象 是不被允许的
             if (obj == null)

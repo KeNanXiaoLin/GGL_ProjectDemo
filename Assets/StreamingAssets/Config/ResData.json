@@ -341,12 +341,152 @@
     },
     {
         "id": 40001,
-        "resName": "BGM",
-        "resDes": "背景音乐",
+        "resName": "主界面",
+        "resDes": "开始面板播放音效",
         "resType": 1,
-        "resPath": "Music/BGM",
-        "resEditorPath": "ArtRes/Music/BGM",
+        "resPath": "Music/主界面",
+        "resEditorPath": "ArtRes/Music/主界面",
         "resABPath": "music",
+        "assetExtension": "mp3"
+    },
+    {
+        "id": 40002,
+        "resName": "失败界面",
+        "resDes": "失败面板播放的音效",
+        "resType": 1,
+        "resPath": "Music/失败界面",
+        "resEditorPath": "ArtRes/Music/失败界面",
+        "resABPath": "music",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40003,
+        "resName": "游玩界面",
+        "resDes": "游戏场景播放音效",
+        "resType": 1,
+        "resPath": "Music/游玩界面",
+        "resEditorPath": "ArtRes/Music/游玩界面",
+        "resABPath": "music",
+        "assetExtension": "mp3"
+    },
+    {
+        "id": 40004,
+        "resName": "通关界面",
+        "resDes": "游戏胜利播放音效",
+        "resType": 1,
+        "resPath": "Music/通关界面",
+        "resEditorPath": "ArtRes/Music/通关界面",
+        "resABPath": "music",
+        "assetExtension": "mp3"
+    },
+    {
+        "id": 40005,
+        "resName": "里世界白噪声",
+        "resDes": "切换到里世界的背景音乐",
+        "resType": 1,
+        "resPath": "Music/里世界白噪声",
+        "resEditorPath": "ArtRes/Music/里世界白噪声",
+        "resABPath": "music",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40006,
+        "resName": "灯附身音效",
+        "resDes": "灯附身音效",
+        "resType": 1,
+        "resPath": "Sound/灯附身音效",
+        "resEditorPath": "ArtRes/Sound/灯附身音效",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40007,
+        "resName": "摁键选项",
+        "resDes": "摁键选项",
+        "resType": 1,
+        "resPath": "Sound/摁键选项",
+        "resEditorPath": "ArtRes/Sound/摁键选项",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40008,
+        "resName": "附身磁带",
+        "resDes": "附身磁带",
+        "resType": 1,
+        "resPath": "Sound/附身磁带",
+        "resEditorPath": "ArtRes/Sound/附身磁带",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40009,
+        "resName": "附身交互音效",
+        "resDes": "附身交互音效",
+        "resType": 1,
+        "resPath": "Sound/附身交互音效",
+        "resEditorPath": "ArtRes/Sound/附身交互音效",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40010,
+        "resName": "狼附身时音效",
+        "resDes": "狼附身时音效",
+        "resType": 1,
+        "resPath": "Sound/狼附身时音效",
+        "resEditorPath": "ArtRes/Sound/狼附身时音效",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40011,
+        "resName": "狼移动音效",
+        "resDes": "狼移动音效",
+        "resType": 1,
+        "resPath": "Sound/狼移动音效",
+        "resEditorPath": "ArtRes/Sound/狼移动音效",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40012,
+        "resName": "老鼠移动音效",
+        "resDes": "老鼠移动音效",
+        "resType": 1,
+        "resPath": "Sound/老鼠移动音效",
+        "resEditorPath": "ArtRes/Sound/老鼠移动音效",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40013,
+        "resName": "游戏开始摁键",
+        "resDes": "游戏开始摁键",
+        "resType": 1,
+        "resPath": "Sound/游戏开始摁键",
+        "resEditorPath": "ArtRes/Sound/游戏开始摁键",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40014,
+        "resName": "游戏失败音效",
+        "resDes": "游戏失败音效",
+        "resType": 1,
+        "resPath": "Sound/游戏失败音效",
+        "resEditorPath": "ArtRes/Sound/游戏失败音效",
+        "resABPath": "sound",
+        "assetExtension": "wav"
+    },
+    {
+        "id": 40015,
+        "resName": "游戏失败音效02",
+        "resDes": "游戏失败音效02",
+        "resType": 1,
+        "resPath": "Sound/游戏失败音效02",
+        "resEditorPath": "ArtRes/Sound/游戏失败音效02",
+        "resABPath": "sound",
         "assetExtension": "wav"
     }
 ]

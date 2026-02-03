@@ -20,7 +20,11 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            MusicMgr.Instance.PlayBKMusic(10001);
+            MusicMgr.Instance.PlayBKMusic("主界面");
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            MusicMgr.Instance.PlaySound("游戏失败音效");
         }
     }
 }
