@@ -39,7 +39,6 @@ namespace KNXL
         {
             yield return beforeLoad?.Invoke();
             AsyncOperation ao = SceneManager.LoadSceneAsync(name);
-            Debug.Log("开始真正加载场景");
             //不停的在协同程序中每帧检测是否加载结束 如果加载结束就不会进这个循环每帧执行了
             while (!ao.isDone)
             {

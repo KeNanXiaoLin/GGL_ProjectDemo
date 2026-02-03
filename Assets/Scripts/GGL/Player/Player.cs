@@ -187,9 +187,6 @@ public class Player : MonoBehaviour
     /// </summary>
     private void DrawInfoLine()
     {
-        // if (Input.GetMosuseButton(1))
-        // {
-        // 1.直接到物品的位置进行附身
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos = HandleMousePos(mousePos);
         lastMousePos = mousePos;
@@ -219,12 +216,6 @@ public class Player : MonoBehaviour
             lineRenderer.startColor = Color.red;
             lineRenderer.endColor = Color.red;
         }
-        // }
-        // else if (Input.GetMouseButtonUp(1))
-        // {
-        //     lineRenderer.startWidth = 0f;
-        //     lineRenderer.endWidth = 0f;
-        // }
     }
 
     private Vector2 HandleMousePos(Vector2 mousePos)
