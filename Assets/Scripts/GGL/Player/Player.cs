@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer soulSR;
     private LineRenderer lineRenderer;
-    [SerializeField] private E_InputAction inputAction = E_InputAction.WASD;
     [SerializeField] private float startWidth = 0.05f;
     [SerializeField] private float endWidth = 0.1f;
     [SerializeField] private float leftX = -10f;
@@ -43,7 +42,6 @@ public class Player : MonoBehaviour
 
     private GameObject inAudioSource;
     private GameObject outAudioSource;
-    private int winCount = 0;
 
 
     private void Awake()
@@ -56,16 +54,16 @@ public class Player : MonoBehaviour
         currentMaskData = AbilityManager.Instance.GetAbilityData(10007);
         spriteRenderer.sprite = Resources.Load<Sprite>(currentMaskData.spritePath);
         nowCrazyValue = currentMaskData.startCrazy;
-        EventCenter.Instance.EventTrigger<int>(E_EventType.UpdateGameUI,nowCrazyValue);
+        EventCenter.Instance.EventTrigger<int>(E_EventType.UpdateGameUI, nowCrazyValue);
         nowReasonValue = currentMaskData.startLizi;
         lastMovePos = transform.position;
         transform.position = GameManager.Instance.playerPos;
-        if(inAudioSource == null)
+        if (inAudioSource == null)
         {
             inAudioSource = new GameObject("InAudioSource");
             inAudioSource.AddComponent<AudioSource>();
         }
-        if(outAudioSource == null)
+        if (outAudioSource == null)
         {
             outAudioSource = new GameObject("OutAudioSource");
             outAudioSource.AddComponent<AudioSource>();
@@ -130,7 +128,7 @@ public class Player : MonoBehaviour
                 MusicMgr.Instance.PlaySound("附身磁带");
                 break;
             case E_MaskType.Crow:
-                
+
                 break;
             // 乌鸦的行为
             case E_MaskType.Streetlight:
@@ -168,10 +166,10 @@ public class Player : MonoBehaviour
                 {
                     GameManager.Instance.SaveGame(new MyVector3(transform.position));
                     nowCrazyValue = 5;
-                    EventCenter.Instance.EventTrigger<int>(E_EventType.UpdateGameUI,nowCrazyValue);
+                    EventCenter.Instance.EventTrigger<int>(E_EventType.UpdateGameUI, nowCrazyValue);
                     isSave = true;
                 }
-                
+
                 break;
             case E_MaskType.Crow:
                 // 乌鸦的行为
@@ -222,7 +220,7 @@ public class Player : MonoBehaviour
             {
                 lineRenderer.endColor = Color.yellow;
                 Cursor.SetCursor(Resources.Load<Texture2D>("Sprites/Cursor"), Vector2.zero, CursorMode.Auto);
-                
+
             }
             else
             {
@@ -281,7 +279,7 @@ public class Player : MonoBehaviour
                     Mask mask = targetCell.GetAbility() as Mask;
                     this.GetAbility(mask.GetAbility());
                     // 如果移动消耗大于了疯狂值的上限，游戏结束
-                    if (GameManager.Instance.MapCell.CalGridDisByWorldPos(transform.position,lastMousePos) >= 10 - nowCrazyValue)
+                    if (GameManager.Instance.MapCell.CalGridDisByWorldPos(transform.position, lastMousePos) >= 10 - nowCrazyValue)
                     {
                         GameEnd();
                     }
@@ -293,7 +291,7 @@ public class Player : MonoBehaviour
                         //附身
                         this.AttachToOther(targetCell);
                     }
-                    
+
                 }
                 else
                 {
@@ -301,7 +299,7 @@ public class Player : MonoBehaviour
                     // 玩家在里世界移动，理智值结算
                     CalculateMoveValue();
                 }
-                
+
                 break;
             case E_World.Out_World:
                 PlayInAudio();
@@ -334,23 +332,23 @@ public class Player : MonoBehaviour
         if (moveDir.magnitude > 0)
         {
             transform.Translate(moveDir * moveSpeed * Time.deltaTime);
-            switch(currentMaskData.maskType)
+            switch (currentMaskData.maskType)
             {
                 case E_MaskType.Mouse:
-                MusicMgr.Instance.PlaySound("老鼠移动音效",true);
-                break;
+                    MusicMgr.Instance.PlaySound("老鼠移动音效", true);
+                    break;
                 case E_MaskType.Wolf:
-                    MusicMgr.Instance.PlaySound("狼移动音效",true);
-                break;
+                    MusicMgr.Instance.PlaySound("狼移动音效", true);
+                    break;
             }
         }
         else
         {
-            switch(currentMaskData.maskType)
+            switch (currentMaskData.maskType)
             {
                 case E_MaskType.Wolf:
-                    MusicMgr.Instance.PlaySound("狼附身时音效",true);
-                break;
+                    MusicMgr.Instance.PlaySound("狼附身时音效", true);
+                    break;
             }
         }
     }
@@ -387,7 +385,7 @@ public class Player : MonoBehaviour
         int minusCrazyValue = Mathf.CeilToInt(Vector2.Distance(startMovePos, endPos));
         Debug.Log($"minusCrazyValue:{minusCrazyValue}");
         nowCrazyValue += AddCrazyValue - minusCrazyValue;
-        EventCenter.Instance.EventTrigger<int>(E_EventType.UpdateGameUI,nowCrazyValue);
+        EventCenter.Instance.EventTrigger<int>(E_EventType.UpdateGameUI, nowCrazyValue);
 
         nowReasonValue = currentMaskData.startLizi;
 
@@ -448,7 +446,7 @@ public class Player : MonoBehaviour
         //     //进行范围检测
         //     //获取所有的老鼠面具
         //     mouseMasks = new List<Mask>();
-        if(hasTargetMaskInRange) return;
+        if (hasTargetMaskInRange) return;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis, 1 << LayerMask.NameToLayer("Mask"));
         if (colliders.Length > 0)
         {
@@ -480,7 +478,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void CheckStreetlightSp()
     {
-        if(hasTargetMaskInRange) return;
+        if (hasTargetMaskInRange) return;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, currentMaskData.checkDis, 1 << LayerMask.NameToLayer("Mask"));
         if (colliders.Length > 0)
         {

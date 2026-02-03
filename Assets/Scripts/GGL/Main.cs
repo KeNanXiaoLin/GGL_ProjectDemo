@@ -13,6 +13,6 @@ public class Main : MonoBehaviour
         GameManager.Instance.Init();
         CfgMaskData maskData = AbilityManager.Instance.GetAbilityData(10001);
         UIMgr.Instance.ShowPanel<GameStartPanel>();
-        MusicMgr.Instance.PlayBKMusic("主界面");
+        // MusicMgr.Instance.PlayBKMusic("主界面");
     }
 }
