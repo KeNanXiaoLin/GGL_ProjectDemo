@@ -84,4 +84,10 @@ public class DrawLine : MonoBehaviour
         enableDraw = false;
     }
 
+    private void ClearInfoLine()
+    {
+        lineRenderer.startWidth = 0f;
+        lineRenderer.endWidth = 0f;
+    }
+
 }

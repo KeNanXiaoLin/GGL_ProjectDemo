@@ -320,12 +320,32 @@
         "assetExtension": "png"
     },
     {
+        "id": 10025,
+        "resName": "SoulPlayer",
+        "resDes": "里世界会出现在人物头顶的图标",
+        "resType": 6,
+        "resPath": "Sprites/SoulPlayer",
+        "resEditorPath": "ArtRes/Sprites/SoulPlayer",
+        "resABPath": "sprites",
+        "assetExtension": "png"
+    },
+    {
+        "id": 10026,
+        "resName": "SoulOther",
+        "resDes": "里世界会出现在其他动物或者物品头顶的图标",
+        "resType": 6,
+        "resPath": "Sprites/SoulOther",
+        "resEditorPath": "ArtRes/Sprites/SoulOther",
+        "resABPath": "sprites",
+        "assetExtension": "png"
+    },
+    {
         "id": 20001,
-        "resName": "Card",
-        "resDes": "卡牌预制体",
+        "resName": "MousePrefab",
+        "resDes": "老鼠预制体",
         "resType": 0,
-        "resPath": "Prefabs/Card",
-        "resEditorPath": "ArtRes/Prefabs/Card",
+        "resPath": "Prefabs/MousePrefab",
+        "resEditorPath": "ArtRes/Prefabs/MousePrefab",
         "resABPath": "prefabs",
         "assetExtension": "prefab"
     },

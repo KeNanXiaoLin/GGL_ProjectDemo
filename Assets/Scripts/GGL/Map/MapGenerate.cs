@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class MapGenerate : MonoBehaviour
 {
-    public GameObject prefab;
-
     IEnumerator Start()
     {
         ConfigTable<CfgMapData> mapData = ConfigManager.Instance.GetTable<CfgMapData>();
@@ -24,41 +22,50 @@ public class MapGenerate : MonoBehaviour
         Vector2 worldPos = GameManager.Instance.MapCell.CellToWorldCenter(new Cell(item.x, item.y));
         GameObject obj = null;
         CfgMaskData maskData = ConfigManager.Instance.GetTable<CfgMaskData>().GetData(item.maskID);
-        obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-        Mask maskObj = obj.GetComponent<Mask>();
-        maskObj.abilityData = maskData;
-        maskObj.abilityID = maskData.id;
-        
-        if (maskObj != null)
+        ResLoadMgr.Instance.LoadRes<GameObject>(maskData.resPrefab, (p) =>
         {
-            ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resIdNoMask, (sp) =>
-            {
-                maskObj.spriteRenderer.sprite = sp;
-                Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
-                maskObj.nowCell = targetCell;
-                targetCell.SetAbility(maskObj);
-            });
-        }
+            GameObject prefab = p;
+            obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
+            // Mask maskObj = obj.GetComponent<Mask>();
+            // maskObj.abilityData = maskData;
+            // maskObj.abilityID = maskData.id;
+
+            // if (maskObj != null)
+            // {
+            //     ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resPrefab, (sp) =>
+            //     {
+            //         maskObj.spriteRenderer.sprite = sp;
+            //         Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
+            //         maskObj.nowCell = targetCell;
+            //         targetCell.SetAbility(maskObj);
+            //     });
+            // }
+        });
+
     }
 
-    public void SpawnItem(CfgMaskData maskData,Vector2 worldPos)
+    public void SpawnItem(CfgMaskData maskData, Vector2 worldPos)
     {
         GameObject obj = null;
-        obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-        Mask maskObj = obj.GetComponent<Mask>();
-        maskObj.abilityData = maskData;
-        maskObj.abilityID = maskData.id;
-        
-        if (maskObj != null)
+        ResLoadMgr.Instance.LoadRes<GameObject>(maskData.des, (p) =>
         {
-            ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resIdNoMask, (sp) =>
-            {
-                maskObj.spriteRenderer.sprite = sp;
-                Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
-                maskObj.nowCell = targetCell;
-                targetCell.SetAbility(maskObj);
-            });
-        }
+            GameObject prefab = p;
+            obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
+            // Mask maskObj = obj.GetComponent<Mask>();
+            // maskObj.abilityData = maskData;
+            // maskObj.abilityID = maskData.id;
+
+            // if (maskObj != null)
+            // {
+            //     ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resPrefab, (sp) =>
+            //     {
+            //         maskObj.spriteRenderer.sprite = sp;
+            //         Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
+            //         maskObj.nowCell = targetCell;
+            //         targetCell.SetAbility(maskObj);
+            //     });
+            // }
+        });
     }
 
 }

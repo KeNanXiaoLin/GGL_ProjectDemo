@@ -41,7 +41,6 @@ namespace KNXL
 
             //不停的遍历容器 检测有没有音效播放完毕 播放完了 就移除销毁它
             //为了避免边遍历边移除出问题 我们采用逆向遍历
-            Debug.Log($"当前正在播放的音效数量为{soundList.Count}");
             for (int i = soundList.Count - 1; i >= 0; --i)
             {
                 if (!soundList[i].isPlaying)

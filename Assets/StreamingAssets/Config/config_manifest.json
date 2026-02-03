@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-02-03 12:28:13",
+    "generate_time": "2026-02-03 17:30:22",
     "table_count": 3,
     "tables": [
         {
@@ -68,10 +68,10 @@
                     "is_enum": false
                 },
                 {
-                    "name": "worldType",
-                    "type": "enum",
-                    "desc": "面具对应的世界类型",
-                    "is_enum": true
+                    "name": "resPrefab",
+                    "type": "int",
+                    "desc": "面具对应资源表的预制体资源id",
+                    "is_enum": false
                 },
                 {
                     "name": "maskType",
@@ -92,16 +92,16 @@
                     "is_enum": false
                 },
                 {
-                    "name": "inputAction",
-                    "type": "enum",
-                    "desc": "面具对应的输入方式",
-                    "is_enum": true
+                    "name": "canMove",
+                    "type": "bool",
+                    "desc": "面具是否可以移动",
+                    "is_enum": false
                 },
                 {
-                    "name": "spType",
-                    "type": "enum",
-                    "desc": "面具对应的特殊能力",
-                    "is_enum": true
+                    "name": "resSoul",
+                    "type": "string",
+                    "desc": "面具在里世界会显示在头顶的图标",
+                    "is_enum": false
                 },
                 {
                     "name": "volume",
@@ -176,7 +176,7 @@
             "class_name": "CfgResData",
             "json_path": "ResData.json",
             "primary_key": "id",
-            "row_count": 49,
+            "row_count": 51,
             "fields": [
                 {
                     "name": "id",

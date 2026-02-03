@@ -26,6 +26,10 @@ namespace KNXL
         /// <summary>
         /// 更新游戏UI
         /// </summary>
-        UpdateGameUI,
+        E_UpdateGameUI,
+        /// <summary>
+        /// 世界发生变化触发的事件
+        /// </summary>
+        E_WorldChange,
     }
 }
