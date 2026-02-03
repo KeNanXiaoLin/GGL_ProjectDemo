@@ -370,4 +370,5 @@ FodyWeavers.xsd
 # Mac OS
 .DS_Store
 **/.DS_Store
-*.~
+# Ignore all Excel temporary files (Mac)
+Excel/.~*
