@@ -14,6 +14,12 @@ public class GameLogic : MonoBehaviour
 
     public E_World CurrentWorld { get => currentWorld; }
 
+    void Start()
+    {
+        currentWorld = E_World.Out_World;
+        EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
+    }
+
     // Update is called once per frame
     void Update()
     {
