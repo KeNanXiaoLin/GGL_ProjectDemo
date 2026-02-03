@@ -25,5 +25,9 @@ public class Main : MonoBehaviour
         {
             MusicMgr.Instance.PlaySound("游戏失败音效");
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            UIMgr.Instance.ShowPanel<EndPanel>();
+        }
     }
 }

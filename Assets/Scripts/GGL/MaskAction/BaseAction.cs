@@ -42,14 +42,7 @@ public class BaseAction : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (!isControl)
-        {
-
-        }
-        else
-        {
-
-        }
+        WorldSelfShow(GameManager.Instance.CurrentWorldType);
     }
 
     protected virtual void OnEnable()
@@ -157,6 +150,8 @@ public class BaseAction : MonoBehaviour
         switch (curWorld)
         {
             case E_World.In_World:
+                // 在里世界没有被控制，就需要显示灵魂
+                // 被控制了，显示的就是玩家的灵魂，这个逻辑由玩家处理
                 if (!isControl)
                 {
                     ResLoadMgr.Instance.LoadRes<Sprite>(data.resSoul, (sprite) =>

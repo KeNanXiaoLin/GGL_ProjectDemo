@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-02-03 17:30:22",
+    "generate_time": "2026-02-03 21:36:38",
     "table_count": 3,
     "tables": [
         {
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "resSoul",
-                    "type": "string",
+                    "type": "int",
                     "desc": "面具在里世界会显示在头顶的图标",
                     "is_enum": false
                 },
@@ -176,7 +176,7 @@
             "class_name": "CfgResData",
             "json_path": "ResData.json",
             "primary_key": "id",
-            "row_count": 51,
+            "row_count": 62,
             "fields": [
                 {
                     "name": "id",

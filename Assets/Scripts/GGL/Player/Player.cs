@@ -8,33 +8,20 @@ public class Player : MonoBehaviour
     [SerializeField] private int nowCrazyValue = 5;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer soulSR;
-
-    private CfgMaskData currentMaskData;
-    private E_World currentWorldType => GameManager.Instance.CurrentWorldType;
-    private float xInput, yInput;
-    // 记录一个移动的开始位置，方便重置移动
-    private Vector2 startMovePos = Vector2.zero;
-    // 记录上次移动的位置
-    private Vector2 lastMovePos;
-    // 记录里世界上次鼠标的位置
-    private Vector2 lastMousePos = Vector2.zero;
-    // 记录目标单元格
-    private Cell targetCell;
-    // 记录上一个面具数据
-    private CfgMaskData lastMaskData;
-    private bool hasTargetMaskInRange = false;
-    private bool isSave = false;
-    private bool isPause = false;
+    /// <summary>
+    /// 玩家持有的面具数据，宿主
+    /// </summary>
+    private CfgMaskData selfMaskData;
 
 
     private void Start()
     {
-        currentMaskData = ConfigManager.Instance.GetData<CfgMaskData>(10007);
-        ResLoadMgr.Instance.LoadRes<Sprite>(currentMaskData.resIdNoMask, (sprite) =>
+        selfMaskData = ConfigManager.Instance.GetData<CfgMaskData>(10007);
+        ResLoadMgr.Instance.LoadRes<Sprite>(selfMaskData.resIdNoMask, (sprite) =>
         {
             spriteRenderer.sprite = sprite;
         });
-        nowCrazyValue = currentMaskData.startCrazy;
+        nowCrazyValue = selfMaskData.startCrazy;
         EventCenter.Instance.EventTrigger<int>(E_EventType.E_UpdateGameUI, nowCrazyValue);
     }
 
@@ -53,7 +40,7 @@ public class Player : MonoBehaviour
         switch (curWorld)
         {
             case E_World.In_World:
-                ResLoadMgr.Instance.LoadRes<Sprite>(currentMaskData.resSoul, (sprite) =>
+                ResLoadMgr.Instance.LoadRes<Sprite>(selfMaskData.resSoul, (sprite) =>
                 {
                     soulSR.sprite = sprite;
                 });

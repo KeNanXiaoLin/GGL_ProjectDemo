@@ -31,13 +31,9 @@ public class MapGenerate : MonoBehaviour
 
             if (maskObj != null)
             {
-                ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resPrefab, (sp) =>
-                {
-                    maskObj.spriteRenderer.sprite = sp;
-                    Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
-                    maskObj.nowCell = targetCell;
-                    targetCell.Action = maskObj;
-                });
+                Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
+                maskObj.nowCell = targetCell;
+                targetCell.Action = maskObj;
             }
         });
 

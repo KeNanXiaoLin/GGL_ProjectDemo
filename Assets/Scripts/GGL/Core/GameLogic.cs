@@ -33,12 +33,14 @@ public class GameLogic : MonoBehaviour
         switch (currentWorld)
         {
             case E_World.In_World:
+                Debug.Log("进入外世界");
                 currentWorld = E_World.Out_World;
                 GameManager.Instance.CurrentWorldType = currentWorld;
                 EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
                 break;
             case E_World.Out_World:
-                currentWorld = E_World.Out_World;
+                Debug.Log("进入里世界");
+                currentWorld = E_World.In_World;
                 GameManager.Instance.CurrentWorldType = currentWorld;
                 EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
                 break;

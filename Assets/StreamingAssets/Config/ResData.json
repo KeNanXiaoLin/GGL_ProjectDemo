@@ -350,6 +350,116 @@
         "assetExtension": "prefab"
     },
     {
+        "id": 20002,
+        "resName": "CassettePrefab",
+        "resDes": "磁带预制体",
+        "resType": 0,
+        "resPath": "Prefabs/CassettePrefab",
+        "resEditorPath": "ArtRes/Prefabs/CassettePrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20003,
+        "resName": "WolfPrefab",
+        "resDes": "狼预制体",
+        "resType": 0,
+        "resPath": "Prefabs/WolfPrefab",
+        "resEditorPath": "ArtRes/Prefabs/WolfPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20004,
+        "resName": "CrowPrefab",
+        "resDes": "乌鸦预制体",
+        "resType": 0,
+        "resPath": "Prefabs/CrowPrefab",
+        "resEditorPath": "ArtRes/Prefabs/CrowPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20005,
+        "resName": "CrocodilePrefab",
+        "resDes": "鳄鱼预制体",
+        "resType": 0,
+        "resPath": "Prefabs/CrocodilePrefab",
+        "resEditorPath": "ArtRes/Prefabs/CrocodilePrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20006,
+        "resName": "ElephantPrefab",
+        "resDes": "大象预制体",
+        "resType": 0,
+        "resPath": "Prefabs/ElephantPrefab",
+        "resEditorPath": "ArtRes/Prefabs/ElephantPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20007,
+        "resName": "ChocolatePrefab",
+        "resDes": "巧克力预制体",
+        "resType": 0,
+        "resPath": "Prefabs/ChocolatePrefab",
+        "resEditorPath": "ArtRes/Prefabs/ChocolatePrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20008,
+        "resName": "RockPrefab",
+        "resDes": "岩石预制体",
+        "resType": 0,
+        "resPath": "Prefabs/RockPrefab",
+        "resEditorPath": "ArtRes/Prefabs/RockPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20009,
+        "resName": "StreetlightPrefab",
+        "resDes": "路灯预制体",
+        "resType": 0,
+        "resPath": "Prefabs/StreetlightPrefab",
+        "resEditorPath": "ArtRes/Prefabs/StreetlightPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20010,
+        "resName": "BallPrefab",
+        "resDes": "皮球预制体",
+        "resType": 0,
+        "resPath": "Prefabs/BallPrefab",
+        "resEditorPath": "ArtRes/Prefabs/BallPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20011,
+        "resName": "EmptyPrefab",
+        "resDes": "空预制体，用来占位",
+        "resType": 0,
+        "resPath": "Prefabs/EmptyPrefab",
+        "resEditorPath": "ArtRes/Prefabs/EmptyPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
+        "id": 20012,
+        "resName": "HumanPrefab",
+        "resDes": "人预制体",
+        "resType": 0,
+        "resPath": "Prefabs/HumanPrefab",
+        "resEditorPath": "ArtRes/Prefabs/HumanPrefab",
+        "resABPath": "prefabs",
+        "assetExtension": "prefab"
+    },
+    {
         "id": 30001,
         "resName": "Success",
         "resDes": "成功特效",
