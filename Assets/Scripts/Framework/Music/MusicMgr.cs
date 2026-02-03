@@ -12,23 +12,25 @@ namespace KNXL
     {
         //背景音乐播放组件
         private AudioSource bkMusic = null;
-        //音效播放组件
-        private AudioSource soundSource = null;
 
         //背景音乐大小
-        public float bkMusicValue = 1f;
+        private float bkMusicValue = 0.1f;
 
         //管理正在播放的音效
         private List<AudioSource> soundList = new List<AudioSource>();
         //音效音量大小
-        public float soundValue = 1f;
+        private float soundValue = 0.1f;
         //音效是否在播放
         private bool soundIsPlay = true;
+        //封装音乐大小属性，外部只能读取 不能修改
+        public float BKMusicValue => bkMusicValue;
+        //封装音效大小属性，外部只能读取 不能修改
+        public float SoundValue => soundValue;
 
 
         private MusicMgr()
         {
-            // MonoMgr.Instance.AddFixedUpdateListener(Update);
+            MonoMgr.Instance.AddFixedUpdateListener(Update);
         }
 
 
@@ -41,11 +43,7 @@ namespace KNXL
             //为了避免边遍历边移除出问题 我们采用逆向遍历
             for (int i = soundList.Count - 1; i >= 0; --i)
             {
-                if(soundList[i] == null)
-                {
-                    soundList.RemoveAt(i);
-                }
-                if (soundList[i] != null &&!soundList[i].isPlaying)
+                if (!soundList[i].isPlaying)
                 {
                     //音效播放完毕了 不再使用了 我们将这个音效切片置空
                     soundList[i].clip = null;
@@ -56,7 +54,10 @@ namespace KNXL
         }
 
 
-        //播放背景音乐
+        /// <summary>
+        /// 根据传入的背景音乐资源名字 来播放背景音乐
+        /// </summary>
+        /// <param name="name"></param>
         public void PlayBKMusic(string name)
         {
             //动态创建播放背景音乐的组件 并且 不会过场景移除 
@@ -70,16 +71,16 @@ namespace KNXL
             }
 
             //根据传入的背景音乐名字 来播放背景音乐
-            AudioClip clip = Resources.Load<AudioClip>("Music/" + name);
-  
-            bkMusic.clip = clip;
-            bkMusic.loop = true;
-            bkMusic.volume = bkMusicValue;
-            bkMusic.Play();
+            ResLoadMgr.Instance.LoadRes<AudioClip>(name, (clip) =>
+            {
+                bkMusic.clip = clip;
+                bkMusic.loop = true;
+                bkMusic.volume = bkMusicValue;
+                bkMusic.Play();
+            });
         }
 
-        //播放背景音乐
-        public void PlayBKMusic(int resID)
+        public void PlayBKMusic(int id)
         {
             //动态创建播放背景音乐的组件 并且 不会过场景移除 
             //保证背景音乐在过场景时也能播放
@@ -92,7 +93,7 @@ namespace KNXL
             }
 
             //根据传入的背景音乐名字 来播放背景音乐
-            ResLoadMgr.Instance.LoadRes<AudioClip>(resID, (clip) =>
+            ResLoadMgr.Instance.LoadRes<AudioClip>(id, (clip) =>
             {
                 bkMusic.clip = clip;
                 bkMusic.loop = true;
@@ -135,31 +136,26 @@ namespace KNXL
         /// <param name="callBack">加载结束后的回调</param>
         public void PlaySound(string name, bool isLoop = false, bool isSync = false, UnityAction<AudioSource> callBack = null)
         {
-            if(soundSource == null)
+            //加载音效资源 进行播放
+            ResLoadMgr.Instance.LoadRes<AudioClip>(name, (clip) =>
             {
-                GameObject obj1 = new GameObject();
-                soundSource = obj1.AddComponent<AudioSource>();
-                obj1.name = "SoundSource";
-                GameObject.DontDestroyOnLoad(obj1);
-            }
-            if(isLoop && soundSource.isPlaying)
-                return;
+                //从缓存池中取出音效对象得到对应组件
+                AudioSource source = PoolMgr.Instance.GetObj("Sound/soundObj").GetComponent<AudioSource>();
+                //如果取出来的音效是之前正在使用的 我们先停止它
+                source.Stop();
 
-            AudioClip clip = Resources.Load<AudioClip>("Sound/" + name);
-            //如果取出来的音效是之前正在使用的 我们先停止它
-            soundSource.Stop();
-
-            soundSource.clip = clip;
-            soundSource.loop = isLoop;
-            soundSource.volume = soundValue;
-            soundSource.Play();
-            //存储容器 用于记录 方便之后判断是否停止
-            //由于从缓存池中取出对象 有可能取出一个之前正在使用的（超上限时）
-            //所以我们需要判断 容器中没有记录再去记录 不要重复去添加即可
-            // if (!soundList.Contains(source))
-            //     soundList.Add(source);
-            // //传递给外部使用
-            // callBack?.Invoke(source);
+                source.clip = clip;
+                source.loop = isLoop;
+                source.volume = soundValue;
+                source.Play();
+                //存储容器 用于记录 方便之后判断是否停止
+                //由于从缓存池中取出对象 有可能取出一个之前正在使用的（超上限时）
+                //所以我们需要判断 容器中没有记录再去记录 不要重复去添加即可
+                if (!soundList.Contains(source))
+                    soundList.Add(source);
+                //传递给外部使用
+                callBack?.Invoke(source);
+            }, isSync);
         }
 
         /// <summary>
@@ -229,7 +225,6 @@ namespace KNXL
                 soundList[i].clip = null;
                 PoolMgr.Instance.PushObj(soundList[i].gameObject);
             }
-            //清空音效列表
             soundList.Clear();
         }
     }

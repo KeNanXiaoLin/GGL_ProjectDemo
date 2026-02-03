@@ -15,4 +15,12 @@ public class Main : MonoBehaviour
         UIMgr.Instance.ShowPanel<GameStartPanel>();
         // MusicMgr.Instance.PlayBKMusic("主界面");
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MusicMgr.Instance.PlayBKMusic(10001);
+        }
+    }
 }
