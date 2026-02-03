@@ -40,10 +40,9 @@ public class DrawLine : MonoBehaviour
             lineRenderer.startColor = Color.green;
             lineRenderer.endColor = Color.green;
             Cell targetCell = GameManager.Instance.MapCell.WorldToCell(mousePos);
-            if (targetCell.HasAbility())
+            if (targetCell.Action != null)
             {
                 lineRenderer.endColor = Color.yellow;
-
             }
         }
         else

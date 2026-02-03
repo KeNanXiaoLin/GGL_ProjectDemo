@@ -10,16 +10,12 @@ public class PauseManager : MonoBehaviour
     public void Restore()
     {
         pauseMenu.SetActive(false);
-        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        player.RestoreGame();
     }
 
     // 暂停游戏
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        player.PauseGame();
     }
 
     // 返回主菜单

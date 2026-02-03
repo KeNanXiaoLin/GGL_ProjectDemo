@@ -19,6 +19,10 @@ public class BaseAction : MonoBehaviour
     /// </summary>
     public SpriteRenderer soulRenderer;
     /// <summary>
+    /// 当前所处于地图的哪个格子
+    /// </summary>
+    public Cell nowCell;
+    /// <summary>
     /// 是否处于被控制的状态
     /// </summary>
     protected bool isControl = false;
@@ -59,7 +63,7 @@ public class BaseAction : MonoBehaviour
 
     }
 
-    protected virtual void Init(CfgMaskData cfgMaskData)
+    public virtual void Init(CfgMaskData cfgMaskData)
     {
         this.data = cfgMaskData;
     }

@@ -6,7 +6,9 @@ public class Cell
 {
     public int x;
     public int y;
-    private IAbility ability = null;
+    private BaseAction action;
+
+    public BaseAction Action { get => action; set => action = value; }
 
     public Cell(int x, int y)
     {
@@ -20,7 +22,7 @@ public class Cell
     /// <param name="a">第一个Cell对象</param>
     /// <param name="b">第二个Cell对象</param>
     /// <returns>如果两个Cell对象的x和y坐标都相等，则返回true；否则返回false</returns>
-    public static bool operator==(Cell a, Cell b)
+    public static bool operator ==(Cell a, Cell b)
     {
         // 处理null值的情况
         if (ReferenceEquals(a, b))
@@ -43,7 +45,7 @@ public class Cell
     /// <param name="a">第一个Cell对象</param>
     /// <param name="b">第二个Cell对象</param>
     /// <returns>如果两个Cell对象的x或y坐标不相等，则返回true；否则返回false</returns>
-    public static bool operator!=(Cell a, Cell b)
+    public static bool operator !=(Cell a, Cell b)
     {
         return !(a == b);
     }
@@ -75,32 +77,5 @@ public class Cell
         hash = hash * 23 + x.GetHashCode();
         hash = hash * 23 + y.GetHashCode();
         return hash;
-    }
-
-    /// <summary>
-    /// 单元格是否有能力
-    /// </summary>
-    /// <returns></returns>
-    public bool HasAbility()
-    {
-        return ability != null;
-    }
-
-    public void SetAbility(IAbility ability)
-    {
-        this.ability = ability;
-    }
-
-    public IAbility GetAbility()
-    {
-        return ability;
-    }
-
-    /// <summary>
-    /// 清除单元格的能力
-    /// </summary>
-    public void ClearAbility()
-    {
-        ability = null;
     }
 }

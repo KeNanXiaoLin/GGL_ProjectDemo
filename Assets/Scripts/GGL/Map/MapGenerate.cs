@@ -26,20 +26,19 @@ public class MapGenerate : MonoBehaviour
         {
             GameObject prefab = p;
             obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-            // Mask maskObj = obj.GetComponent<Mask>();
-            // maskObj.abilityData = maskData;
-            // maskObj.abilityID = maskData.id;
+            BaseAction maskObj = obj.GetComponent<BaseAction>();
+            maskObj.Init(maskData);
 
-            // if (maskObj != null)
-            // {
-            //     ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resPrefab, (sp) =>
-            //     {
-            //         maskObj.spriteRenderer.sprite = sp;
-            //         Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
-            //         maskObj.nowCell = targetCell;
-            //         targetCell.SetAbility(maskObj);
-            //     });
-            // }
+            if (maskObj != null)
+            {
+                ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resPrefab, (sp) =>
+                {
+                    maskObj.spriteRenderer.sprite = sp;
+                    Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
+                    maskObj.nowCell = targetCell;
+                    targetCell.Action = maskObj;
+                });
+            }
         });
 
     }
