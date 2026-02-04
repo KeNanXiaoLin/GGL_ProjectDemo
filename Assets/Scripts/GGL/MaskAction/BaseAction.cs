@@ -29,7 +29,7 @@ public class BaseAction : MonoBehaviour
     /// <summary>
     /// 当前这种面具持有的数据
     /// </summary>
-    protected CfgMaskData data;
+    public CfgMaskData data;
     private float xInput, yInput;
     /// <summary>
     /// 进入里世界，记录一次开始移动的位置
@@ -53,7 +53,7 @@ public class BaseAction : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-
+        EventCenter.Instance.RemoveEventListener<E_World>(E_EventType.E_WorldChange, WorldSelfShow);
     }
 
     public virtual void Init(CfgMaskData cfgMaskData)
@@ -155,6 +155,11 @@ public class BaseAction : MonoBehaviour
 
     private void WorldSelfShow(E_World curWorld)
     {
+        // 如果这个东西只是一个装饰的话，那么不需要处理
+        if (data.isDecorator)
+        {
+            return;
+        }
         switch (curWorld)
         {
             case E_World.In_World:
@@ -162,13 +167,26 @@ public class BaseAction : MonoBehaviour
                 // 被控制了，显示的就是玩家的灵魂，这个逻辑由玩家处理
                 if (!isControl)
                 {
+                    NotControlShow();
                     ResLoadMgr.Instance.LoadRes<Sprite>(data.resSoul, (sprite) =>
                     {
                         soulRenderer.sprite = sprite;
                     });
                 }
+                else
+                {
+                    ControlShow();
+                }
                 break;
             case E_World.Out_World:
+                if (!isControl)
+                {
+                    NotControlShow();
+                }
+                else
+                {
+                    ControlShow();
+                }
                 soulRenderer.sprite = null;
                 break;
         }

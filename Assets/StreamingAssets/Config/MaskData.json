@@ -18,7 +18,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10014,
-        "resIdWithMask": 10015
+        "resIdWithMask": 10015,
+        "isDecorator": false
     },
     {
         "id": 20001,
@@ -39,7 +40,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10003,
-        "resIdWithMask": 10004
+        "resIdWithMask": 10004,
+        "isDecorator": false
     },
     {
         "id": 10002,
@@ -60,7 +62,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10020,
-        "resIdWithMask": 10021
+        "resIdWithMask": 10021,
+        "isDecorator": false
     },
     {
         "id": 10003,
@@ -81,7 +84,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10009,
-        "resIdWithMask": 10010
+        "resIdWithMask": 10010,
+        "isDecorator": false
     },
     {
         "id": 10004,
@@ -102,7 +106,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10007,
-        "resIdWithMask": 10008
+        "resIdWithMask": 10008,
+        "isDecorator": false
     },
     {
         "id": 10005,
@@ -123,7 +128,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10011,
-        "resIdWithMask": 10012
+        "resIdWithMask": 10012,
+        "isDecorator": false
     },
     {
         "id": 20002,
@@ -144,7 +150,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10005,
-        "resIdWithMask": 10006
+        "resIdWithMask": 10006,
+        "isDecorator": false
     },
     {
         "id": 20003,
@@ -165,7 +172,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10016,
-        "resIdWithMask": 10017
+        "resIdWithMask": 10017,
+        "isDecorator": false
     },
     {
         "id": 20004,
@@ -186,7 +194,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10018,
-        "resIdWithMask": 10019
+        "resIdWithMask": 10019,
+        "isDecorator": false
     },
     {
         "id": 20005,
@@ -207,7 +216,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10001,
-        "resIdWithMask": 10002
+        "resIdWithMask": 10002,
+        "isDecorator": false
     },
     {
         "id": 20006,
@@ -228,7 +238,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10024,
-        "resIdWithMask": 10024
+        "resIdWithMask": 10024,
+        "isDecorator": true
     },
     {
         "id": 20007,
@@ -249,7 +260,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10023,
-        "resIdWithMask": 10023
+        "resIdWithMask": 10023,
+        "isDecorator": false
     },
     {
         "id": 10006,
@@ -270,7 +282,8 @@
         "startCrazy": 0,
         "moveSpeed": 3.0,
         "resIdNoMask": 10022,
-        "resIdWithMask": 10022
+        "resIdWithMask": 10022,
+        "isDecorator": true
     },
     {
         "id": 10007,
@@ -291,6 +304,7 @@
         "startCrazy": 5,
         "moveSpeed": 3.0,
         "resIdNoMask": 10013,
-        "resIdWithMask": 10013
+        "resIdWithMask": 10013,
+        "isDecorator": false
     }
 ]

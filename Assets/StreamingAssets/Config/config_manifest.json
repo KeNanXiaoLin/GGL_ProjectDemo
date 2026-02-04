@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-02-03 21:36:38",
+    "generate_time": "2026-02-05 00:06:17",
     "table_count": 3,
     "tables": [
         {
@@ -167,6 +167,12 @@
                     "name": "resIdWithMask",
                     "type": "int",
                     "desc": "戴面具的资源对应的资源表的id",
+                    "is_enum": false
+                },
+                {
+                    "name": "isDecorator",
+                    "type": "bool",
+                    "desc": "是否只是装饰物",
                     "is_enum": false
                 }
             ]

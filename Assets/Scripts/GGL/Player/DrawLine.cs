@@ -122,6 +122,15 @@ public class DrawLine : MonoBehaviour
             case E_World.Out_World:
                 DisableDraw();
                 ClearInfoLine();
+                // 判断上次指向的位置是否有交互物体
+                Cell targetCell = GameManager.Instance.MapCell.WorldToCell(lastMousePos);
+                // 进行结算
+                if (targetCell.Action != null && !targetCell.Action.data.isDecorator)
+                {
+                    int AddCrazyValue = GameManager.Instance.MapCell.CalGridDisByWorldPos(player.transform.position, lastMousePos);
+                    int minusCrazyValue = Mathf.CeilToInt(Vector2.Distance(player.transform.position, lastMousePos));
+                    player.ChangeCrazyValue(AddCrazyValue - minusCrazyValue);
+                }
                 break;
         }
     }

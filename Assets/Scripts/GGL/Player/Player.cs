@@ -52,4 +52,11 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+    public void ChangeCrazyValue(int changeValue)
+    {
+        nowCrazyValue += changeValue;
+        nowCrazyValue = Mathf.Clamp(nowCrazyValue, 0, 10);
+        EventCenter.Instance.EventTrigger<int>(E_EventType.E_UpdateGameUI, nowCrazyValue);
+    }
 }
