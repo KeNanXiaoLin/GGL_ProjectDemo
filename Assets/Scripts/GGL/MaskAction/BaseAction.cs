@@ -134,6 +134,14 @@ public class BaseAction : MonoBehaviour
             });
     }
 
+    protected virtual void ShowSelfWalkPath()
+    {
+        if (data.canMove)
+        {
+
+        }
+    }
+
     /// <summary>
     /// 脱离控制自己的表现
     /// </summary>

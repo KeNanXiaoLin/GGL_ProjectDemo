@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private CfgMaskData selfMaskData;
 
+    public int NowCrazyValue { get => nowCrazyValue; }
 
     private void Start()
     {
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour
             case E_World.In_World:
                 ResLoadMgr.Instance.LoadRes<Sprite>(selfMaskData.resSoul, (sprite) =>
                 {
-                    Debug.Log("加载灵魂成功"+selfMaskData.resSoul);
+                    Debug.Log("加载灵魂成功" + selfMaskData.resSoul);
                     soulSR.sprite = sprite;
                 });
                 break;

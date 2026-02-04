@@ -8,6 +8,7 @@ using UnityEngine;
 public class DrawLine : MonoBehaviour
 {
     public LineRenderer lineRenderer;
+    public Player player;
     [Tooltip("线的开始宽度")]
     [SerializeField] private float startWidth = 0.05f;
     [Tooltip("线的结束宽度")]
@@ -29,7 +30,7 @@ public class DrawLine : MonoBehaviour
         {
             DrawInfoLine(this.transform.position);
         }
-        
+
     }
 
     void OnEnable()
@@ -53,7 +54,7 @@ public class DrawLine : MonoBehaviour
         lineRenderer.startWidth = startWidth;
         lineRenderer.endWidth = endWidth;
         // 指向了自己
-        if (GameManager.Instance.MapCell.CalGridDisByWorldPos(startPos, mousePos) <= 10)
+        if (GameManager.Instance.MapCell.CalGridDisByWorldPos(startPos, mousePos) <= 10 - player.NowCrazyValue)
         {
             lineRenderer.startColor = Color.green;
             lineRenderer.endColor = Color.green;
