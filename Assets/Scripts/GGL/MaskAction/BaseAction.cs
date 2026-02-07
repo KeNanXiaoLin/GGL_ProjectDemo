@@ -70,6 +70,8 @@ public class BaseAction : MonoBehaviour
             {
                 DoMove();
                 LimitRange();
+                // 同步Player位置
+                SyncPlayerPosition();
             }
         }
 
@@ -147,6 +149,17 @@ public class BaseAction : MonoBehaviour
     }
 
     /// <summary>
+    /// 同步Player位置
+    /// </summary>
+    private void SyncPlayerPosition()
+    {
+        if (GameManager.Instance.Player != null)
+        {
+            GameManager.Instance.Player.transform.position = transform.position;
+        }
+    }
+
+    /// <summary>
     /// 被面具控制
     /// </summary>
     public void ControlMe()
@@ -157,6 +170,8 @@ public class BaseAction : MonoBehaviour
         // 初始化起始位置和上一帧位置
         startMovePos = transform.position;
         lastMovePos = transform.position;
+        // 同步Player位置到当前实体位置
+        SyncPlayerPosition();
     }
 
     /// <summary>
