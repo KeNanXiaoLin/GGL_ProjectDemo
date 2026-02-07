@@ -103,7 +103,47 @@ public class BaseAction : MonoBehaviour
     /// </summary>
     protected virtual void LimitRange()
     {
-
+        // 获取当前位置
+        Vector2 currentPos = transform.position;
+        
+        // 转换为单元格坐标
+        Cell currentCell = GameManager.Instance.MapCell.WorldToCell(currentPos);
+        
+        // 检查当前位置是否可移动
+        if (currentCell != null && !GameManager.Instance.MapCell.IsCellWalkable(currentCell))
+        {
+            // 如果当前位置不可移动，需要限制回可移动范围
+            if (lastMovePos != Vector3.zero)
+            {
+                // 将位置限制回上一帧的位置
+                transform.position = lastMovePos;
+            }
+            return;
+        }
+        
+        // 检查是否超出了移动范围
+        if (startMovePos != Vector3.zero && currentCell != null)
+        {
+            Cell startCell = GameManager.Instance.MapCell.WorldToCell(startMovePos);
+            if (startCell != null)
+            {
+                // 计算当前位置到起始位置的曼哈顿距离
+                int distance = Mathf.Abs(currentCell.x - startCell.x) + Mathf.Abs(currentCell.y - startCell.y);
+                
+                // 如果距离超过最大移动范围，限制回范围内
+                if (distance > data.startLizi)
+                {
+                    if (lastMovePos != Vector3.zero)
+                    {
+                        transform.position = lastMovePos;
+                    }
+                    return;
+                }
+            }
+        }
+        
+        // 更新上一帧的位置
+        lastMovePos = transform.position;
     }
 
     /// <summary>
@@ -113,6 +153,10 @@ public class BaseAction : MonoBehaviour
     {
         isControl = true;
         ControlShow();
+        ControlShowMeWalkPath();
+        // 初始化起始位置和上一帧位置
+        startMovePos = transform.position;
+        lastMovePos = transform.position;
     }
 
     /// <summary>
@@ -122,6 +166,7 @@ public class BaseAction : MonoBehaviour
     {
         isControl = false;
         NotControlShow();
+        GameManager.Instance.MapCell.ClearWalkPath();
     }
 
     /// <summary>
@@ -135,10 +180,22 @@ public class BaseAction : MonoBehaviour
             });
     }
 
+    /// <summary>
+    /// 被控制的时候，显示自己可以移动的路径
+    /// </summary>
+    protected virtual void ControlShowMeWalkPath()
+    {
+        if(data.canMove)
+        {
+            ShowSelfWalkPath();
+        }
+    }
+
     protected virtual void ShowSelfWalkPath()
     {
         if (data.canMove)
         {
+            GameManager.Instance.MapCell.ShowWalkPath(nowCell, data.startLizi);
 
         }
     }
@@ -220,4 +277,6 @@ public class BaseAction : MonoBehaviour
             yield return null;
         }
     }
+
+
 }

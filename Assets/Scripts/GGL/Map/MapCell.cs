@@ -16,6 +16,9 @@ public class MapCell : MonoBehaviour
     public Tile notWalkTile;
     public Cell[,] cells; // 改为二维数组
     public bool showDebug = false;
+    // 用于BFS的队列和距离字典
+    Queue<Cell> queue = new Queue<Cell>();
+    Dictionary<Cell, int> distanceMap = new Dictionary<Cell, int>();
 
     void Awake()
     {
@@ -119,6 +122,111 @@ public class MapCell : MonoBehaviour
                 renderer.enabled = false;
                 break;
         }
+    }
+
+    /// <summary>
+    /// 显示玩家可以移动的范围
+    /// </summary>
+    /// <param name="currentCell">当前单元格</param>
+    /// <param name="maxDistance">最大移动距离</param>
+    public void ShowWalkPath(Cell currentCell, int maxDistance)
+    {
+        // 清空之前的路径显示
+        ClearWalkPath();
+        
+        if (currentCell == null || maxDistance <= 0)
+            return;
+        
+        int cellWidth = cells.GetLength(0);
+        int cellHeight = cells.GetLength(1);
+        
+        // 使用广度优先搜索计算可移动范围
+        queue.Clear();
+        distanceMap.Clear();
+        
+        queue.Enqueue(currentCell);
+        distanceMap[currentCell] = 0;
+        
+        while (queue.Count > 0)
+        {
+            Cell cell = queue.Dequeue();
+            int currentDistance = distanceMap[cell];
+            
+            // 如果当前距离已经达到最大值，不再继续搜索
+            if (currentDistance >= maxDistance)
+                continue;
+            
+            // 检查四个方向的相邻单元格
+            CheckAndAddNeighbor(cell.x + 1, cell.y, currentDistance + 1, queue, distanceMap, cellWidth, cellHeight);
+            CheckAndAddNeighbor(cell.x - 1, cell.y, currentDistance + 1, queue, distanceMap, cellWidth, cellHeight);
+            CheckAndAddNeighbor(cell.x, cell.y + 1, currentDistance + 1, queue, distanceMap, cellWidth, cellHeight);
+            CheckAndAddNeighbor(cell.x, cell.y - 1, currentDistance + 1, queue, distanceMap, cellWidth, cellHeight);
+        }
+        
+        // 遍历所有在移动范围内的格子
+        foreach (var kvp in distanceMap)
+        {
+            Cell cell = kvp.Key;
+            int distance = kvp.Value;
+            
+            Vector3Int cellPos = new Vector3Int(cell.x + startPos.x, cell.y + startPos.y, 0);
+            
+            // 检查单元格是否可移动
+            if (IsCellWalkable(cell))
+            {
+                // 可移动的格子显示绿色
+                info.SetTile(cellPos, canWalkTile);
+            }
+            else
+            {
+                // 不可移动的格子显示红色
+                info.SetTile(cellPos, notWalkTile);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 检查并添加相邻单元格
+    /// </summary>
+    private void CheckAndAddNeighbor(int x, int y, int distance, Queue<Cell> queue, Dictionary<Cell, int> distanceMap, int cellWidth, int cellHeight)
+    {
+        // 检查坐标是否在有效范围内
+        if (x >= 0 && x < cellWidth && y >= 0 && y < cellHeight)
+        {
+            Cell neighborCell = cells[x, y];
+            // 检查单元格是否存在且未被访问过
+            if (neighborCell != null && !distanceMap.ContainsKey(neighborCell))
+            {
+                queue.Enqueue(neighborCell);
+                distanceMap[neighborCell] = distance;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 检查单元格是否可移动
+    /// </summary>
+    public bool IsCellWalkable(Cell cell)
+    {
+        // 检查单元格是否存在
+        if (cell == null)
+            return false;
+        
+        // 检查单元格是否有不可移动的动作
+        if (cell.Action != null && !cell.Action.data.canMove)
+            return false;
+        
+        // 检查地面是否存在（通过Tilemap）
+        Vector3Int cellPos = new Vector3Int(cell.x + startPos.x, cell.y + startPos.y, 0);
+        return ground.HasTile(cellPos);
+    }
+
+    /// <summary>
+    /// 清空移动路径显示
+    /// </summary>
+    public void ClearWalkPath()
+    {
+        info.ClearAllTiles();
     }
 
 #if UNITY_EDITOR
