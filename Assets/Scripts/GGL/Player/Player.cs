@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     /// 是否控制着其他面具，一开始是控制着自己的
     /// </summary>
     private bool isControl = false;
+    /// <summary>
+    /// 当前控制的实体
+    /// </summary>
+    private BaseAction currentControlledAction = null;
 
     public int NowCrazyValue { get => nowCrazyValue; }
 
@@ -85,8 +89,31 @@ public class Player : MonoBehaviour
             Debug.LogError("开启控制其他面具的功能时，传入的action为空");
             return;
         }
+        
+        // 先释放之前控制的实体
+        if(currentControlledAction != null)
+        {
+            currentControlledAction.NotControlMe();
+        }
+        
+        // 设置新控制的实体
+        currentControlledAction = action;
         isControl = true;
         ShowSelfSoul(GameManager.Instance.CurrentWorldType);
         transform.position = action.transform.position;
+    }
+    
+    /// <summary>
+    /// 释放控制的实体
+    /// </summary>
+    public void ReleaseControl()
+    {
+        if(currentControlledAction != null)
+        {
+            currentControlledAction.NotControlMe();
+            currentControlledAction = null;
+        }
+        isControl = false;
+        ShowSelfSoul(GameManager.Instance.CurrentWorldType);
     }
 }
