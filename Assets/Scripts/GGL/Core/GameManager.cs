@@ -14,6 +14,7 @@ public class GameManager : BaseManager<GameManager>
     private CameraController cameraController;
     public MyVector3 playerPos = new MyVector3(-7, -1, 0);
     private Player player;
+    private GameLogic gameLogic;
     public E_World CurrentWorldType
     {
         get { return currentWorldType; }
@@ -61,6 +62,19 @@ public class GameManager : BaseManager<GameManager>
             return player;
         }
         private set => player = value;
+    }
+
+    public GameLogic GameLogic
+    {
+        get
+        {
+            if (gameLogic == null)
+            {
+                gameLogic = GameObject.FindWithTag("GameLogic").GetComponent<GameLogic>();
+            }
+            return gameLogic;
+        }
+        private set => gameLogic = value;
     }
 
     private GameManager()

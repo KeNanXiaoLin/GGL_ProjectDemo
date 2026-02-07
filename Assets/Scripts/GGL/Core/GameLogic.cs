@@ -14,12 +14,29 @@ public class GameLogic : MonoBehaviour
     /// </summary>
     private E_World currentWorld;
     public Volume volume;
+    /// <summary>
+    /// 当前世界所有可以被附身的东西的行为
+    /// </summary>
+    public List<BaseAction> actions = new List<BaseAction>();
 
     void Start()
     {
         currentWorld = E_World.Out_World;
         GameManager.Instance.CurrentWorldType = currentWorld;
         EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
+    }
+
+    public void InitActions()
+    {
+        actions.Clear();
+        BaseAction[] tempActions = GameObject.FindObjectsOfType<BaseAction>();
+        foreach (var item in tempActions)
+        {
+            if(!item.data.isDecorator)
+            {
+                actions.Add(item);
+            }
+        }
     }
 
     // Update is called once per frame

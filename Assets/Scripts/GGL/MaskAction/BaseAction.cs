@@ -39,6 +39,7 @@ public class BaseAction : MonoBehaviour
     /// 上一次移动的距离，主要是限制玩家在某个范围内移动
     /// </summary>
     private Vector3 lastMovePos;
+    private Coroutine moveCoroutine;
 
     protected virtual void Start()
     {
@@ -176,6 +177,7 @@ public class BaseAction : MonoBehaviour
                 else
                 {
                     ControlShow();
+                    DoSelfSpecial();
                 }
                 break;
             case E_World.Out_World:
@@ -189,6 +191,33 @@ public class BaseAction : MonoBehaviour
                 }
                 soulRenderer.sprite = null;
                 break;
+        }
+    }
+
+    protected virtual void DoSelfSpecial()
+    {
+        // 子类可以重写这个方法，实现自己的特殊表现
+    }
+
+    /// <summary>
+    /// 移动到指定位置
+    /// </summary>
+    /// <param name="targetPos"></param>
+    public void MoveTo(Vector3 targetPos)
+    {
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+        moveCoroutine = StartCoroutine(MoveToCoroutine(targetPos));
+    }
+
+    private IEnumerator MoveToCoroutine(Vector3 targetPos)
+    {
+        while (transform.position != targetPos)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, data.moveSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 }

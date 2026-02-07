@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     /// 玩家持有的面具数据，宿主
     /// </summary>
     private CfgMaskData selfMaskData;
+    /// <summary>
+    /// 是否控制着其他面具，一开始是控制着自己的
+    /// </summary>
+    private bool isControl = false;
 
     public int NowCrazyValue { get => nowCrazyValue; }
 
@@ -41,6 +45,12 @@ public class Player : MonoBehaviour
         switch (curWorld)
         {
             case E_World.In_World:
+                // 如果控制着其他的面具，不显示自己原本的模样
+                if(isControl)
+                {
+                    spriteRenderer.sprite = null;
+                    break;
+                }
                 ResLoadMgr.Instance.LoadRes<Sprite>(selfMaskData.resSoul, (sprite) =>
                 {
                     Debug.Log("加载灵魂成功" + selfMaskData.resSoul);
@@ -48,6 +58,12 @@ public class Player : MonoBehaviour
                 });
                 break;
             case E_World.Out_World:
+                // 如果控制着其他的面具，不显示自己原本的模样
+                if(isControl)
+                {
+                    spriteRenderer.sprite = null;
+                    break;
+                }
                 soulSR.sprite = null;
                 break;
         }
@@ -58,5 +74,19 @@ public class Player : MonoBehaviour
         nowCrazyValue += changeValue;
         nowCrazyValue = Mathf.Clamp(nowCrazyValue, 0, 10);
         EventCenter.Instance.EventTrigger<int>(E_EventType.E_UpdateGameUI, nowCrazyValue);
+    }
+    /// <summary>
+    /// 开启控制其他面具的功能,得到主要是为了管理自己的显示
+    /// </summary> <summary>
+    public void EnableControl(BaseAction action)
+    {
+        if(action == null)
+        {
+            Debug.LogError("开启控制其他面具的功能时，传入的action为空");
+            return;
+        }
+        isControl = true;
+        ShowSelfSoul(GameManager.Instance.CurrentWorldType);
+        transform.position = action.transform.position;
     }
 }
