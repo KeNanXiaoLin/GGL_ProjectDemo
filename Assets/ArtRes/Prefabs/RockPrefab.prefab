@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6928095038366123225}
   - component: {fileID: 6844051961165487539}
-  - component: {fileID: 663318965011659743}
+  - component: {fileID: 3839867140166888215}
   m_Layer: 7
   m_Name: RockPrefab
   m_TagString: Untagged
@@ -312,7 +312,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95265496, y: 1.1538713}
   m_EdgeRadius: 0
---- !u!114 &663318965011659743
+--- !u!114 &3839867140166888215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8686688568587782242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e00d6cda5844519889f45773c9d3e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 47f31a838a85dc0459dd3b92aa79219d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6203024351489941729}

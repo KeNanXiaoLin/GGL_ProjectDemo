@@ -255,10 +255,10 @@ public class BaseAction : MonoBehaviour
     private void WorldSelfShow(E_World curWorld)
     {
         // 如果这个东西只是一个装饰的话，那么不需要处理
-        if (data.isDecorator)
-        {
-            return;
-        }
+        // if (data.isDecorator)
+        // {
+        //     return;
+        // }
         switch (curWorld)
         {
             case E_World.In_World:
