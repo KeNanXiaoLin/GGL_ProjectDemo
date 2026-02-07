@@ -235,6 +235,7 @@ public class BaseAction : MonoBehaviour
     {
         if (data.canMove)
         {
+            Debug.Log($"显示自己可以移动的路径，最大移动范围：{lizi}");
             GameManager.Instance.MapCell.ShowWalkPath(nowCell, lizi);
 
         }
@@ -275,6 +276,11 @@ public class BaseAction : MonoBehaviour
                 {
                     ControlShow();
                     DoSelfSpecial();
+                    // 进入里世界时重新显示可移动范围
+                    if (data.canMove)
+                    {
+                        ShowSelfWalkPath();
+                    }
                 }
                 break;
             case E_World.Out_World:
@@ -313,6 +319,7 @@ public class BaseAction : MonoBehaviour
             if (distance > 0.1f)
             {
                 // 根据移动距离消耗理智值
+                // 根据移动距离消耗理智值
                 int distanceCost = Mathf.CeilToInt(distance);
                 lizi -= distanceCost;
                 
@@ -320,6 +327,12 @@ public class BaseAction : MonoBehaviour
                 lizi = Mathf.Max(0, lizi);
                 
                 Debug.Log($"{data.des} 移动了 {distance:F2} 单位，消耗了 {distanceCost} 点理智值，剩余理智值: {lizi}");
+                
+                // 重新显示可移动范围，反映新的理智值
+                if (isControl && data.canMove)
+                {
+                    ShowSelfWalkPath();
+                }
             }
             else
             {
