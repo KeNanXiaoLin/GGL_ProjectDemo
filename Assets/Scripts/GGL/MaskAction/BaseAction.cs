@@ -30,6 +30,10 @@ public class BaseAction : MonoBehaviour
     /// 当前这种面具持有的数据
     /// </summary>
     public CfgMaskData data;
+    /// <summary>
+    /// 面具的理智值
+    /// </summary>
+    public int lizi { get; set; }
     private float xInput, yInput;
     /// <summary>
     /// 进入里世界，记录一次开始移动的位置
@@ -60,13 +64,16 @@ public class BaseAction : MonoBehaviour
     public virtual void Init(CfgMaskData cfgMaskData)
     {
         this.data = cfgMaskData;
+        // 初始化理智值
+        lizi = data.startLizi;
     }
 
     void Update()
     {
         if (isControl)
         {
-            if (data.canMove)
+            // 只有在里世界才可以移动
+            if (data.canMove && GameManager.Instance.CurrentWorldType == E_World.In_World)
             {
                 DoMove();
                 LimitRange();
@@ -133,7 +140,7 @@ public class BaseAction : MonoBehaviour
                 int distance = Mathf.Abs(currentCell.x - startCell.x) + Mathf.Abs(currentCell.y - startCell.y);
                 
                 // 如果距离超过最大移动范围，限制回范围内
-                if (distance > data.startLizi)
+                if (distance > lizi)
                 {
                     if (lastMovePos != Vector3.zero)
                     {
@@ -142,6 +149,22 @@ public class BaseAction : MonoBehaviour
                     return;
                 }
             }
+        }
+        
+        // 更新格子信息（如果格子发生了变化）
+        if (currentCell != null && nowCell != currentCell)
+        {
+            // 清除原格子的action引用
+            if (nowCell != null)
+            {
+                nowCell.Action = null;
+            }
+            
+            // 更新当前格子
+            nowCell = currentCell;
+            
+            // 设置新格子的action引用
+            currentCell.Action = this;
         }
         
         // 更新上一帧的位置
@@ -172,6 +195,8 @@ public class BaseAction : MonoBehaviour
         lastMovePos = transform.position;
         // 同步Player位置到当前实体位置
         SyncPlayerPosition();
+        // 触发特殊行为
+        DoSelfSpecial();
     }
 
     /// <summary>
@@ -210,7 +235,7 @@ public class BaseAction : MonoBehaviour
     {
         if (data.canMove)
         {
-            GameManager.Instance.MapCell.ShowWalkPath(nowCell, data.startLizi);
+            GameManager.Instance.MapCell.ShowWalkPath(nowCell, lizi);
 
         }
     }
@@ -260,6 +285,9 @@ public class BaseAction : MonoBehaviour
                 else
                 {
                     ControlShow();
+                    // 从里世界切换到表世界，结算理智值
+                    CalculateLizi();
+                    
                 }
                 soulRenderer.sprite = null;
                 break;
@@ -269,6 +297,38 @@ public class BaseAction : MonoBehaviour
     protected virtual void DoSelfSpecial()
     {
         // 子类可以重写这个方法，实现自己的特殊表现
+    }
+    
+    /// <summary>
+    /// 结算理智值
+    /// </summary>
+    private void CalculateLizi()
+    {
+        if (startMovePos != Vector3.zero)
+        {
+            // 计算移动距离
+            float distance = Vector3.Distance(startMovePos, transform.position);
+            
+            // 只有移动距离超过0.1时才消耗理智值
+            if (distance > 0.1f)
+            {
+                // 根据移动距离消耗理智值
+                int distanceCost = Mathf.CeilToInt(distance);
+                lizi -= distanceCost;
+                
+                // 确保理智值不会小于0
+                lizi = Mathf.Max(0, lizi);
+                
+                Debug.Log($"{data.des} 移动了 {distance:F2} 单位，消耗了 {distanceCost} 点理智值，剩余理智值: {lizi}");
+            }
+            else
+            {
+                Debug.Log($"{data.des} 没有移动，不消耗理智值");
+            }
+            
+            // 重置起始位置
+            startMovePos = transform.position;
+        }
     }
 
     /// <summary>
@@ -286,10 +346,45 @@ public class BaseAction : MonoBehaviour
 
     private IEnumerator MoveToCoroutine(Vector3 targetPos)
     {
-        while (transform.position != targetPos)
+        // 保存原始格子
+        Cell originalCell = nowCell;
+        
+        while (Vector3.Distance(transform.position, targetPos) > 0.01f)
         {
+            // 计算移动方向
+            Vector3 moveDir = (targetPos - transform.position).normalized;
+            
+            // 根据移动方向设置朝向
+            if (moveDir.x > 0 && this.transform.localScale == Vector3.one)
+            {
+                // 向右移动，翻转
+                this.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (moveDir.x < 0 && this.transform.localScale == new Vector3(-1, 1, 1))
+            {
+                // 向左移动，恢复
+                this.transform.localScale = Vector3.one;
+            }
+            
             transform.position = Vector3.MoveTowards(transform.position, targetPos, data.moveSpeed * Time.deltaTime);
             yield return null;
+        }
+        
+        // 移动完成后，更新格子信息
+        Cell newCell = GameManager.Instance.MapCell.WorldToCell(transform.position);
+        if (newCell != null)
+        {
+            // 清除原格子的action引用
+            if (originalCell != null)
+            {
+                originalCell.Action = null;
+            }
+            
+            // 更新当前格子
+            nowCell = newCell;
+            
+            // 设置新格子的action引用
+            newCell.Action = this;
         }
     }
 

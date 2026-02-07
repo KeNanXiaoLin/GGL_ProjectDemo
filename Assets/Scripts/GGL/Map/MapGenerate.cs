@@ -15,6 +15,9 @@ public class MapGenerate : MonoBehaviour
             SpawnItem(item);
             yield return null;
         }
+        // 等待所有实体生成完成后，初始化actions列表
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.GameLogic.InitActions();
     }
 
     public void SpawnItem(CfgMapData item)

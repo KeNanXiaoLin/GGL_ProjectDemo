@@ -70,7 +70,7 @@ public class GameManager : BaseManager<GameManager>
         {
             if (gameLogic == null)
             {
-                gameLogic = GameObject.FindWithTag("GameLogic").GetComponent<GameLogic>();
+                gameLogic = GameObject.Find("GameLogic").GetComponent<GameLogic>();
             }
             return gameLogic;
         }
