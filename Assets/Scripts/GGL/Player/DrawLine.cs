@@ -128,13 +128,17 @@ public class DrawLine : MonoBehaviour
                 // 记录一下玩家当前的位置，后面会用到这个值进行计算
                 Vector3 playerPos = player.transform.position;
                 int AddCrazyValue = GameManager.Instance.MapCell.CalGridDisByWorldPos(playerPos, lastMousePos);
-                // 超过了最大范围，游戏结束
+                
+                // 检查是否超出了最大范围
+                bool isGameOver = false;
                 if(targetCell.Action != null && AddCrazyValue > 10-player.NowCrazyValue)
                 {
                     UIMgr.Instance.ShowPanel<GameOverPanel>();
+                    isGameOver = true;
                 }
-                // 进行结算
-                if (targetCell.Action != null && !targetCell.Action.data.isDecorator)
+                
+                // 只有在没有游戏结束时才进行附身操作
+                if (!isGameOver && targetCell.Action != null && !targetCell.Action.data.isDecorator)
                 {
                     // 检查是否点击的是自己当前控制的实体
                     bool isSelfControl = false;
