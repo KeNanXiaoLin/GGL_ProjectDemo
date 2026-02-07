@@ -136,6 +136,16 @@ public class GameManager : BaseManager<GameManager>
         CurrentLevel++;
     }
 
+    public void RestartLevel()
+    {
+        CurrentLevel -= 1;
+    }
+
+    public void GoToFirstLevel()
+    {
+        CurrentLevel = 1;
+    }
+
     public void SaveGame()
     {
         JsonMgr.Instance.SaveData(currentLevel, "LevelInfo");

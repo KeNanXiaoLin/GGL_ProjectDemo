@@ -21,6 +21,8 @@ public class Cassette : BaseAction
     /// </summary>
     private void SaveGameData()
     {
+        //这关已经通关了，先保存，方便回档
+        GameManager.Instance.SaveGame();
         GameManager.Instance.GoToNextLevel();
         // 设置下一关
         // 现在只有5关
@@ -33,9 +35,6 @@ public class Cassette : BaseAction
             // 应该是显示通过面板
             UIMgr.Instance.ShowPanel<GameWinPanel>();
         }
-        
-        
-        GameManager.Instance.SaveGame();
         
         Debug.Log($"游戏数据已保存，当前关卡: {GameManager.Instance.CurrentLevel}");
     }
