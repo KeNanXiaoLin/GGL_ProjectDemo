@@ -1,0 +1,51 @@
+ManifestFileVersion: 0
+CRC: 920415211
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c32eb54cf77e1674c1431fb2b1d79fd2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: c32eb54cf77e1674c1431fb2b1d79fd2
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ArtRes/Sprites/green.png
+- Assets/ArtRes/Sprites/red.png
+- Assets/ArtRes/Sprites/Streetlight1.PNG
+- Assets/ArtRes/Sprites/Blue.png
+- Assets/ArtRes/Sprites/Swamp.png
+- Assets/ArtRes/Sprites/Chocolate1.PNG
+- Assets/ArtRes/Sprites/Fence.png
+- Assets/ArtRes/Sprites/Crocodile.PNG
+- Assets/ArtRes/Sprites/Cassette.PNG
+- Assets/ArtRes/Sprites/Crow1.PNG
+- Assets/ArtRes/Sprites/Mouse1.PNG
+- Assets/ArtRes/Sprites/Crow.PNG
+- Assets/ArtRes/Sprites/Elephant.PNG
+- Assets/ArtRes/Sprites/Crocodile1.PNG
+- Assets/ArtRes/Sprites/Streetlight.PNG
+- Assets/ArtRes/Sprites/SoulOther.png
+- Assets/ArtRes/Sprites/Ball.PNG
+- Assets/ArtRes/Sprites/Mouse.PNG
+- Assets/ArtRes/Sprites/Chocolate.PNG
+- Assets/ArtRes/Sprites/white.png
+- Assets/ArtRes/Sprites/Wolf.PNG
+- Assets/ArtRes/Sprites/SoulPlayer.png
+- Assets/ArtRes/Sprites/Cassette1.PNG
+- Assets/ArtRes/Sprites/Mask.PNG
+- Assets/ArtRes/Sprites/Ball1.PNG
+- Assets/ArtRes/Sprites/Elephant1.PNG
+- Assets/ArtRes/Sprites/Human.png
+- Assets/ArtRes/Sprites/Wolf1.PNG
+- Assets/ArtRes/Sprites/Rock1.PNG
+- Assets/ArtRes/Sprites/Rock.PNG
+Dependencies: []

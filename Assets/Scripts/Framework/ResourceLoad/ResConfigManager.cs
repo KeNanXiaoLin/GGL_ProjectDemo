@@ -51,7 +51,7 @@ namespace KNXL
                 case E_ResLoadType.AB:
                     // AB包模式：返回AB包名（加载AB包）+ 包内路径
                     // 这里可返回ABName或拼接ABName+ABPath，根据你的AB加载逻辑调整
-                    return config.resABPath;
+                    return config.resABPath + "/" + config.resName;
                 default:
                     Debug.LogError($"未知加载模式：{_currentLoadType}");
                     return null;
@@ -84,7 +84,7 @@ namespace KNXL
                 case E_ResLoadType.AB:
                     // AB包模式：返回AB包名（加载AB包）+ 包内路径
                     // 这里可返回ABName或拼接ABName+ABPath，根据你的AB加载逻辑调整
-                    return config.resABPath;
+                    return config.resABPath + "/" + config.resName;
                 default:
                     Debug.LogError($"未知加载模式：{_currentLoadType}");
                     return null;

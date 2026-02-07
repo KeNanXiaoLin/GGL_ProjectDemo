@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 2535262263
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dbb27be785c47a2926e5354f394e2fec
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: dbb27be785c47a2926e5354f394e2fec
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/ArtRes/Sound/\u6E38\u620F\u5F00\u59CB\u6441\u952E.wav"
+- "Assets/ArtRes/Sound/\u9644\u8EAB\u4EA4\u4E92\u97F3\u6548.wav"
+- "Assets/ArtRes/Sound/\u8001\u9F20\u79FB\u52A8\u97F3\u6548.wav"
+- "Assets/ArtRes/Sound/\u6E38\u620F\u5931\u8D25\u97F3\u6548.wav"
+- "Assets/ArtRes/Sound/\u72FC\u79FB\u52A8\u97F3\u6548.aiff"
+- "Assets/ArtRes/Sound/\u6E38\u620F\u5931\u8D25\u97F3\u654802.wav"
+- "Assets/ArtRes/Sound/\u706F\u9644\u8EAB\u97F3\u6548.wav"
+- "Assets/ArtRes/Sound/\u6441\u952E\u9009\u9879.wav"
+- "Assets/ArtRes/Sound/\u72FC\u9644\u8EAB\u65F6\u97F3\u6548.wav"
+- "Assets/ArtRes/Sound/\u9644\u8EAB\u78C1\u5E26.wav"
+Dependencies: []
