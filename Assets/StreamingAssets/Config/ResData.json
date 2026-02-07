@@ -80,6 +80,16 @@
         "assetExtension": "prefab"
     },
     {
+        "id": 9,
+        "resName": "GameWinPanel",
+        "resDes": "通关面板",
+        "resType": 0,
+        "resPath": "UI/Panel/GameWinPanel",
+        "resEditorPath": "ArtRes/UI/Panel/GameWinPanel",
+        "resABPath": "ui",
+        "assetExtension": "prefab"
+    },
+    {
         "id": 10001,
         "resName": "Ball",
         "resDes": "没戴面具的球",

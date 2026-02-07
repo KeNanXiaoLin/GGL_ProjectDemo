@@ -15,14 +15,11 @@ public class MapGenerate : MonoBehaviour
     {
         ConfigTable<CfgMapData> mapData = ConfigManager.Instance.GetTable<CfgMapData>();
         
-        // 清空当前场景中的所有BaseAction对象（除了装饰品）
+        // 清空当前场景中的所有BaseAction对象
         BaseAction[] existingActions = GameObject.FindObjectsOfType<BaseAction>();
         foreach (var action in existingActions)
         {
-            if (!action.data.isDecorator)
-            {
-                Destroy(action.gameObject);
-            }
+            Destroy(action.gameObject);
         }
         
         // 等待销毁完成

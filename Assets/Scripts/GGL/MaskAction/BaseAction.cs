@@ -267,10 +267,14 @@ public class BaseAction : MonoBehaviour
                 if (!isControl)
                 {
                     NotControlShow();
-                    ResLoadMgr.Instance.LoadRes<Sprite>(data.resSoul, (sprite) =>
+                    if(!data.isDecorator)
                     {
-                        soulRenderer.sprite = sprite;
-                    });
+                        ResLoadMgr.Instance.LoadRes<Sprite>(data.resSoul, (sprite) =>
+                        {
+                            soulRenderer.sprite = sprite;
+                        });
+                    }
+                    
                 }
                 else
                 {

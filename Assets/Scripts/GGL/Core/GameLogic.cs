@@ -48,7 +48,7 @@ public class GameLogic : MonoBehaviour
         {
             Debug.LogError("GenerateLevel: mapGenerate is null");
         }
-        GameManager.Instance.InitPos();
+        GameManager.Instance.InitPlayer();
     }
 
     public void InitActions()

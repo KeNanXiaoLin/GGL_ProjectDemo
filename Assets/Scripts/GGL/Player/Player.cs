@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
         selfMaskData = ConfigManager.Instance.GetData<CfgMaskData>(10007);
         ResLoadMgr.Instance.LoadRes<Sprite>(selfMaskData.resIdNoMask, (sprite) =>
         {
@@ -35,6 +40,8 @@ public class Player : MonoBehaviour
         });
         nowCrazyValue = selfMaskData.startCrazy;
         this.transform.position = new Vector3(-7, -1, 0);
+        // 初始化时，释放控制，确保自己是被控制的
+        ReleaseControl();
         EventCenter.Instance.EventTrigger<int>(E_EventType.E_UpdateGameUI, nowCrazyValue);
     }
 

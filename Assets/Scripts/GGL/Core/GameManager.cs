@@ -114,9 +114,9 @@ public class GameManager : BaseManager<GameManager>
     /// <summary>
     /// 初始化玩家位置
     /// </summary>
-    public void InitPos()
+    public void InitPlayer()
     {
-        player.transform.position = new Vector3(-7, -1, 0);
+        Player.Init();
     }
 
     public void GoToInWorld()

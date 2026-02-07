@@ -31,6 +31,7 @@ public class Cassette : BaseAction
         else
         {
             // 应该是显示通过面板
+            UIMgr.Instance.ShowPanel<GameWinPanel>();
         }
         
         
