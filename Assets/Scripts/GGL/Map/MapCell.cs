@@ -22,9 +22,40 @@ public class MapCell : MonoBehaviour
 
     void Awake()
     {
-        startPos = ground.cellBounds.min;
-        endPos = ground.cellBounds.max;
-        InitCell();
+        RefreshTilemapBounds();
+    }
+    
+    /// <summary>
+    /// 强制刷新Tilemap边界
+    /// </summary>
+    [ContextMenu("刷新Tilemap边界")]
+    public void RefreshTilemapBounds()
+    {
+        if(info != null)
+        {
+            info.CompressBounds();
+        }
+        if (ground != null)
+        {
+            // 强制更新Tilemap的边界
+            ground.CompressBounds();
+            
+            // 获取更新后的边界
+            startPos = ground.cellBounds.min;
+            endPos = ground.cellBounds.max;
+            
+            // 验证边界是否正确
+            BoundsInt bounds = ground.cellBounds;
+            Debug.Log($"Tilemap边界信息: min={bounds.min}, max={bounds.max}, size={bounds.size}");
+            
+            // 初始化Cell
+            InitCell();
+            Debug.Log($"Tilemap边界已刷新: startPos={startPos}, endPos={endPos}");
+        }
+        else
+        {
+            Debug.LogError("RefreshTilemapBounds: ground is null");
+        }
     }
 
     private void OnEnable() {

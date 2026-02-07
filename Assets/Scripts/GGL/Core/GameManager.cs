@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : BaseManager<GameManager>
 {
     private E_World currentWorldType;
+    private int currentLevel;
     private MapCell mapCell;
 
     private MapGenerate mapGenerate;
@@ -15,6 +16,17 @@ public class GameManager : BaseManager<GameManager>
     public MyVector3 playerPos = new MyVector3(-7, -1, 0);
     private Player player;
     private GameLogic gameLogic;
+    public int CurrentLevel
+    {
+        get { return currentLevel; }
+        private set
+        {
+            if (currentLevel != value)
+            {
+                currentLevel = value;
+            }
+        }
+    }
     public E_World CurrentWorldType
     {
         get { return currentWorldType; }
