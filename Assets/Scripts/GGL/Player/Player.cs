@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     /// 当前控制的实体
     /// </summary>
     private BaseAction currentControlledAction = null;
+    
+    public BaseAction CurrentControlledAction { get => currentControlledAction; }
 
     public int NowCrazyValue { get => nowCrazyValue; }
 

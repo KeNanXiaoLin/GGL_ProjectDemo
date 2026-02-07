@@ -136,12 +136,34 @@ public class DrawLine : MonoBehaviour
                 // 进行结算
                 if (targetCell.Action != null && !targetCell.Action.data.isDecorator)
                 {
+                    // 检查是否点击的是自己当前控制的实体
+                    bool isSelfControl = false;
+                    if (player.CurrentControlledAction != null)
+                    {
+                        // 检查目标Action是否就是当前控制的Action
+                        isSelfControl = (targetCell.Action == player.CurrentControlledAction);
+                    }
+                    
                     // 开启附身功能
                     player.EnableControl(targetCell.Action);
                     targetCell.Action.ControlMe();
-                    int minusCrazyValue = Mathf.CeilToInt(Vector2.Distance(playerPos, lastMousePos));
-                    Debug.Log($"AddCrazyValue: {AddCrazyValue}, minusCrazyValue: {minusCrazyValue}");
-                    player.ChangeCrazyValue(AddCrazyValue - minusCrazyValue);
+                    
+                    // 只有当不是点击自己且移动距离超过0.1时才计算疯狂值
+                    float distance = Vector2.Distance(playerPos, lastMousePos);
+                    if (!isSelfControl && distance > 0.1f)
+                    {
+                        int minusCrazyValue = Mathf.CeilToInt(distance);
+                        Debug.Log($"AddCrazyValue: {AddCrazyValue}, minusCrazyValue: {minusCrazyValue}");
+                        player.ChangeCrazyValue(AddCrazyValue - minusCrazyValue);
+                    }
+                    else if (isSelfControl)
+                    {
+                        Debug.Log("点击自己当前控制的实体，不改变疯狂值");
+                    }
+                    else
+                    {
+                        Debug.Log("没有移动，不改变疯狂值");
+                    }
                 }
                 break;
         }

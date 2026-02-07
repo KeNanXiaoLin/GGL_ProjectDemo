@@ -316,7 +316,7 @@ public class BaseAction : MonoBehaviour
             float distance = Vector3.Distance(startMovePos, transform.position);
             
             // 只有移动距离超过0.1时才消耗理智值
-            if (distance > 0.1f)
+            if (distance > 1f)
             {
                 // 根据移动距离消耗理智值
                 // 根据移动距离消耗理智值
