@@ -18,12 +18,37 @@ public class GameLogic : MonoBehaviour
     /// 当前世界所有可以被附身的东西的行为
     /// </summary>
     public List<BaseAction> actions = new List<BaseAction>();
+    
+    private MapGenerate mapGenerate;
 
     void Start()
     {
         currentWorld = E_World.Out_World;
         GameManager.Instance.CurrentWorldType = currentWorld;
         EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
+        
+        // 获取MapGenerate组件
+        mapGenerate = GetComponent<MapGenerate>();
+        
+        // 生成当前关卡
+        GenerateLevel(GameManager.Instance.CurrentLevel);
+    }
+
+    /// <summary>
+    /// 生成指定关卡
+    /// </summary>
+    /// <param name="levelID">关卡ID</param>
+    public void GenerateLevel(int levelID)
+    {
+        if (mapGenerate != null)
+        {
+            StartCoroutine(mapGenerate.GenerateLevel(levelID));
+        }
+        else
+        {
+            Debug.LogError("GenerateLevel: mapGenerate is null");
+        }
+        GameManager.Instance.InitPos();
     }
 
     public void InitActions()

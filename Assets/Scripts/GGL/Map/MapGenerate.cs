@@ -7,22 +7,47 @@ using UnityEngine;
 
 public class MapGenerate : MonoBehaviour
 {
-    IEnumerator Start()
+    /// <summary>
+    /// 生成指定关卡
+    /// </summary>
+    /// <param name="levelID">关卡ID</param>
+    public IEnumerator GenerateLevel(int levelID)
     {
         ConfigTable<CfgMapData> mapData = ConfigManager.Instance.GetTable<CfgMapData>();
+        
+        // 清空当前场景中的所有BaseAction对象（除了装饰品）
+        BaseAction[] existingActions = GameObject.FindObjectsOfType<BaseAction>();
+        foreach (var action in existingActions)
+        {
+            if (!action.data.isDecorator)
+            {
+                Destroy(action.gameObject);
+            }
+        }
+        
+        // 等待销毁完成
+        yield return new WaitForSeconds(0.1f);
+        
+        // 生成指定关卡的所有物品
         foreach (var item in mapData.AllData)
         {
-            SpawnItem(item);
-            yield return null;
+            if (item.LevelID == levelID)
+            {
+                SpawnItem(item);
+                yield return null;
+            }
         }
+        
         // 等待所有实体生成完成后，初始化actions列表
         yield return new WaitForSeconds(0.5f);
         GameManager.Instance.GameLogic.InitActions();
+        
+        Debug.Log($"关卡 {levelID} 生成完成");
     }
 
     public void SpawnItem(CfgMapData item)
     {
-        Vector2 worldPos = GameManager.Instance.MapCell.CellToWorldCenter(new Cell(item.x, item.y));
+        Vector2 worldPos = new Vector2(item.x+0.5f, item.y+0.5f);
         GameObject obj = null;
         CfgMaskData maskData = ConfigManager.Instance.GetTable<CfgMaskData>().GetData(item.maskID);
         ResLoadMgr.Instance.LoadRes<GameObject>(maskData.resPrefab, (p) =>
@@ -40,30 +65,6 @@ public class MapGenerate : MonoBehaviour
             }
         });
 
-    }
-
-    public void SpawnItem(CfgMaskData maskData, Vector2 worldPos)
-    {
-        GameObject obj = null;
-        ResLoadMgr.Instance.LoadRes<GameObject>(maskData.des, (p) =>
-        {
-            GameObject prefab = p;
-            obj = Instantiate(prefab, new Vector3(worldPos.x, worldPos.y, 0), Quaternion.identity);
-            // Mask maskObj = obj.GetComponent<Mask>();
-            // maskObj.abilityData = maskData;
-            // maskObj.abilityID = maskData.id;
-
-            // if (maskObj != null)
-            // {
-            //     ResLoadMgr.Instance.LoadRes<Sprite>(maskData.resPrefab, (sp) =>
-            //     {
-            //         maskObj.spriteRenderer.sprite = sp;
-            //         Cell targetCell = GameManager.Instance.MapCell.WorldToCell(worldPos);
-            //         maskObj.nowCell = targetCell;
-            //         targetCell.SetAbility(maskObj);
-            //     });
-            // }
-        });
     }
 
 }

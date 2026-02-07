@@ -8,12 +8,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : BaseManager<GameManager>
 {
     private E_World currentWorldType;
-    private int currentLevel;
+    private int currentLevel = 1;
     private MapCell mapCell;
 
     private MapGenerate mapGenerate;
     private CameraController cameraController;
-    public MyVector3 playerPos = new MyVector3(-7, -1, 0);
     private Player player;
     private GameLogic gameLogic;
     public int CurrentLevel
@@ -112,9 +111,12 @@ public class GameManager : BaseManager<GameManager>
         Player = null;
     }
 
+    /// <summary>
+    /// 初始化玩家位置
+    /// </summary>
     public void InitPos()
     {
-        playerPos = new MyVector3(-7, -1, 0);
+        player.transform.position = new Vector3(-7, -1, 0);
     }
 
     public void GoToInWorld()
@@ -129,13 +131,18 @@ public class GameManager : BaseManager<GameManager>
         cameraController.ChangeCamProp(E_World.Out_World);
     }
 
-    public void SaveGame(object data)
+    public void GoToNextLevel()
     {
-        JsonMgr.Instance.SaveData(data, "playerPos");
+        CurrentLevel++;
+    }
+
+    public void SaveGame()
+    {
+        JsonMgr.Instance.SaveData(currentLevel, "LevelInfo");
     }
 
     public void LoadGame()
     {
-        playerPos = JsonMgr.Instance.LoadData<MyVector3>("playerPos");
+        currentLevel = JsonMgr.Instance.LoadData<int>("LevelInfo");
     }
 }

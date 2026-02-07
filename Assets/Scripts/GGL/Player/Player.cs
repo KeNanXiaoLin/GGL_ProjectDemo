@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
             spriteRenderer.sprite = sprite;
         });
         nowCrazyValue = selfMaskData.startCrazy;
+        this.transform.position = new Vector3(-7, -1, 0);
         EventCenter.Instance.EventTrigger<int>(E_EventType.E_UpdateGameUI, nowCrazyValue);
     }
 
