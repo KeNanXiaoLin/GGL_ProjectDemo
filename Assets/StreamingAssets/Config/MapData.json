@@ -1,626 +1,839 @@
 [
     {
         "id": 10001,
-        "des": "老鼠",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 5,
-        "y": 5,
-        "maskID": 10001
+        "x": -4,
+        "y": 0,
+        "maskID": 10001,
+        "LevelID": 1
     },
     {
         "id": 10002,
-        "des": "巧克力",
+        "des": "Chocolate",
         "sizeType": 0,
-        "x": 9,
-        "y": 5,
-        "maskID": 20002
+        "x": 0,
+        "y": 0,
+        "maskID": 20002,
+        "LevelID": 1
     },
     {
         "id": 10003,
-        "des": "老鼠",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 11,
-        "y": 3,
-        "maskID": 10001
+        "x": 2,
+        "y": -2,
+        "maskID": 10001,
+        "LevelID": 1
     },
     {
         "id": 10004,
-        "des": "老鼠",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 11,
-        "y": 9,
-        "maskID": 10001
+        "x": 2,
+        "y": 4,
+        "maskID": 10001,
+        "LevelID": 1
     },
     {
         "id": 10005,
-        "des": "老鼠",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 12,
-        "y": 6,
-        "maskID": 10001
+        "x": 3,
+        "y": 1,
+        "maskID": 10001,
+        "LevelID": 1
     },
     {
         "id": 10006,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 1,
-        "maskID": 10006
+        "x": 7,
+        "y": -5,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10007,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 2,
-        "maskID": 10006
+        "x": 7,
+        "y": -4,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10008,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 3,
-        "maskID": 10006
+        "x": 7,
+        "y": -3,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10009,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 4,
-        "maskID": 10006
+        "x": 7,
+        "y": -2,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10010,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 5,
-        "maskID": 10006
+        "x": 7,
+        "y": -1,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10011,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 6,
-        "maskID": 10006
+        "x": 7,
+        "y": 0,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10012,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 7,
-        "maskID": 10006
+        "x": 7,
+        "y": 1,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10013,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 8,
-        "maskID": 10006
+        "x": 7,
+        "y": 2,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10014,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 9,
-        "maskID": 10006
+        "x": 7,
+        "y": 3,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10015,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 14,
-        "y": 10,
-        "maskID": 10006
+        "x": 7,
+        "y": 4,
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10016,
-        "des": "磁带",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 15,
+        "x": 7,
         "y": 5,
-        "maskID": 20001
+        "maskID": 10006,
+        "LevelID": 1
     },
     {
         "id": 10017,
-        "des": "老鼠",
+        "des": "Cassette",
         "sizeType": 0,
-        "x": 17,
-        "y": 4,
-        "maskID": 10001
+        "x": 8,
+        "y": 0,
+        "maskID": 20001,
+        "LevelID": 1
     },
     {
         "id": 10018,
-        "des": "路灯",
+        "des": "Mouse",
         "sizeType": 2,
-        "x": 17,
-        "y": 5,
-        "maskID": 20004
+        "x": -5,
+        "y": -2,
+        "maskID": 10001,
+        "LevelID": 2
     },
     {
         "id": 10019,
-        "des": "老鼠",
+        "des": "Streetlight",
         "sizeType": 0,
-        "x": 17,
-        "y": 7,
-        "maskID": 10001
+        "x": -5,
+        "y": 0,
+        "maskID": 20004,
+        "LevelID": 2
     },
     {
         "id": 10020,
-        "des": "老鼠",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 18,
-        "y": 5,
-        "maskID": 10001
+        "x": -5,
+        "y": 2,
+        "maskID": 10001,
+        "LevelID": 2
     },
     {
         "id": 10021,
-        "des": "路灯",
+        "des": "Mouse",
         "sizeType": 2,
-        "x": 24,
-        "y": 5,
-        "maskID": 20004
+        "x": -4,
+        "y": 0,
+        "maskID": 10001,
+        "LevelID": 2
     },
     {
         "id": 10022,
-        "des": "乌鸦",
+        "des": "Streetlight",
         "sizeType": 0,
-        "x": 27,
-        "y": 5,
-        "maskID": 10003
+        "x": 3,
+        "y": 0,
+        "maskID": 20004,
+        "LevelID": 2
     },
     {
         "id": 10023,
-        "des": "栅栏",
+        "des": "Crow",
         "sizeType": 0,
-        "x": 31,
-        "y": 1,
-        "maskID": 10006
+        "x": 6,
+        "y": 0,
+        "maskID": 10003,
+        "LevelID": 2
     },
     {
         "id": 10024,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 2,
-        "maskID": 10006
+        "x": 9,
+        "y": -5,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10025,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 3,
-        "maskID": 10006
+        "x": 9,
+        "y": -4,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10026,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 4,
-        "maskID": 10006
+        "x": 9,
+        "y": -3,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10027,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 5,
-        "maskID": 10006
+        "x": 9,
+        "y": -2,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10028,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 6,
-        "maskID": 10006
+        "x": 9,
+        "y": -1,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10029,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 7,
-        "maskID": 10006
+        "x": 9,
+        "y": 0,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10030,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 8,
-        "maskID": 10006
+        "x": 9,
+        "y": 1,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10031,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 9,
-        "maskID": 10006
+        "x": 9,
+        "y": 2,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10032,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 31,
-        "y": 10,
-        "maskID": 10006
+        "x": 9,
+        "y": 3,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10033,
-        "des": "磁带",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 32,
-        "y": 5,
-        "maskID": 20001
+        "x": 9,
+        "y": 4,
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10034,
-        "des": "老鼠",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 34,
+        "x": 9,
         "y": 5,
-        "maskID": 10001
+        "maskID": 10006,
+        "LevelID": 2
     },
     {
         "id": 10035,
-        "des": "石头",
+        "des": "Cassette",
         "sizeType": 0,
-        "x": 37,
-        "y": 5,
-        "maskID": 20003
+        "x": 10,
+        "y": 0,
+        "maskID": 20001,
+        "LevelID": 2
     },
     {
         "id": 10036,
-        "des": "巧克力",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 38,
-        "y": 2,
-        "maskID": 20002
+        "x": -5,
+        "y": 0,
+        "maskID": 10001,
+        "LevelID": 3
     },
     {
         "id": 10037,
-        "des": "石头",
+        "des": "Rock",
         "sizeType": 0,
-        "x": 38,
-        "y": 5,
-        "maskID": 20003
+        "x": -2,
+        "y": 0,
+        "maskID": 20003,
+        "LevelID": 3
     },
     {
         "id": 10038,
-        "des": "路灯",
+        "des": "Chocolate",
         "sizeType": 2,
-        "x": 38,
-        "y": 8,
-        "maskID": 20004
+        "x": -1,
+        "y": -3,
+        "maskID": 20002,
+        "LevelID": 3
     },
     {
         "id": 10039,
-        "des": "石头",
+        "des": "Rock",
         "sizeType": 0,
-        "x": 39,
-        "y": 5,
-        "maskID": 20003
+        "x": -1,
+        "y": 0,
+        "maskID": 20003,
+        "LevelID": 3
     },
     {
         "id": 10040,
-        "des": "老鼠",
+        "des": "Streetlight",
         "sizeType": 0,
-        "x": 39,
-        "y": 8,
-        "maskID": 10001
+        "x": -1,
+        "y": 3,
+        "maskID": 20004,
+        "LevelID": 3
     },
     {
         "id": 10041,
-        "des": "老鼠",
+        "des": "Rock",
         "sizeType": 0,
-        "x": 41,
-        "y": 2,
-        "maskID": 10001
+        "x": 0,
+        "y": 0,
+        "maskID": 20003,
+        "LevelID": 3
     },
     {
         "id": 10042,
-        "des": "路灯",
+        "des": "Mouse",
         "sizeType": 2,
-        "x": 43,
-        "y": 5,
-        "maskID": 20004
+        "x": 0,
+        "y": 3,
+        "maskID": 10001,
+        "LevelID": 3
     },
     {
         "id": 10043,
-        "des": "乌鸦",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 46,
-        "y": 5,
-        "maskID": 10003
+        "x": 3,
+        "y": -3,
+        "maskID": 10001,
+        "LevelID": 3
     },
     {
         "id": 10044,
-        "des": "栅栏",
+        "des": "Streetlight",
         "sizeType": 0,
-        "x": 50,
-        "y": 1,
-        "maskID": 10006
+        "x": 5,
+        "y": 0,
+        "maskID": 20004,
+        "LevelID": 3
     },
     {
         "id": 10045,
-        "des": "栅栏",
+        "des": "Crow",
         "sizeType": 0,
-        "x": 50,
-        "y": 2,
-        "maskID": 10006
+        "x": 8,
+        "y": 0,
+        "maskID": 10003,
+        "LevelID": 3
     },
     {
         "id": 10046,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 3,
-        "maskID": 10006
+        "x": 10,
+        "y": -5,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10047,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 4,
-        "maskID": 10006
+        "x": 10,
+        "y": -4,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10048,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 5,
-        "maskID": 10006
+        "x": 10,
+        "y": -3,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10049,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 6,
-        "maskID": 10006
+        "x": 10,
+        "y": -2,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10050,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 7,
-        "maskID": 10006
+        "x": 10,
+        "y": -1,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10051,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 8,
-        "maskID": 10006
+        "x": 10,
+        "y": 0,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10052,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 9,
-        "maskID": 10006
+        "x": 10,
+        "y": 1,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10053,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 50,
-        "y": 10,
-        "maskID": 10006
+        "x": 10,
+        "y": 2,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10054,
-        "des": "人",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 51,
-        "y": 5,
-        "maskID": 20007
+        "x": 10,
+        "y": 3,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10055,
-        "des": "老鼠",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 52,
-        "y": 7,
-        "maskID": 10001
+        "x": 10,
+        "y": 4,
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10056,
-        "des": "巧克力",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 53,
+        "x": 10,
         "y": 5,
-        "maskID": 20002
+        "maskID": 10006,
+        "LevelID": 3
     },
     {
         "id": 10057,
-        "des": "石头",
+        "des": "Cassette",
         "sizeType": 0,
-        "x": 54,
-        "y": 5,
-        "maskID": 20003
+        "x": 11,
+        "y": 0,
+        "maskID": 20001,
+        "LevelID": 3
     },
     {
         "id": 10058,
-        "des": "石头",
+        "des": "Chocolate",
         "sizeType": 0,
-        "x": 55,
-        "y": 4,
-        "maskID": 20003
+        "x": -6,
+        "y": 0,
+        "maskID": 20002,
+        "LevelID": 4
     },
     {
         "id": 10059,
-        "des": "石头",
+        "des": "Rock",
         "sizeType": 0,
-        "x": 55,
-        "y": 6,
-        "maskID": 20003
+        "x": -5,
+        "y": 0,
+        "maskID": 20003,
+        "LevelID": 4
     },
     {
         "id": 10060,
-        "des": "老鼠",
+        "des": "Rock",
         "sizeType": 0,
-        "x": 56,
-        "y": 4,
-        "maskID": 10001
+        "x": -4,
+        "y": -1,
+        "maskID": 20003,
+        "LevelID": 4
     },
     {
         "id": 10061,
-        "des": "狼",
+        "des": "Rock",
         "sizeType": 0,
-        "x": 56,
-        "y": 5,
-        "maskID": 10002
+        "x": -4,
+        "y": 1,
+        "maskID": 20003,
+        "LevelID": 4
     },
     {
         "id": 10062,
-        "des": "老鼠",
+        "des": "Wolf",
         "sizeType": 0,
-        "x": 57,
-        "y": 6,
-        "maskID": 10001
+        "x": -3,
+        "y": 0,
+        "maskID": 10002,
+        "LevelID": 4
     },
     {
         "id": 10063,
-        "des": "栅栏",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 68,
-        "y": 1,
-        "maskID": 10006
+        "x": -2,
+        "y": -1,
+        "maskID": 10001,
+        "LevelID": 4
     },
     {
         "id": 10064,
-        "des": "栅栏",
+        "des": "Mouse",
         "sizeType": 0,
-        "x": 68,
-        "y": 2,
-        "maskID": 10006
+        "x": -2,
+        "y": 1,
+        "maskID": 10001,
+        "LevelID": 4
     },
     {
         "id": 10065,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 3,
-        "maskID": 10006
+        "x": 9,
+        "y": -5,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10066,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 4,
-        "maskID": 10006
+        "x": 9,
+        "y": -4,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10067,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 5,
-        "maskID": 10006
+        "x": 9,
+        "y": -3,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10068,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 6,
-        "maskID": 10006
+        "x": 9,
+        "y": -2,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10069,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 7,
-        "maskID": 10006
+        "x": 9,
+        "y": -1,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10070,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 8,
-        "maskID": 10006
+        "x": 9,
+        "y": 0,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10071,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 9,
-        "maskID": 10006
+        "x": 9,
+        "y": 1,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10072,
-        "des": "栅栏",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 68,
-        "y": 10,
-        "maskID": 10006
+        "x": 9,
+        "y": 2,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10073,
-        "des": "磁带",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 69,
-        "y": 5,
-        "maskID": 20001
+        "x": 9,
+        "y": 3,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10074,
-        "des": "狼",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 71,
-        "y": 5,
-        "maskID": 10002
+        "x": 9,
+        "y": 4,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10075,
-        "des": "巧克力",
+        "des": "Fence",
         "sizeType": 0,
-        "x": 74,
-        "y": 3,
-        "maskID": 20002
+        "x": 9,
+        "y": 5,
+        "maskID": 10006,
+        "LevelID": 4
     },
     {
         "id": 10076,
-        "des": "路灯",
+        "des": "Cassette",
         "sizeType": 2,
-        "x": 74,
-        "y": 7,
-        "maskID": 20004
+        "x": 10,
+        "y": 0,
+        "maskID": 20001,
+        "LevelID": 4
     },
     {
         "id": 10077,
-        "des": "乌鸦",
+        "des": "Wolf",
         "sizeType": 0,
-        "x": 81,
-        "y": 3,
-        "maskID": 10003
+        "x": -6,
+        "y": 0,
+        "maskID": 10002,
+        "LevelID": 5
     },
     {
         "id": 10078,
-        "des": "路灯",
+        "des": "Chocolate",
         "sizeType": 0,
-        "x": 81,
-        "y": 7,
-        "maskID": 20004
+        "x": -3,
+        "y": -2,
+        "maskID": 20002,
+        "LevelID": 5
+    },
+    {
+        "id": 10079,
+        "des": "Streetlight",
+        "sizeType": 0,
+        "x": -3,
+        "y": 2,
+        "maskID": 20004,
+        "LevelID": 5
+    },
+    {
+        "id": 10080,
+        "des": "Crow",
+        "sizeType": 0,
+        "x": 4,
+        "y": -2,
+        "maskID": 10003,
+        "LevelID": 5
+    },
+    {
+        "id": 10081,
+        "des": "Streetlight",
+        "sizeType": 0,
+        "x": 4,
+        "y": 2,
+        "maskID": 20004,
+        "LevelID": 5
+    },
+    {
+        "id": 10082,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": -5,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10083,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": -4,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10084,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": -3,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10085,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": -2,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10086,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": -1,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10087,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": 0,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10088,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": 1,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10089,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": 2,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10090,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": 3,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10091,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": 4,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10092,
+        "des": "Fence",
+        "sizeType": 0,
+        "x": 8,
+        "y": 5,
+        "maskID": 10006,
+        "LevelID": 5
+    },
+    {
+        "id": 10093,
+        "des": "Cassette",
+        "sizeType": 0,
+        "x": 9,
+        "y": 0,
+        "maskID": 20001,
+        "LevelID": 5
     }
 ]

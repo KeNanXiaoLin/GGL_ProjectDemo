@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generate_time": "2026-02-05 00:06:17",
+    "generate_time": "2026-02-07 17:34:33",
     "table_count": 3,
     "tables": [
         {
@@ -8,7 +8,7 @@
             "class_name": "CfgMapData",
             "json_path": "MapData.json",
             "primary_key": "id",
-            "row_count": 78,
+            "row_count": 93,
             "fields": [
                 {
                     "name": "id",
@@ -44,6 +44,12 @@
                     "name": "maskID",
                     "type": "int",
                     "desc": "对应MaskData中面具的ID",
+                    "is_enum": false
+                },
+                {
+                    "name": "LevelID",
+                    "type": "int",
+                    "desc": "对应的关卡",
                     "is_enum": false
                 }
             ]

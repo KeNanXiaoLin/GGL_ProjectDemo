@@ -1,0 +1,562 @@
+{
+    "items": [
+        {
+            "x": -4,
+            "y": 0,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "maskID": 20002,
+            "des": "Chocolate"
+        },
+        {
+            "x": 2,
+            "y": -2,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 2,
+            "y": 4,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 3,
+            "y": 1,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 7,
+            "y": -5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": -4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": -3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": -2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": -1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": 0,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": 1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": 2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": 3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": 4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 7,
+            "y": 5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 0,
+            "maskID": 20001,
+            "des": "Cassette"
+        },
+        {
+            "x": -5,
+            "y": -2,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": -5,
+            "y": 0,
+            "maskID": 20004,
+            "des": "Streetlight"
+        },
+        {
+            "x": -5,
+            "y": 2,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": -4,
+            "y": 0,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 3,
+            "y": 0,
+            "maskID": 20004,
+            "des": "Streetlight"
+        },
+        {
+            "x": 6,
+            "y": 0,
+            "maskID": 10003,
+            "des": "Crow"
+        },
+        {
+            "x": 9,
+            "y": -5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 0,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 0,
+            "maskID": 20001,
+            "des": "Cassette"
+        },
+        {
+            "x": -5,
+            "y": 0,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": -2,
+            "y": 0,
+            "maskID": 20003,
+            "des": "Rock"
+        },
+        {
+            "x": -1,
+            "y": -3,
+            "maskID": 20002,
+            "des": "Chocolate"
+        },
+        {
+            "x": -1,
+            "y": 0,
+            "maskID": 20003,
+            "des": "Rock"
+        },
+        {
+            "x": -1,
+            "y": 3,
+            "maskID": 20004,
+            "des": "Streetlight"
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "maskID": 20003,
+            "des": "Rock"
+        },
+        {
+            "x": 0,
+            "y": 3,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 3,
+            "y": -3,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 5,
+            "y": 0,
+            "maskID": 20004,
+            "des": "Streetlight"
+        },
+        {
+            "x": 8,
+            "y": 0,
+            "maskID": 10003,
+            "des": "Crow"
+        },
+        {
+            "x": 10,
+            "y": -5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": -4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": -3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": -2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": -1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 0,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 11,
+            "y": 0,
+            "maskID": 20001,
+            "des": "Cassette"
+        },
+        {
+            "x": -6,
+            "y": 0,
+            "maskID": 20002,
+            "des": "Chocolate"
+        },
+        {
+            "x": -5,
+            "y": 0,
+            "maskID": 20003,
+            "des": "Rock"
+        },
+        {
+            "x": -4,
+            "y": -1,
+            "maskID": 20003,
+            "des": "Rock"
+        },
+        {
+            "x": -4,
+            "y": 1,
+            "maskID": 20003,
+            "des": "Rock"
+        },
+        {
+            "x": -3,
+            "y": 0,
+            "maskID": 10002,
+            "des": "Wolf"
+        },
+        {
+            "x": -2,
+            "y": -1,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": -2,
+            "y": 1,
+            "maskID": 10001,
+            "des": "Mouse"
+        },
+        {
+            "x": 9,
+            "y": -5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": -1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 0,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 10,
+            "y": 0,
+            "maskID": 20001,
+            "des": "Cassette"
+        },
+        {
+            "x": -6,
+            "y": 0,
+            "maskID": 10002,
+            "des": "Wolf"
+        },
+        {
+            "x": -3,
+            "y": -2,
+            "maskID": 20002,
+            "des": "Chocolate"
+        },
+        {
+            "x": -3,
+            "y": 2,
+            "maskID": 20004,
+            "des": "Streetlight"
+        },
+        {
+            "x": 4,
+            "y": -2,
+            "maskID": 10003,
+            "des": "Crow"
+        },
+        {
+            "x": 4,
+            "y": 2,
+            "maskID": 20004,
+            "des": "Streetlight"
+        },
+        {
+            "x": 8,
+            "y": -5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": -4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": -3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": -2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": -1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 0,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 1,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 2,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 3,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 4,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 8,
+            "y": 5,
+            "maskID": 10006,
+            "des": "Fence"
+        },
+        {
+            "x": 9,
+            "y": 0,
+            "maskID": 20001,
+            "des": "Cassette"
+        }
+    ]
+}
