@@ -14,6 +14,8 @@ public class Cassette : BaseAction
         base.PlayControlSound();
         ResLoadMgr.Instance.LoadRes<AudioClip>(40008,(clip)=>
         {
+            if(audioSource == null)
+                return;
             audioSource.clip = clip;
             audioSource.Play();
             audioSource.loop = true;

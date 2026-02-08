@@ -227,6 +227,8 @@ public class BaseAction : MonoBehaviour
     {
         ResLoadMgr.Instance.LoadRes<Sprite>(data.resIdWithMask, (sprite) =>
             {
+                if(spriteRenderer == null)
+                    return;
                 spriteRenderer.sprite = sprite;
             });
         // 播放移动音效
@@ -272,8 +274,12 @@ public class BaseAction : MonoBehaviour
     /// </summary>
     protected virtual void NotControlShow()
     {
+        if(spriteRenderer == null)
+            return;
         ResLoadMgr.Instance.LoadRes<Sprite>(data.resIdNoMask, (sprite) =>
             {
+                if(spriteRenderer == null)
+                    return;
                 spriteRenderer.sprite = sprite;
             });
     }

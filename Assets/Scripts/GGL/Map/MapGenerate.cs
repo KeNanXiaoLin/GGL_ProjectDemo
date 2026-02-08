@@ -19,7 +19,7 @@ public class MapGenerate : MonoBehaviour
         BaseAction[] existingActions = GameObject.FindObjectsOfType<BaseAction>();
         foreach (var action in existingActions)
         {
-            Destroy(action.gameObject);
+            DestroyImmediate(action.gameObject);
         }
         
         // 等待销毁完成
