@@ -129,9 +129,15 @@ public class DrawLine : MonoBehaviour
                 Vector3 playerPos = player.transform.position;
                 int AddCrazyValue = GameManager.Instance.MapCell.CalGridDisByWorldPos(playerPos, lastMousePos);
                 
+                // 计算实际疯狂值变化
+                float distance = Vector2.Distance(playerPos, lastMousePos);
+                int minusCrazyValue = Mathf.CeilToInt(distance);
+                int actualCrazyChange = AddCrazyValue - minusCrazyValue;
+                int newCrazyValue = player.NowCrazyValue + actualCrazyChange;
+                
                 // 检查是否超出了最大范围
                 bool isGameOver = false;
-                if(targetCell.Action != null && AddCrazyValue > 10-player.NowCrazyValue)
+                if(targetCell.Action != null && (newCrazyValue < 0 || newCrazyValue > 10))
                 {
                     UIMgr.Instance.ShowPanel<GameOverPanel>();
                     isGameOver = true;
@@ -153,12 +159,10 @@ public class DrawLine : MonoBehaviour
                     targetCell.Action.ControlMe();
                     
                     // 只有当不是点击自己且移动距离超过0.1时才计算疯狂值
-                    float distance = Vector2.Distance(playerPos, lastMousePos);
                     if (!isSelfControl && distance > 0.1f)
                     {
-                        int minusCrazyValue = Mathf.CeilToInt(distance);
-                        Debug.Log($"AddCrazyValue: {AddCrazyValue}, minusCrazyValue: {minusCrazyValue}");
-                        player.ChangeCrazyValue(AddCrazyValue - minusCrazyValue);
+                        Debug.Log($"AddCrazyValue: {AddCrazyValue}, minusCrazyValue: {minusCrazyValue}, actualCrazyChange: {actualCrazyChange}");
+                        player.ChangeCrazyValue(actualCrazyChange);
                     }
                     else if (isSelfControl)
                     {

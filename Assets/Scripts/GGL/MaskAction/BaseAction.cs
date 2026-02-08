@@ -44,10 +44,15 @@ public class BaseAction : MonoBehaviour
     /// </summary>
     private Vector3 lastMovePos;
     private Coroutine moveCoroutine;
+    protected AudioSource audioSource;
 
     protected virtual void Start()
     {
         WorldSelfShow(GameManager.Instance.CurrentWorldType);
+        if(!TryGetComponent(out audioSource))
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     protected virtual void OnEnable()
@@ -195,8 +200,6 @@ public class BaseAction : MonoBehaviour
         lastMovePos = transform.position;
         // 同步Player位置到当前实体位置
         SyncPlayerPosition();
-        // 触发特殊行为
-        DoSelfSpecial();
     }
 
     /// <summary>
@@ -207,6 +210,8 @@ public class BaseAction : MonoBehaviour
         isControl = false;
         NotControlShow();
         GameManager.Instance.MapCell.ClearWalkPath();
+        // 停止播放控制音效
+        StopControlSound();
     }
 
     /// <summary>
@@ -218,6 +223,21 @@ public class BaseAction : MonoBehaviour
             {
                 spriteRenderer.sprite = sprite;
             });
+        // 播放移动音效
+        PlayControlSound();
+    }
+
+    protected virtual void PlayControlSound()
+    {
+        
+    }
+
+    protected virtual void StopControlSound()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     /// <summary>

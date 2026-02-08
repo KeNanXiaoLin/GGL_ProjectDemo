@@ -8,6 +8,16 @@ using UnityEngine;
 /// </summary>
 public class Streetlight : BaseAction
 {
+    protected override void PlayControlSound()
+    {
+        base.PlayControlSound();
+        ResLoadMgr.Instance.LoadRes<AudioClip>(40006,(clip)=>
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+            audioSource.loop = true;
+        });
+    }
     protected override void DoSelfSpecial()
     {
         // 子类可以重写这个方法，实现自己的特殊表现
