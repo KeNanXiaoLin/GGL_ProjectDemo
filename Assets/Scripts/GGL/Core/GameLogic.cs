@@ -23,6 +23,7 @@ public class GameLogic : MonoBehaviour
 
     void Start()
     {
+        MusicMgr.Instance.PlayBKMusic("游玩界面");
         currentWorld = E_World.Out_World;
         GameManager.Instance.CurrentWorldType = currentWorld;
         EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
