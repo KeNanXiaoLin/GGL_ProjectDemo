@@ -129,10 +129,8 @@ public class DrawLine : MonoBehaviour
                 Vector3 playerPos = player.transform.position;
                 int AddCrazyValue = GameManager.Instance.MapCell.CalGridDisByWorldPos(playerPos, lastMousePos);
                 
-                // 计算实际疯狂值变化
-                float distance = Vector2.Distance(playerPos, lastMousePos);
-                int minusCrazyValue = Mathf.CeilToInt(distance);
-                int actualCrazyChange = AddCrazyValue - minusCrazyValue;
+                
+                int actualCrazyChange = AddCrazyValue;
                 int newCrazyValue = player.NowCrazyValue + actualCrazyChange;
                 
                 // 检查是否超出了最大范围
@@ -142,6 +140,11 @@ public class DrawLine : MonoBehaviour
                     UIMgr.Instance.ShowPanel<GameOverPanel>();
                     isGameOver = true;
                 }
+
+                // 计算实际疯狂值变化
+                float distance = Vector2.Distance(playerPos, lastMousePos);
+                int minusCrazyValue = Mathf.CeilToInt(distance);
+                actualCrazyChange -= minusCrazyValue;
                 
                 // 只有在没有游戏结束时才进行附身操作
                 if (!isGameOver && targetCell.Action != null && !targetCell.Action.data.isDecorator)
