@@ -38,6 +38,7 @@ public class Cassette : BaseAction
         // 现在只有5关
         if(GameManager.Instance.CurrentLevel > 5)
         {
+            UIMgr.Instance.HidePanel<GameUIPanel>();
             UIMgr.Instance.ShowPanel<EndPanel>();
         }
         else

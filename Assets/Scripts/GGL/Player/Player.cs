@@ -21,10 +21,22 @@ public class Player : MonoBehaviour
     /// 当前控制的实体
     /// </summary>
     private BaseAction currentControlledAction = null;
+    /// <summary>
+    /// 游戏结束面板是否已经显示
+    /// </summary>
+    private static bool gameOverPanelShown = false;
     
     public BaseAction CurrentControlledAction { get => currentControlledAction; }
 
     public int NowCrazyValue { get => nowCrazyValue; }
+    
+    /// <summary>
+    /// 重置游戏结束面板显示标志
+    /// </summary>
+    public static void ResetGameOverPanelShown()
+    {
+        gameOverPanelShown = false;
+    }
 
     private void Start()
     {
@@ -94,7 +106,12 @@ public class Player : MonoBehaviour
         if (nowCrazyValue == 0 || nowCrazyValue == 10)
         {
             Debug.Log($"疯狂值达到{nowCrazyValue}，游戏结束！");
-            UIMgr.Instance.ShowPanel<GameOverPanel>();
+            // 检查游戏结束面板是否已经显示，避免重复显示
+            if (!gameOverPanelShown)
+            {
+                UIMgr.Instance.ShowPanel<GameOverPanel>();
+                gameOverPanelShown = true;
+            }
         }
     }
     /// <summary>

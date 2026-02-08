@@ -15,6 +15,8 @@ public class GameManager : BaseManager<GameManager>
     private CameraController cameraController;
     private Player player;
     private GameLogic gameLogic;
+
+    public bool isGameOver = false;
     public int CurrentLevel
     {
         get { return currentLevel; }

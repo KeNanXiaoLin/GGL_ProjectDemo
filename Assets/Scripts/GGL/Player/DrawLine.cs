@@ -27,8 +27,15 @@ public class DrawLine : MonoBehaviour
 
     void Update()
     {
+        // 检查游戏是否结束
+        if (GameManager.Instance.isGameOver)
+        {
+            ClearInfoLine();
+            return;
+        }
         if (enableDraw)
         {
+            
             DrawInfoLine(this.transform.position);
         }
 
@@ -115,6 +122,11 @@ public class DrawLine : MonoBehaviour
     /// <param name="arg0"></param>
     private void OnWorldChange(E_World world)
     {
+        if(GameManager.Instance.isGameOver)
+        {
+            ClearInfoLine();
+            return;
+        }
         switch (world)
         {
             case E_World.In_World:
@@ -128,26 +140,28 @@ public class DrawLine : MonoBehaviour
                 // 记录一下玩家当前的位置，后面会用到这个值进行计算
                 Vector3 playerPos = player.transform.position;
                 int AddCrazyValue = GameManager.Instance.MapCell.CalGridDisByWorldPos(playerPos, lastMousePos);
+
                 
-                
+                // 计算实际疯狂值变化
                 int actualCrazyChange = AddCrazyValue;
                 int newCrazyValue = player.NowCrazyValue + actualCrazyChange;
                 
-                // 检查是否超出了最大范围
-                bool isGameOver = false;
-                if(targetCell.Action != null && (newCrazyValue < 0 || newCrazyValue > 10))
+                // 检查这次的消耗是否大于10
+                if(targetCell.Action != null && newCrazyValue > 10)
                 {
                     UIMgr.Instance.ShowPanel<GameOverPanel>();
-                    isGameOver = true;
+                    GameManager.Instance.isGameOver = true;
+                    return;
                 }
+                
 
-                // 计算实际疯狂值变化
+                // 计算实际疯狂值变化（考虑移动距离的抵消）
                 float distance = Vector2.Distance(playerPos, lastMousePos);
                 int minusCrazyValue = Mathf.CeilToInt(distance);
                 actualCrazyChange -= minusCrazyValue;
                 
                 // 只有在没有游戏结束时才进行附身操作
-                if (!isGameOver && targetCell.Action != null && !targetCell.Action.data.isDecorator)
+                if (!GameManager.Instance.isGameOver && targetCell.Action != null && !targetCell.Action.data.isDecorator)
                 {
                     // 检查是否点击的是自己当前控制的实体
                     bool isSelfControl = false;

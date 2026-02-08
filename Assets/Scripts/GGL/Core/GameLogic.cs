@@ -41,6 +41,7 @@ public class GameLogic : MonoBehaviour
     /// <param name="levelID">关卡ID</param>
     public void GenerateLevel(int levelID)
     {
+        MusicMgr.Instance.PlayBKMusic(40003);
         // 重置到表世界
         currentWorld = E_World.Out_World;
         GameManager.Instance.CurrentWorldType = currentWorld;
@@ -56,6 +57,7 @@ public class GameLogic : MonoBehaviour
             Debug.LogError("GenerateLevel: mapGenerate is null");
         }
         GameManager.Instance.InitPlayer();
+        GameManager.Instance.isGameOver = false;
     }
 
     public void InitActions()

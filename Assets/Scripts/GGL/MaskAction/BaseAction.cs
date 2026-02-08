@@ -214,6 +214,12 @@ public class BaseAction : MonoBehaviour
         StopControlSound();
     }
 
+    public void StopSound()
+    {
+        audioSource.Stop();
+        audioSource.clip = null;
+    }
+
     /// <summary>
     /// 被控制的时候自己的表现
     /// </summary>
