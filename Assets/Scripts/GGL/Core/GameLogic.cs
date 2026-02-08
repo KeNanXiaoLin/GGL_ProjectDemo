@@ -41,6 +41,12 @@ public class GameLogic : MonoBehaviour
     /// <param name="levelID">关卡ID</param>
     public void GenerateLevel(int levelID)
     {
+        // 重置到表世界
+        currentWorld = E_World.Out_World;
+        GameManager.Instance.CurrentWorldType = currentWorld;
+        volume.gameObject.SetActive(false);
+        EventCenter.Instance.EventTrigger<E_World>(E_EventType.E_WorldChange, currentWorld);
+        
         if (mapGenerate != null)
         {
             StartCoroutine(mapGenerate.GenerateLevel(levelID));

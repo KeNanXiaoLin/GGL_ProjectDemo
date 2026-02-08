@@ -134,6 +134,8 @@ public class GameManager : BaseManager<GameManager>
     public void GoToNextLevel()
     {
         CurrentLevel++;
+        // 重置到表世界
+        GoToOutWorld();
     }
 
     public void RestartLevel()
